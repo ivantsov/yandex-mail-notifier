@@ -18,12 +18,12 @@ module.exports = {
         path: path.resolve('dist/pages'),
         filename: '[name].js'
     },
-    // module: {
-    //     loaders: [{
-    //         test: /\.js$/,
-    //         loader: 'babel'
-    //     }]
-    // },
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            loader: 'babel'
+        }]
+    },
     plugins: [
         new CopyWebpackPlugin([{
             from: 'src',
