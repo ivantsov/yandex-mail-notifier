@@ -1,0 +1,52 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.component {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 4px solid @yellow;
+}
+
+.item {
+    display: inline-flex;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.logoIcon {
+    composes: icon;
+    width: 54px;
+    height: 30px;
+    fill: @blue;
+}
+
+.composeIcon {
+    .hoverIcon;
+    composes: icon;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 8px;
+    fill: @blue;
+}
+
+.reloadIcon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    fill: @green;
+}
+
+.reloadBtn {
+    .hoverIcon;
+    background: none;
+    padding: 0;
+    border: 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
