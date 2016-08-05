@@ -11,7 +11,8 @@ config.output.publicPath = 'http://localhost:3000/';
 config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new WriteFilePlugin({
-        log: false
+        log: false,
+        test: /^((?!hot-update).)*$/
     })
 );
 
