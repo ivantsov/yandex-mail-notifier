@@ -1,0 +1,30 @@
+@import "../../styles/colors";
+
+@height: 370px;
+
+.content {
+    height: @height;
+    overflow-y: auto;
+}
+
+.centerContainer {
+    composes: content;
+    font-size: 28px;
+    color: @grey1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: @height;
+}
+
+// remove item animation
+.disappearLeave {
+    max-height: 90px;
+    opacity: 1;
+
+    &Active {
+        max-height: 0;
+        opacity: 0;
+        transition: all 500ms;
+    }
+}
