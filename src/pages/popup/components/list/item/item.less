@@ -1,0 +1,41 @@
+@import "../../../styles/colors";
+
+.component {
+    position: relative;
+    min-height: 40px;
+    padding: 10px;
+
+    &:hover {
+        background-color: @grey2;
+
+        .contentContainer {
+            -webkit-filter: blur(2px);
+        }
+
+        // show hover menu
+        > div:last-child {
+            display: flex;
+        }
+    }
+}
+
+.from {
+    font-weight: bold;
+}
+
+.date {
+    color: fade(black, 50%);
+    margin-left: 10px;
+}
+
+.subject {
+    margin: 2px 0 4px;
+}
+
+.content {
+    color: fade(black, 50%);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
