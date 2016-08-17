@@ -1,7 +1,11 @@
 body {
     font: 14px Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 700px;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 p {
@@ -14,12 +18,11 @@ a {
     text-decoration: none;
 }
 
+a,
 a:hover,
 a:active,
-a:focus {
-    outline: 0;
-}
-
+a:focus,
 button {
+    cursor: pointer;
     outline: none;
 }
