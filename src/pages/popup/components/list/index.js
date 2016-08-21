@@ -2,7 +2,7 @@ import styles from './list.less';
 
 import React, {PropTypes} from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
-import i18n from '../../utils/i18n';
+import i18n from 'utils/i18n';
 import Spinner from '../spinner';
 import Item from './item';
 
@@ -20,7 +20,7 @@ const List = ({
         return renderCurrentState(<Spinner/>);
     }
     if (error || !items.length) {
-        return renderCurrentState(i18n.text(error ? 'loadingError' : 'emptyList'));
+        return renderCurrentState(i18n.text(`popup.${error ? 'loadingError' : 'emptyList'}`));
     }
 
     const messages = items.map(item => (
