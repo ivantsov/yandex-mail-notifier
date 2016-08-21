@@ -1,5 +1,4 @@
 @import "../../styles/colors";
-@import "../../styles/mixins";
 
 .component {
     background-color: white;
@@ -14,39 +13,47 @@
     display: inline-flex;
 }
 
-.icon {
-    cursor: pointer;
-}
-
-.logoIcon {
-    composes: icon;
-    width: 54px;
-    height: 30px;
-    fill: @blue;
-}
-
 .composeIcon {
-    .hoverIcon;
-    composes: icon;
     width: 18px;
     height: 18px;
-    vertical-align: middle;
     margin-right: 8px;
     fill: @blue;
+    transition: 0.2s transform;
+}
+
+.composeBtn {
+    composes: item;
+
+    &:hover .composeIcon {
+        transform: scale(1.2);
+    }
 }
 
 .reloadIcon {
     width: 16px;
     height: 16px;
-    vertical-align: middle;
     fill: @green;
+    transition: 0.4s transform;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
 }
 
 .reloadBtn {
-    .hoverIcon;
     background: none;
     padding: 0;
     border: 0;
     margin-left: 10px;
-    cursor: pointer;
+}
+
+.settingsIcon {
+    width: 18px;
+    height: 18px;
+    fill: @blue;
+    transition: 0.4s transform;
+
+    &:hover {
+        transform: rotate(300deg);
+    }
 }
