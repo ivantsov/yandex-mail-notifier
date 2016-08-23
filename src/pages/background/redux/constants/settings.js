@@ -1,0 +1,2 @@
+export const LOAD_SETTINGS = 'LOAD_SETTINGS';
+export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
