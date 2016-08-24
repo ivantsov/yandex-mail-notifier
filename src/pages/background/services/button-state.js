@@ -13,10 +13,8 @@ function setState(enabled, badge) {
 }
 
 export default function () {
-    setState(false);
-
     userSubscribe('login', ({messages}) => setState(true, messages.unreadCount));
     userSubscribe('logout', ({messages}) => setState(false, messages.unreadCount));
 
-    messagesSubscribe('unreadCountChanged', state => setState(state.user.authorized, state.messages.unreadCount));
+    messagesSubscribe(state => setState(state.user.authorized, state.messages.unreadCount));
 }
