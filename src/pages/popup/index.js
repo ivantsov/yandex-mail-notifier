@@ -1,26 +1,23 @@
-import './styles.css';
+import './styles/layout.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {createUIStore} from 'redux-ext';
 import App from './components/app';
 
-const mountNode = document.createElement('div');
-document.body.appendChild(mountNode);
+async function initApp() {
+    const store = await createUIStore();
 
-ReactDOM.render(
-    <App
-        user="supertestuser@yandex.com"
-        messages={{
-            unreadCount: 56,
-            items: [{
-                id: 1,
-                text: 'Test'
-            }],
-            loading: false,
-            error: false
-        }}
-        notification={0}
-        loadMessages={() => {}}
-        updateMessage={() => {}}
-    />
-, mountNode);
+    const mountNode = document.createElement('div');
+    document.body.appendChild(mountNode);
+
+    ReactDOM.render(
+        <Provider store={store}>
+            <App/>
+        </Provider>,
+        mountNode
+    );
+}
+
+initApp();
