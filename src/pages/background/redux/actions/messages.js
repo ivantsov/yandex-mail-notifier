@@ -5,13 +5,15 @@ import {
     LOAD_MESSAGES_SUCCESS,
     LOAD_MESSAGES_ERROR,
     UPDATE_MESSAGE_SUCCESS,
-    UPDATE_MESSAGE_ERROR
+    INVALIDATE_MESSAGES
 } from '../constants/messages';
 import {
     getMessages,
     getMessagesCount,
     updateMessageStatus
 } from '../../utils/api';
+
+let popupIsOpen = false;
 
 export async function loadMessagesCount(data) {
     const unreadMessagesCount = data || await getMessagesCount();
@@ -23,18 +25,26 @@ export async function loadMessagesCount(data) {
 }
 
 export async function loadMessages() {
-    store.dispatch({type: LOAD_MESSAGES});
+    const {dispatch} = store;
+
+    popupIsOpen = true;
+
+    dispatch({type: LOAD_MESSAGES});
 
     try {
         const data = await getMessages();
 
-        store.dispatch({
-            type: LOAD_MESSAGES_SUCCESS,
-            data
-        });
+        // to prevent rewriting "loading" value, we dispatch the action only if popup is open
+        // "popupIsOpen" could be rewritten by "invalidateMessages" action
+        if (popupIsOpen) {
+            dispatch({
+                type: LOAD_MESSAGES_SUCCESS,
+                data
+            });
+        }
     }
     catch (err) {
-        store.dispatch({type: LOAD_MESSAGES_ERROR});
+        dispatch({type: LOAD_MESSAGES_ERROR});
     }
 }
 
@@ -47,7 +57,8 @@ export function updateMessage(data) {
     });
 }
 
-export function showNewMessage(data) {
-    //TODO: notification
-    console.log('NEW MESSAGE');
+export function invalidateMessages() {
+    popupIsOpen = false;
+
+    store.dispatch({type: INVALIDATE_MESSAGES});
 }
