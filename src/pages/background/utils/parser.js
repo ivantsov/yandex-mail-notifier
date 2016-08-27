@@ -64,4 +64,4 @@ export default function (xml) {
     folders = parseFolders(folders.querySelectorAll('folder'));
 
     return getFilteredMessage(messages, folders);
-};
+}

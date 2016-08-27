@@ -4,11 +4,10 @@ import parseXML from './parser';
 const DOMAIN = 'https://mail.yandex.ru';
 const API_URL = `${DOMAIN}/api`;
 
-// prevent sending 'Origin' header
-// otherwise yandex doesn't execute an operation
+// prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
     requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin')
-}), {urls: [`${API_URL}/*`]}, ["blocking", "requestHeaders"]);
+}), {urls: [`${API_URL}/*`]}, ['blocking', 'requestHeaders']);
 
 async function sendRequest(data) {
     const {

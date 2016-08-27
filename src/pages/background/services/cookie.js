@@ -27,7 +27,7 @@ export function getSessionId() {
     return getCookieByName(config.items.sessionId);
 }
 
-//TODO: check that the listener works on ya.ru/yandex.tr etc
+// TODO: check that the listener works on ya.ru/yandex.tr etc
 export function initCookieListener() {
     chrome.cookies.onChanged.addListener(({cookie, removed}) => {
         const {

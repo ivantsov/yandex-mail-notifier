@@ -13,7 +13,7 @@ const Checkbox = ({
             {item.label}
         </option>
     );
-    
+
     return (
         <div>
             <label>{label}</label>
