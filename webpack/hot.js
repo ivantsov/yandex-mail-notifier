@@ -22,7 +22,7 @@ Object.keys(config.entry).forEach(key => {
         config.entry[key],
         'webpack-dev-server/client',
         'webpack/hot/dev-server'
-    ]
+    ];
 });
 
 module.exports = config;

@@ -23,6 +23,7 @@ async function connect() {
         const uid = await getUid();
         const credentials = await getSocketCredentials(uid);
 
+        // eslint-disable-next-line no-use-before-define
         reconnectTimer = setTimeout(reconnect, config.reconnectInterval);
         wsClient.connect(credentials);
 

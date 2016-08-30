@@ -12,7 +12,8 @@ const Field = (props) => {
 };
 
 Field.propTypes = {
-    type: PropTypes.oneOf(Object.keys(types)).isRequired
+    type: PropTypes.oneOf(Object.keys(types)).isRequired,
+    onChange: PropTypes.func.isRequired
 };
 
 export default Field;

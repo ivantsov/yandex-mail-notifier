@@ -21,6 +21,7 @@ export default class Button extends Component {
         );
     }
 
+    // eslint-disable-next-line consistent-return
     onClick = () => {
         const {
             id,
