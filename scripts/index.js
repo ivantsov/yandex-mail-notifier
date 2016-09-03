@@ -1,6 +1,6 @@
-const locales = require('./locales');
+const i18n = require('webext-i18n');
 
-locales({
+i18n({
     inputDir: './src/locales',
     outputDir: './dist/_locales'
 }).then(() => console.log('Locales are generated.'));
