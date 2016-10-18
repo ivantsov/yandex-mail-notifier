@@ -1,12 +1,12 @@
-import store from '../store';
 import {
     LOAD_MESSAGES_COUNT,
     LOAD_MESSAGES,
     LOAD_MESSAGES_SUCCESS,
     LOAD_MESSAGES_ERROR,
-    UPDATE_MESSAGE_SUCCESS,
+    UPDATE_MESSAGE,
     INVALIDATE_MESSAGES
-} from '../constants/messages';
+} from 'shared/redux-consts/messages';
+import store from '../store';
 import {
     getMessages,
     getMessagesCount,
@@ -51,14 +51,15 @@ export async function loadMessages() {
 export function updateMessage(data) {
     updateMessageStatus(data);
 
-    store.dispatch({
-        type: UPDATE_MESSAGE_SUCCESS,
+    // kind of optimistic update :)
+    return {
+        type: UPDATE_MESSAGE,
         id: data.id
-    });
+    };
 }
 
 export function invalidateMessages() {
     popupIsOpen = false;
 
-    store.dispatch({type: INVALIDATE_MESSAGES});
+    return {type: INVALIDATE_MESSAGES};
 }

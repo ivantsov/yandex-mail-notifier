@@ -1,5 +1,5 @@
+import {LOGIN, LOGOUT} from 'shared/redux-consts/user';
 import store from '../store';
-import {LOGIN, LOGOUT} from '../constants/user';
 import {getUser} from '../../utils/api';
 
 export async function login() {

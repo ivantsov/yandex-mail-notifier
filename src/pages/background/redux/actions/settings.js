@@ -1,5 +1,5 @@
+import {LOAD_SETTINGS, UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 import store from '../store';
-import {LOAD_SETTINGS, UPDATE_SETTINGS} from '../constants/settings';
 import {initialState as defaultValues} from '../reducers/settings';
 
 const chromeStore = chrome.storage.sync;
@@ -22,8 +22,8 @@ export function loadSettings() {
 export function updateSettings(data) {
     chromeStore.set(data);
 
-    store.dispatch({
+    return {
         type: UPDATE_SETTINGS,
         data
-    });
+    };
 }

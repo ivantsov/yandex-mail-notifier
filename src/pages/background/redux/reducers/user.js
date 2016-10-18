@@ -1,4 +1,4 @@
-import {LOGIN} from '../constants/user';
+import {LOGIN} from 'shared/redux-consts/user';
 
 const initialState = {
     authorized: false,

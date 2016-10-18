@@ -3,9 +3,9 @@ import {
     LOAD_MESSAGES,
     LOAD_MESSAGES_SUCCESS,
     LOAD_MESSAGES_ERROR,
-    UPDATE_MESSAGE_SUCCESS,
+    UPDATE_MESSAGE,
     INVALIDATE_MESSAGES
-} from '../constants/messages';
+} from 'shared/redux-consts/messages';
 
 const initialState = {
     unreadCount: 0,
@@ -44,7 +44,7 @@ export default function (state = initialState, action) {
                 loading: false,
                 error: true
             };
-        case UPDATE_MESSAGE_SUCCESS:
+        case UPDATE_MESSAGE:
             // don't update unreadCount manually because it'll be race condition
             // e.g. we removed 5 messages at once but server handled only 3, we'll show user 10 - 5
             // but when we receive server response it'll be 10 - 3

@@ -1,4 +1,4 @@
-import {LOAD_SETTINGS, UPDATE_SETTINGS} from '../constants/settings';
+import {LOAD_SETTINGS, UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 
 export const initialState = {
     newMessageNotification: 1, // only desktop notification
