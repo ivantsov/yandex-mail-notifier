@@ -14,7 +14,7 @@ function parseDate(value) {
 }
 
 function date(value) {
-    const date = parseDate(value);
+    const date = parseDate(value); // eslint-disable-line no-shadow
     const currentDate = new Date();
     let yearPostfix = '';
 
