@@ -11,6 +11,8 @@
     "url": "https://github.com/ivantsov/yandex-mail-notifier-chrome.git"
   },
   "scripts": {
+    "lint": "eslint src scripts webpack",
+    "lint:fix": "npm run lint -- --fix",
     "hot-server": "node ./webpack/hot-server.js",
     "build:dev": "webpack",
     "build:prod": "webpack --env prod"
