@@ -1,11 +1,11 @@
-import styles from './header.less';
-
 import React, {PropTypes} from 'react';
-import i18n from 'utils/i18n';
-import openUrl, {openSettings} from 'utils/tab';
+import i18n from 'shared/utils/i18n';
+import openUrl, {openSettings} from 'shared/utils/tab';
 import SettingsIcon from './icons/settings';
 import ReloadIcon from './icons/reload';
 import ComposeIcon from './icons/compose';
+
+import styles from './header.less';
 
 // TODO: update styles to make centered on one line
 const Header = ({

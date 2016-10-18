@@ -1,10 +1,10 @@
-import styles from './list.less';
-
 import React, {PropTypes} from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
-import i18n from 'utils/i18n';
+import i18n from 'shared/utils/i18n';
 import Spinner from '../spinner';
 import Item from './item';
+
+import styles from './list.less';
 
 function renderCurrentState(component) {
     return <div className={styles.centerContainer}>{component}</div>;

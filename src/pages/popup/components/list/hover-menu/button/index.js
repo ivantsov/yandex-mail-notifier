@@ -1,7 +1,7 @@
-import styles from './button.less';
-
 import React, {PropTypes, Component} from 'react';
 import types from './types';
+
+import styles from './button.less';
 
 export default class Button extends Component {
     static propTypes = {

@@ -1,10 +1,10 @@
-import './styles/layout.less';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createUIStore} from 'redux-ext';
+import {createUIStore} from 'redux-webext';
 import App from './components/app';
+
+import './styles/layout.less';
 
 async function initApp() {
     const store = await createUIStore();

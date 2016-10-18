@@ -1,7 +1,7 @@
-import styles from './hover-menu.less';
-
 import React, {PropTypes} from 'react';
 import Button, {types} from './button';
+
+import styles from './hover-menu.less';
 
 const HoverMenu = ({
     id,

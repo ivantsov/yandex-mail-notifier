@@ -1,5 +1,5 @@
-import i18n from 'utils/i18n';
-import openUrl from 'utils/tab';
+import i18n from 'shared/utils/i18n';
+import openUrl from 'shared/utils/tab';
 import OpenIcon from './icons/open';
 import ReadIcon from './icons/read';
 import RemoveIcon from './icons/remove';

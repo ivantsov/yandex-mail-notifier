@@ -1,8 +1,8 @@
-import styles from './item.less';
-
 import React, {PropTypes} from 'react';
-import i18n from 'utils/i18n';
+import i18n from 'shared/utils/i18n';
 import HoverMenu from '../hover-menu';
+
+import styles from './item.less';
 
 const Item = ({
     id,

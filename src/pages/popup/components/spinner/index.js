@@ -1,6 +1,6 @@
-import styles from './spinner.less';
-
 import React from 'react';
+
+import styles from './spinner.less';
 
 const Spinner = () => (
     <div className={styles.component}>
