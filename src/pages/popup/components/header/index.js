@@ -7,7 +7,6 @@ import ComposeIcon from './icons/compose';
 
 import styles from './header.less';
 
-// TODO: update styles to make centered on one line
 const Header = ({
     user,
     unreadMessagesCount,
@@ -19,7 +18,7 @@ const Header = ({
             <ComposeIcon className={styles.composeIcon}/>
             {i18n.text('popup.compose')}
         </a>
-        <div className={styles.item}>
+        <div className={styles.centerBlock}>
             <a onClick={openUrl}>
                 {user} (<strong>{unreadMessagesCount}</strong>)
             </a>

@@ -4,7 +4,6 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 10px 16px;
     border-bottom: 4px solid @yellow;
 }
@@ -16,7 +15,7 @@
 .composeIcon {
     width: 18px;
     height: 18px;
-    margin-right: 8px;
+    margin: -1px 8px 0;
     fill: @blue;
     transition: 0.2s transform;
 }
@@ -29,10 +28,18 @@
     }
 }
 
+.centerBlock {
+    composes: item;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .reloadIcon {
     width: 16px;
     height: 16px;
     fill: @green;
+    vertical-align: middle;
     transition: 0.4s transform;
 
     &:hover {
