@@ -1,5 +1,4 @@
 import {LOAD_SETTINGS, UPDATE_SETTINGS} from 'shared/redux-consts/settings';
-import store from '../store';
 import {initialState as defaultValues} from '../reducers/settings';
 
 const chromeStore = chrome.storage.sync;

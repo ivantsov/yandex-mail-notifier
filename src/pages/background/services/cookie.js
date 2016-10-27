@@ -1,3 +1,4 @@
+import store from '../redux/store';
 import {login, logout} from '../redux/actions/user';
 
 const config = {
@@ -40,7 +41,7 @@ export function initCookieListener() {
             name === config.items.sessionId &&
             path === config.path
         ) {
-            removed ? logout() : login();
+            store.dispatch(removed ? logout() : login());
         }
     });
 }
