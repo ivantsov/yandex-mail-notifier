@@ -1,6 +1,7 @@
 import debounce from 'lodash.debounce';
 import {getSocketCredentials} from '../../utils/api';
 import subscribe from '../../redux/subscribers/user';
+import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
 import {getUid} from '../cookie';
@@ -17,6 +18,8 @@ const config = {
 let wsClient, reconnectTimer;
 
 async function connect() {
+    const {dispatch} = store;
+
     clearTimeout(reconnectTimer);
 
     try {
@@ -27,13 +30,13 @@ async function connect() {
         reconnectTimer = setTimeout(reconnect, config.reconnectInterval);
         wsClient.connect(credentials);
 
-        loadMessagesCount();
-        login();
+        dispatch(loadMessagesCount());
+        dispatch(login());
     }
     catch (err) {
         setTimeout(connect, config.connectTryInterval);
 
-        logout();
+        dispatch(logout());
     }
 }
 
@@ -48,6 +51,7 @@ function disconnect() {
 }
 
 function onNewMessage(data) {
+    const {dispatch} = store;
     const {
         operation,
         new_messages: unreadCount,
@@ -62,7 +66,7 @@ function onNewMessage(data) {
         const nameMatch = from.match(/^"(.+)"/);
         const emailMatch = from.match(/<(.+)>$/);
 
-        loadMessagesCount(parseInt(unreadCount, 10));
+        dispatch(loadMessagesCount(parseInt(unreadCount, 10)));
         showNewMessage({
             id,
             from: nameMatch[1] || emailMatch[1],
@@ -71,7 +75,7 @@ function onNewMessage(data) {
         });
     }
     else {
-        loadMessagesCount();
+        dispatch(loadMessagesCount());
     }
 }
 
