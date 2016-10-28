@@ -2,7 +2,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {createBackgroundStore} from 'redux-webext';
 import {LOAD_MESSAGES, UPDATE_MESSAGE} from 'shared/redux-consts/messages';
-import {LOAD_SETTINGS, UPDATE_SETTINGS} from 'shared/redux-consts/settings';
+import {UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 import reducer from './reducers';
 import {updateSettings} from './actions/settings';
 import {

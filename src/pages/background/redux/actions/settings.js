@@ -21,7 +21,7 @@ export function loadSettings() {
                 resolve();
             });
         });
-    }
+    };
 }
 
 export function updateSettings(data) {
