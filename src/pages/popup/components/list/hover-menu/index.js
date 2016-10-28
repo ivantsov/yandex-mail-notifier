@@ -16,7 +16,12 @@ const HoverMenu = ({
         />
     ));
 
-    return <div className={styles.component}>{buttons}</div>;
+    return (
+        <div
+            className={styles.component}
+            onClick={() => types.open.action(id)}
+        >{buttons}</div>
+    );
 };
 
 HoverMenu.propTypes = {
