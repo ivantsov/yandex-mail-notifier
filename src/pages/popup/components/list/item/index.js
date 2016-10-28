@@ -12,7 +12,7 @@ const Item = ({
     date,
     onActionClick
 }) => (
-    <div> {/* for collapsing the element should not have padding, this's why we need this container */}
+    <div> {/* for collapsing animation the element shouldn't have padding, this's why we need this container */}
         <div className={styles.component}>
             <div className={styles.contentContainer}>
                 <p>

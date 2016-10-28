@@ -28,7 +28,7 @@ function date(value) {
         yearPostfix = ` ${date.getFullYear()}`;
     }
 
-    const month = text(`months.${date.getMonth() + 1}`);
+    const month = text(`popup.months.${date.getMonth() + 1}`);
 
     return `${date.getDate()} ${month}${yearPostfix}`;
 }
