@@ -22,7 +22,9 @@ export default class Button extends Component {
     }
 
     // eslint-disable-next-line consistent-return
-    onClick = () => {
+    onClick = (e) => {
+        e.stopPropagation();
+
         const {
             id,
             type,
