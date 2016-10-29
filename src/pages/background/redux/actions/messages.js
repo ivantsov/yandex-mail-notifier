@@ -22,7 +22,7 @@ export function loadMessagesCount(data) {
             type: LOAD_MESSAGES_COUNT,
             data: unreadMessagesCount
         });
-    }
+    };
 }
 
 export function loadMessages() {
@@ -46,7 +46,7 @@ export function loadMessages() {
         catch (err) {
             dispatch({type: LOAD_MESSAGES_ERROR});
         }
-    }
+    };
 }
 
 export function updateMessage(data) {

@@ -1,9 +1,12 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
+const ShellPlugin = require('webpack-shell-plugin');
+
+const PAGES_PATH = './src/pages';
 
 function generateHtmlPlugins(items) {
-    return items.map(name => new HtmlWebpackPlugin({
+    return items.map(name => new HtmlPlugin({
         filename: `./${name}.html`,
         chunks: [name]
     }));
@@ -11,12 +14,18 @@ function generateHtmlPlugins(items) {
 
 module.exports = {
     entry: {
-        background: './src/pages/background',
-        popup: './src/pages/popup'
+        background: `${PAGES_PATH}/background`,
+        popup: `${PAGES_PATH}/popup`,
+        settings: `${PAGES_PATH}/settings`
     },
     output: {
         path: path.resolve('dist/pages'),
         filename: '[name].js'
+    },
+    resolve: {
+        alias: {
+            shared: path.resolve('./src/pages/shared')
+        }
     },
     module: {
         loaders: [{
@@ -32,17 +41,22 @@ module.exports = {
         }]
     },
     plugins: [
-        new CopyWebpackPlugin([{
+        new CopyPlugin([{
             from: 'src',
             to: path.resolve('dist'),
-            ignore: ['pages/**/*']
-        }, {
-            from: 'src/pages/options.html', // TODO: find out how to not create this additional entity and use ignore pattern above
-            to: path.resolve('dist/pages')
+            ignore: [
+                'pages/**/*',
+                'locales/*'
+            ]
         }]),
         ...generateHtmlPlugins([
             'background',
-            'popup'
-        ])
+            'popup',
+            'settings'
+        ]),
+        new ShellPlugin({
+            onBuildEnd: ['node ./scripts'],
+            dev: false
+        })
     ]
 };

@@ -4,18 +4,24 @@ import {initialState as defaultValues} from '../reducers/settings';
 const chromeStore = chrome.storage.sync;
 
 export function loadSettings() {
-    // get all items in the storage with fallback using default values
-    chromeStore.get(defaultValues, optionValues => {
-        const data = Object.keys(defaultValues).reduce((obj, key) => {
-            obj[key] = optionValues[key];
-            return obj;
-        }, {});
+    return async (dispatch) => {
+        return new Promise(resolve => {
+            // get all items in the storage with fallback using default values
+            chromeStore.get(defaultValues, optionValues => {
+                const data = Object.keys(defaultValues).reduce((obj, key) => {
+                    obj[key] = optionValues[key];
+                    return obj;
+                }, {});
 
-        store.dispatch({
-            type: LOAD_SETTINGS,
-            data
+                dispatch({
+                    type: LOAD_SETTINGS,
+                    data
+                });
+
+                resolve();
+            });
         });
-    });
+    };
 }
 
 export function updateSettings(data) {

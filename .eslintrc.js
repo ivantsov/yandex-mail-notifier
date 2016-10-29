@@ -7,12 +7,6 @@ module.exports = {
         browser: true
     },
     parser: 'babel-eslint',
-    parserOptions: {
-        ecmaVersion: 2017,
-        ecmaFeatures: {
-            experimentalObjectRestSpread: true
-        }
-    },
     settings: {
         'import/resolver': {
             webpack: {
@@ -41,6 +35,8 @@ module.exports = {
         }],
         'one-var-declaration-per-line': ['error', 'initializations'],
         'arrow-parens': 'off',
+        'arrow-body-style': 'off',
+        'no-prototype-builtins': 'off',
 
         'react/jsx-filename-extension': ['error', {extensions: ['.js']}],
         'react/jsx-indent': ['error', INDENT],

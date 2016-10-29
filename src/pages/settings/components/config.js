@@ -1,58 +1,40 @@
+import i18n from 'shared/utils/i18n';
 import types from './field/types';
 
 const fiveMin = 5 * 60 * 1000;
 
-// TODO: use i18n
-// TODO: use description field
-export default [{
+const fields = [{
     type: types.select,
     name: 'newMessageNotification',
-    label: 'Notify when new email is received',
-    options: [{
-        value: 0,
-        label: 'off'
-    }, {
-        value: 1,
-        label: 'desktop notification'
-    }, {
-        value: 2,
-        label: 'desktop + sound notification'
-    }]
+    optionValues: [0, 1, 2]
 }, {
     type: types.select,
     name: 'unreadMessagesNotification',
-    label: 'Remind about unread emails via desktop notification',
-    options: [{
-        value: 0,
-        label: 'off'
-    }, {
-        value: fiveMin,
-        label: 'every 5 min'
-    }, {
-        value: 3 * fiveMin,
-        label: 'every 15 min'
-    }, {
-        value: 6 * fiveMin,
-        label: 'every 30 min'
-    }]
+    optionValues: [0, fiveMin, 3 * fiveMin, 6 * fiveMin]
 }, {
     type: types.checkbox,
-    name: 'unreadMessagesSound',
-    label: 'Remind about unread emails via sound notification',
-    description: 'Plays according to the reminder interval.'
+    name: 'unreadMessagesSound'
 }, {
     type: types.select,
     name: 'notAuthNotification',
-    label: 'Notify if you\'re not logged in',
-    description: 'Every 5 min',
-    options: [{
-        value: 0,
-        label: 'off'
-    }, {
-        value: 1,
-        label: 'desktop notification'
-    }, {
-        value: 2,
-        label: 'desktop + sound notification'
-    }]
+    optionValues: [0, 1, 2]
 }];
+
+export default fields.map(field => {
+    const baseKey = `settings.${field.name}`;
+    let options;
+
+    if (field.hasOwnProperty('optionValues')) {
+        options = field.optionValues.map((value, index) => ({
+            value,
+            label: i18n.text(`${baseKey}.options.${index}`)
+        }));
+    }
+
+    return {
+        ...field,
+        label: i18n.text(`${baseKey}.label`),
+        description: i18n.text(`${baseKey}.description`),
+        options
+    };
+});

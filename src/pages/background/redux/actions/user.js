@@ -11,7 +11,7 @@ export function login() {
         }
 
         dispatch(action);
-    }
+    };
 }
 
 export function logout() {
