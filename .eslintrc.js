@@ -36,6 +36,7 @@ module.exports = {
         'one-var-declaration-per-line': ['error', 'initializations'],
         'arrow-parens': 'off',
         'arrow-body-style': 'off',
+        'no-prototype-builtins': 'off',
 
         'react/jsx-filename-extension': ['error', {extensions: ['.js']}],
         'react/jsx-indent': ['error', INDENT],

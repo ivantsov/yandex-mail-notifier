@@ -3,7 +3,7 @@ import types from './field/types';
 
 const fiveMin = 5 * 60 * 1000;
 
-const options = [{
+const fields = [{
     type: types.select,
     name: 'newMessageNotification',
     optionValues: [0, 1, 2]
@@ -20,7 +20,7 @@ const options = [{
     optionValues: [0, 1, 2]
 }];
 
-export default options.map(field => {
+export default fields.map(field => {
     const baseKey = `settings.${field.name}`;
     let options;
 
