@@ -1,14 +1,20 @@
 import React, {PropTypes} from 'react';
 import FieldPropTypes from './proptypes';
 
+import styles from './field.less';
+
 const Checkbox = ({
     name,
     label,
+    description,
     value,
     onChange
 }) => (
-    <div>
-        <label htmlFor={name}>{label}</label>
+    <div className={styles.field}>
+        <div>
+            <label htmlFor={name} className={styles.label}>{label}</label>
+            {description && <div className={styles.description}>{description}</div>}
+        </div>
         <input
             type="checkbox"
             id={name}

@@ -1,9 +1,12 @@
 import React, {PropTypes} from 'react';
 import FieldPropTypes from './proptypes';
 
+import styles from './field.less';
+
 const Checkbox = ({
     name,
     label,
+    description,
     value,
     options,
     onChange
@@ -15,8 +18,11 @@ const Checkbox = ({
     );
 
     return (
-        <div>
-            <label htmlFor={name}>{label}</label>
+        <div className={styles.field}>
+            <div>
+                <label htmlFor={name} className={styles.label}>{label}</label>
+                {description && <div className={styles.description}>{description}</div>}
+            </div>
             <select
                 id={name}
                 name={name}
