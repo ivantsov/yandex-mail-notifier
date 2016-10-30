@@ -14,7 +14,11 @@ const App = ({settings, updateSettings}) => {
         />
     );
 
-    return <div>{fields}</div>;
+    return (
+        <table>
+            <tbody>{fields}</tbody>
+        </table>
+    );
 };
 
 App.propTypes = {

@@ -3,16 +3,36 @@ import types from './types';
 import Checkbox from './items/checkbox';
 import Select from './items/select';
 
-const Field = (props) => {
-    // TODO: we can't use the following line because the bug in babel - https://phabricator.babeljs.io/T7086
-    // const {type, ...restProps} = props;
-    const Component = props.type === types.checkbox ? Checkbox : Select;
+import styles from './field.less';
 
-    return <Component {...props} onChange={props.onChange}/>;
+const Field = (props) => {
+    const {
+        type,
+        name,
+        label,
+        description
+    } = props;
+
+    const Component = type === types.checkbox ? Checkbox : Select;
+
+    return (
+        <tr>
+            <td className={styles.label}>
+                <label htmlFor={name}>{label}</label>
+                {description && <div className={styles.description}>{description}</div>}
+            </td>
+            <td>
+                <Component {...props}/>
+            </td>
+        </tr>
+    );
 };
 
 Field.propTypes = {
     type: PropTypes.oneOf(Object.keys(types)).isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
 };
 
