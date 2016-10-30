@@ -32,8 +32,7 @@ Field.propTypes = {
     type: PropTypes.oneOf(Object.keys(types)).isRequired,
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
+    description: PropTypes.string.isRequired
 };
 
 export default Field;
