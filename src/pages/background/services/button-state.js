@@ -8,12 +8,11 @@ function setState(enabled, badge) {
     // enable or disable popup button (onClick works only if no popup set)
     if (enabled) {
         popup.setPopup({popup: 'pages/popup.html'});
-        // popup.enable();
+        popup.setIcon({path: '/assets/icon.png'});
     }
     else {
         popup.setPopup({popup: ''});
-        // TODO: change icon instead of disabling otherwise onClick doesn't work
-        // popup.disable();
+        popup.setIcon({path: '/assets/icon-disabled.png'});
     }
 
     // set badge
