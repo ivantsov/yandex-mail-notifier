@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "__MSG_ext_name__",
+    "version": "1.0.0",
+    "default_locale": "ru",
+    "description": "__MSG_ext_description__",
+    "icons": {
+        "16": "assets/icon.png",
+        "32": "assets/icon.png",
+        "48": "assets/icon.png",
+        "128": "assets/icon.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "assets/icon-disabled.png",
+            "38": "assets/icon-disabled.png"
+        },
+        "default_title": "__MSG_popup_title__"
+    },
+    "author": "Alexander Ivantsov <alexivantsov@ya.ru>",
+    "background": {
+        "page": "pages/background.html"
+    },      
+    "incognito": "spanning",
+    "options_ui": {
+        "page": "pages/settings.html",
+        "chrome_style": true
+    },
+    "offline_enabled": false,
+    "permissions": [
+        "*://*/*",
+        "cookies",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "notifications"
+    ],
+    "optional_permissions": [],
+    "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost:3000; object-src 'self'"
+}
