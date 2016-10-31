@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
+    "object-path": "^0.11.2",
     "query-string": "^4.2.3",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
@@ -50,7 +51,6 @@
     "html-webpack-plugin": "^2.24.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "object-path": "^0.11.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",
     "webext-i18n": "^1.0.0",
