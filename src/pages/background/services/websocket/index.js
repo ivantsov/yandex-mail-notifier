@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
 import {getSocketCredentials} from '../../utils/api';
-import subscribe from '../../redux/subscribers/user';
+import {subscribe} from '../../redux/subscriber';
 import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
@@ -91,7 +91,13 @@ function emitEvent(eventType, data) {
 export default function () {
     wsClient = initWSClient(emitEvent);
 
-    // UID might not be set immediately, this's why we delay it with timeout
-    subscribe('login', () => setTimeout(reconnect, config.cookieTimeout));
-    subscribe('logout', disconnect);
+    subscribe('user.authorized', ({user: {authorized}}) => {
+        if (authorized) {
+           // UID might not be set immediately, this's why we delay it with timeout
+            setTimeout(reconnect, config.cookieTimeout)
+        }
+        else {
+            disconnect();
+        }
+    });
 }

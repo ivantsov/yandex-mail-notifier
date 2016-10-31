@@ -1,8 +1,7 @@
 import openUrl from 'shared/utils/tab';
 import i18n from 'shared/utils/i18n';
 import store from '../../redux/store';
-import userSubscribe from '../../redux/subscribers/user';
-import settingsSubscribe from '../../redux/subscribers/settings';
+import {subscribe} from '../../redux/subscriber';
 import {show, play} from './utils';
 
 const fiveMin = 5 * 60 * 1000;
@@ -87,9 +86,15 @@ function initNotAuthNotification({user, settings}) {
 }
 
 export default function () {
-    userSubscribe('login', initUnreadNotification);
-    userSubscribe('logout', initNotAuthNotification);
+    subscribe('user.authorized', (state) => {
+        if (state.user.authorized) {
+            initUnreadNotification(state)
+        }
+        else {
+            initNotAuthNotification(state)
+        }
+    });
 
-    settingsSubscribe('unreadMessagesNotification', initUnreadNotification);
-    settingsSubscribe('notAuthNotification', initNotAuthNotification);
+    subscribe('settings.unreadMessagesNotification', initUnreadNotification);
+    subscribe('settings.notAuthNotification', initNotAuthNotification);
 }
