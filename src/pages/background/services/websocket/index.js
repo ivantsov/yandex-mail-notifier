@@ -94,7 +94,7 @@ export default function () {
     subscribe('user.authorized', ({user: {authorized}}) => {
         if (authorized) {
            // UID might not be set immediately, this's why we delay it with timeout
-            setTimeout(reconnect, config.cookieTimeout)
+            setTimeout(reconnect, config.cookieTimeout);
         }
         else {
             disconnect();

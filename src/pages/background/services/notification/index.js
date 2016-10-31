@@ -88,10 +88,10 @@ function initNotAuthNotification({user, settings}) {
 export default function () {
     subscribe('user.authorized', (state) => {
         if (state.user.authorized) {
-            initUnreadNotification(state)
+            initUnreadNotification(state);
         }
         else {
-            initNotAuthNotification(state)
+            initNotAuthNotification(state);
         }
     });
 
