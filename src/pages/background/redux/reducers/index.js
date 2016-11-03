@@ -12,7 +12,10 @@ const appReducer = combineReducers({
 
 export default function (state, action) {
     if (action.type === LOGOUT) {
-        state = undefined;
+        // clear the whole state except settings
+        state = {
+            settings: state.settings
+        };
     }
 
     return appReducer(state, action);
