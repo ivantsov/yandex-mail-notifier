@@ -4,8 +4,8 @@ import {subscribe} from '../../redux/subscriber';
 import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
+import {showNewNotification} from '../../redux/actions/notification';
 import {getUid} from '../cookie';
-import {showNewMessage} from '../notification';
 import {RECONNECT, NEW_MESSAGE} from './constants';
 import initWSClient from './client';
 
@@ -67,12 +67,12 @@ function onNewMessage(data) {
         const emailMatch = from.match(/<(.+)>$/);
 
         dispatch(loadMessagesCount(parseInt(unreadCount, 10)));
-        showNewMessage({
+        dispatch(showNewNotification({
             id,
             from: nameMatch[1] || emailMatch[1],
             subject: subject !== 'No subject' ? subject : '',
             message
-        });
+        }));
     }
     else {
         dispatch(loadMessagesCount());
