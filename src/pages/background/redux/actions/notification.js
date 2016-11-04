@@ -6,6 +6,7 @@ const CONSTANTS = {
     SHOW_UNREAD_NOTIFICATION: 'SHOW_UNREAD_NOTIFICATION',
     SHOW_NOT_AUTH_NOTIFICATION: 'SHOW_NOT_AUTH_NOTIFICATION'
 };
+const sevenSec = 7 * 1000;
 
 const notification = chrome.notifications;
 const audio = new Audio('../assets/notification.wav');
@@ -25,6 +26,8 @@ function showNotification(data) {
         contextMessage: data.message
     }, (id) => {
         notifications[id] = data.onClick;
+
+        setTimeout(() => notification.clear(id), sevenSec);
     });
 }
 
@@ -52,7 +55,7 @@ export function showNewNotification(data) {
 
             dispatch({type: CONSTANTS.SHOW_NEW_NOTIFICATION});
         }
-    }
+    };
 }
 
 export function showUnreadNotification() {
@@ -70,7 +73,7 @@ export function showUnreadNotification() {
         }
 
         dispatch({type: CONSTANTS.SHOW_UNREAD_NOTIFICATION});
-    }
+    };
 }
 
 export function showNotAuthNotification() {
@@ -90,5 +93,5 @@ export function showNotAuthNotification() {
 
             dispatch({type: CONSTANTS.SHOW_NOT_AUTH_NOTIFICATION});
         }
-    }
+    };
 }
