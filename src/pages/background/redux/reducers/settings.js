@@ -2,7 +2,7 @@ import {LOAD_SETTINGS, UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 
 export const initialState = {
     newMessageNotification: 1, // only desktop notification
-    unreadMessagesNotification: 5 * 60 * 1000, // 5 mins
+    unreadMessagesNotification: 5, // 5 min
     unreadMessagesSound: false,
     notAuthNotification: 1 // only desktop notification
 };

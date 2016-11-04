@@ -33,6 +33,7 @@
         "webRequest",
         "webRequestBlocking",
         "storage",
+        "alarms",
         "notifications"
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost:3000; object-src 'self'"

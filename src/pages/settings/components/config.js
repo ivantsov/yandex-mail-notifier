@@ -1,8 +1,6 @@
 import i18n from 'shared/utils/i18n';
 import types from './field/types';
 
-const fiveMin = 5 * 60 * 1000;
-
 const fields = [{
     type: types.select,
     name: 'newMessageNotification',
@@ -10,7 +8,7 @@ const fields = [{
 }, {
     type: types.select,
     name: 'unreadMessagesNotification',
-    optionValues: [0, fiveMin, 3 * fiveMin, 6 * fiveMin]
+    optionValues: [0, 5, 15, 30] // interval in min
 }, {
     type: types.checkbox,
     name: 'unreadMessagesSound'

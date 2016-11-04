@@ -2,8 +2,22 @@ import store from '../redux/store';
 import {showUnreadNotification, showNotAuthNotification} from '../redux/actions/notification';
 import {subscribe} from '../redux/subscriber';
 
-const fiveMin = 5 * 60 * 1000;
-let unreadMessagesTimer, notAuthTimer;
+const ALARMS = {
+    UNREAD: 'UNREAD',
+    NOT_AUTH: 'NOT_AUTH'
+};
+const {alarms} = chrome;
+
+alarms.onAlarm.addListener(({name}) => {
+    const {dispatch} = store;
+
+    if (name === ALARMS.UNREAD) {
+        dispatch(showUnreadNotification());
+    }
+    else if (name === ALARMS.NOT_AUTH) {
+        dispatch(showNotAuthNotification());
+    }
+});
 
 function initUnreadNotification({user, settings: {unreadMessagesNotification}}) {
     // on "unreadMessagesNotification" change + user is logged out
@@ -11,13 +25,11 @@ function initUnreadNotification({user, settings: {unreadMessagesNotification}}) 
         return;
     }
 
-    clearInterval(unreadMessagesTimer); // on "unreadMessagesNotification" change + user is logged in
-    clearInterval(notAuthTimer); // on login
+    alarms.clear(ALARMS.UNREAD); // on "unreadMessagesNotification" change + user is logged in
+    alarms.clear(ALARMS.NOT_AUTH); // on login
 
     if (unreadMessagesNotification) {
-        unreadMessagesTimer = setInterval(() => {
-            store.dispatch(showUnreadNotification());
-        }, unreadMessagesNotification);
+        alarms.create(ALARMS.UNREAD, {periodInMinutes: unreadMessagesNotification});
     }
 }
 
@@ -27,13 +39,11 @@ function initNotAuthNotification({user, settings}) {
         return;
     }
 
-    clearInterval(notAuthTimer); // on "notAuthNotification" change + user is logged out
-    clearInterval(unreadMessagesTimer); // on logout
+    alarms.clear(ALARMS.NOT_AUTH); // on "notAuthNotification" change + user is logged out
+    alarms.clear(ALARMS.UNREAD); // on logout
 
     if (settings.notAuthNotification) {
-        notAuthTimer = setInterval(() => {
-            store.dispatch(showNotAuthNotification())
-        }, fiveMin);
+        alarms.create(ALARMS.NOT_AUTH, {periodInMinutes: 5});
     }
 }
 
