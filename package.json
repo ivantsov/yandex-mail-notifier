@@ -11,11 +11,12 @@
     "url": "https://github.com/ivantsov/yandex-mail-notifier-chrome.git"
   },
   "scripts": {
+    "clean": "rimraf dist",
     "lint": "eslint src scripts webpack",
     "lint:fix": "npm run lint -- --fix",
     "hot-server": "node ./webpack/hot-server.js",
-    "build:dev": "webpack",
-    "build:prod": "webpack --env prod"
+    "build:dev": "npm run clean && webpack",
+    "build:prod": "npm run clean && webpack --env prod"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
@@ -52,6 +53,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "react-hot-loader": "^3.0.0-beta.6",
+    "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "webext-i18n": "^1.0.0",
     "webpack": "^2.1.0-beta.25",
