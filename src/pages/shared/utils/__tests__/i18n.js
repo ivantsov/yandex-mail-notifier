@@ -38,7 +38,7 @@ describe('utils/i18n', () => {
             const arg2 = 23;
 
             expect(i18n.text(input, arg1, arg2)).toBe(keys.key_number_one);
-            expect(getMessage).lastCalledWith(input, [arg1, arg2])
+            expect(getMessage).lastCalledWith(input, [arg1, arg2]);
         });
     });
 
