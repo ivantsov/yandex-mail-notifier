@@ -1,0 +1,24 @@
+exports[`settings/Select with options 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={123}>
+  <option
+    value={1}>
+    option1
+  </option>
+  <option
+    value={2}>
+    option2
+  </option>
+</select>
+`;
+
+exports[`settings/Select without options 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={123} />
+`;

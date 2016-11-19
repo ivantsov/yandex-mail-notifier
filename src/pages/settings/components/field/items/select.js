@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import FieldPropTypes from './proptypes';
 
-const Checkbox = ({
+const Select = ({
     name,
     value,
     options,
@@ -23,7 +23,7 @@ const Checkbox = ({
     );
 };
 
-Checkbox.propTypes = {
+Select.propTypes = {
     ...FieldPropTypes,
     value: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(PropTypes.shape({
@@ -32,4 +32,4 @@ Checkbox.propTypes = {
     })).isRequired
 };
 
-export default Checkbox;
+export default Select;
