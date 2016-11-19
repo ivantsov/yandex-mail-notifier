@@ -1,0 +1,46 @@
+exports[`settings/Field checkbox 1`] = `
+<tr>
+  <td
+    className="label">
+    <label
+      htmlFor="field">
+      field label
+    </label>
+    <div
+      className="description">
+      field description
+    </div>
+  </td>
+  <td>
+    <input
+      checked={true}
+      id="field"
+      name="field"
+      onChange={[Function]}
+      type="checkbox" />
+  </td>
+</tr>
+`;
+
+exports[`settings/Field select 1`] = `
+<tr>
+  <td
+    className="label">
+    <label
+      htmlFor="field">
+      field label
+    </label>
+    <div
+      className="description">
+      field description
+    </div>
+  </td>
+  <td>
+    <select
+      id="field"
+      name="field"
+      onChange={[Function]}
+      value={1} />
+  </td>
+</tr>
+`;
