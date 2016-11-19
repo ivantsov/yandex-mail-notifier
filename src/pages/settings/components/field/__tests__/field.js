@@ -15,7 +15,7 @@ describe('settings/Field', () => {
             <Field
                 {...props}
                 type="checkbox"
-                value={true}
+                value
             />
         );
 
