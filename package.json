@@ -58,6 +58,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "react-hot-loader": "^3.0.0-beta.6",
+    "react-test-renderer": "^15.4.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "webext-i18n": "^1.0.0",
@@ -68,7 +69,7 @@
   },
   "jest": {
     "rootDir": "./src",
-    "clearAllMocks": true,
+    "resetMocks": true,
     "resetModules": true
   }
 }
