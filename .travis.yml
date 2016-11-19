@@ -8,6 +8,7 @@ install:
   - yarn
 script:
   - npm run lint
+  - npm run test:coverage
 cache:
   directories:
     - ~/.npm
