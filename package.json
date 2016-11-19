@@ -54,6 +54,7 @@
     "eslint-plugin-react": "^6.5.0",
     "fs-extra": "^1.0.0",
     "html-webpack-plugin": "^2.24.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^17.0.3",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
@@ -70,6 +71,13 @@
   "jest": {
     "rootDir": "./src",
     "resetMocks": true,
-    "resetModules": true
+    "resetModules": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src/pages"
+    ],
+    "moduleNameMapper": {
+      "\\.(less)$": "identity-obj-proxy"
+    }
   }
 }
