@@ -10,15 +10,20 @@ const keys = {
     key_number_one: 'key number one',
     ...months
 };
-const getMessage = jest.fn(key => keys[key]);
 
-window.chrome = {
-    i18n: {
-        getMessage
-    }
-};
+let getMessage;
 
-describe('utils/i18n', () => {
+describe('shared/utils/i18n', () => {
+    beforeEach(() => {
+        getMessage = jest.fn(key => keys[key]);
+
+        window.chrome = {
+            i18n: {
+                getMessage
+            }
+        };
+    });
+
     describe('text', () => {
         it('key with dots', () => {
             expect(i18n.text('key.number.one')).toBe(keys.key_number_one);
@@ -42,12 +47,12 @@ describe('utils/i18n', () => {
         });
     });
 
-    // Yandex uses "2016-11-17T22:33:22" ISO format for dates
+    // Yandex uses "2016-11-17T22:33:22" ISO format for date
     describe('date', () => {
         describe('this day', () => {
             const timezoneHoursOffset = (new Date()).getTimezoneOffset() / 60;
 
-            it('no need nils', () => {
+            it('no need to add nils', () => {
                 const date = new Date();
                 const hours = 12;
                 const min = 10;
@@ -58,7 +63,7 @@ describe('utils/i18n', () => {
                 expect(i18n.date(date.toISOString())).toBe(expected);
             });
 
-            it('need nils', () => {
+            it('need to add nils', () => {
                 const date = new Date();
                 const hours = 9;
                 const min = 5;
@@ -83,12 +88,13 @@ describe('utils/i18n', () => {
 
         it('another year', () => {
             const date = new Date();
+            const month = date.getMonth();
             date.setFullYear(date.getFullYear() - 1);
 
-            const expected = `${date.getDate()} ${months[`popup_months_${date.getMonth()}`]} ${date.getFullYear()}`;
+            const expected = `${date.getDate()} ${months[`popup_months_${month}`]} ${date.getFullYear()}`;
 
             expect(i18n.date(date.toISOString())).toBe(expected);
-            expect(getMessage).lastCalledWith(`popup_months_${date.getMonth()}`, []);
+            expect(getMessage).lastCalledWith(`popup_months_${month}`, []);
         });
     });
 });
