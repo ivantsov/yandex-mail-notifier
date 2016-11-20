@@ -27,3 +27,4 @@ App.propTypes = {
 };
 
 export default connect(state => state, actions)(App);
+export {App as AppComponent}; // for test purpose
