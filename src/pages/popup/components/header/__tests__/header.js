@@ -30,7 +30,7 @@ describe('popup/Header', () => {
             i18n: {
                 getMessage: jest.fn(() => 'text')
             }
-        }
+        };
     });
 
     describe('render', () => {

@@ -41,7 +41,7 @@ class App extends Component {
                 <Header
                     user={email}
                     unreadMessagesCount={unreadCount}
-                    disable={loading}
+                    disabled={loading}
                     onReloadClick={loadMessages}
                 />
                 <List
