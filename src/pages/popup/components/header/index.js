@@ -10,7 +10,7 @@ import styles from './header.less';
 const Header = ({
     user,
     unreadMessagesCount,
-    disable,
+    disabled,
     onReloadClick
 }) => (
     <div className={styles.component}>
@@ -24,7 +24,7 @@ const Header = ({
             </a>
             <button
                 className={styles.reloadBtn}
-                disabled={disable}
+                disabled={disabled}
                 onClick={onReloadClick}
             >
                 <ReloadIcon className={styles.reloadIcon}/>
@@ -39,7 +39,7 @@ const Header = ({
 Header.propTypes = {
     user: PropTypes.string.isRequired,
     unreadMessagesCount: PropTypes.number.isRequired,
-    disable: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     onReloadClick: PropTypes.func.isRequired
 };
 
