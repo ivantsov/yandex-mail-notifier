@@ -34,7 +34,8 @@ export default class Button extends Component {
 
         // for open message action
         if (typeObj.action) {
-            return typeObj.action(id);
+            typeObj.action(id);
+            return;
         }
 
         // for the rest actions
