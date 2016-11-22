@@ -80,6 +80,10 @@
     ],
     "moduleNameMapper": {
       "\\.(less)$": "identity-obj-proxy"
-    }
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "fixtures.js"
+    ]
   }
 }

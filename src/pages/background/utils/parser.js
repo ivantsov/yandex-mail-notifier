@@ -48,14 +48,16 @@ function parseMessages(messages) {
 
 export default function (xml) {
     let messages = xml.querySelector('mailbox_list');
-    let folders = xml.querySelector('folder_list');
-
-    if (!messages || !folders) {
+    if (!messages) {
         throw new Error('Bad response format in messages xml');
     }
 
-    const error = messages.querySelector('error');
+    let folders = xml.querySelector('folder_list');
+    if (!folders) {
+        throw new Error('Bad response format in folders xml');
+    }
 
+    const error = messages.querySelector('error');
     if (error) {
         throw new Error(`Messages xml has error field with code: ${error.getAttribute('code')}`);
     }
