@@ -19,20 +19,12 @@ function createElement(
     return element;
 }
 
-function getFixtures() {
-    const folderElements = folders.map(({id, symbol}) =>
-        createElement('folder', [
-            createElement('fid', [], id),
-            createElement('symbol', [], symbol)
-        ])
-    );
-
-    return {
-        messages,
-        messageElements,
-        folderElements
-    };
-}
+const folderElements = folders.map(({id, symbol}) =>
+    createElement('folder', [
+        createElement('fid', [], id),
+        createElement('symbol', [], symbol)
+    ])
+);
 
 const messageElements = messages.map(({
     id,
@@ -97,11 +89,6 @@ describe('background/utils/parser', () => {
         });
 
         it('with folders filtering', () => {
-            const {
-                messages,
-                messageElements,
-                folderElements
-            } = getFixtures();
             const xml = createElement('doc', [
                 createElement('mailbox_list', [
                     createElement('details'),
