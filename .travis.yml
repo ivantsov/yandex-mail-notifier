@@ -1,16 +1,11 @@
 language: node_js
 node_js:
   - 7
-before_install:
-  - npm i -g yarn
-  - yarn -V
-install:
-  - yarn
 script:
   - npm run lint
   - npm run test:coverage
 cache:
+  yarn: true
   directories:
-    - ~/.npm
-    - ~/.yarn-cache
+    - node_modules
 
