@@ -28,15 +28,15 @@ module.exports = {
         }
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
-            loader: 'babel'
+            use: ['babel-loader']
         }, {
             test: /\.less/,
-            loaders: [
-                'style',
-                'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                'less'
+            use: [
+                'style-loader',
+                'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                'less-loader'
             ]
         }]
     },

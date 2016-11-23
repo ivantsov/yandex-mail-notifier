@@ -16,7 +16,6 @@ config.plugins.push(
     })
 );
 
-// TODO: check that it works for every entry
 Object.keys(config.entry).forEach(key => {
     config.entry[key] = [
         config.entry[key],
