@@ -27,9 +27,20 @@ async function sendRequest(data) {
         throw new Error('Unauthorized request');
     }
     else if (type === 'xml') {
-        const err = res.xhr.responseXML.querySelector('error');
+        const {responseXML} = res.xhr;
+
+        const err = responseXML.querySelector('error');
         if (err) {
-            throw new Error(err);
+            throw new Error(err.textContent);
+        }
+
+        // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
+        const redirect = responseXML.querySelector('redirect_to');
+        if (redirect) {
+            return sendRequest({
+                url: redirect.textContent,
+                type: 'xml'
+            });
         }
     }
 
@@ -41,14 +52,6 @@ export async function getUser() {
         url: `${API_URL}/settings_setup`,
         type: 'xml'
     });
-
-    const redirect = res.querySelector('redirect');
-    if (redirect) {
-        return sendRequest({
-            url: redirect.textContent,
-            type: 'xml'
-        });
-    }
 
     return res.querySelector('body').querySelector('default_email').textContent;
 }
