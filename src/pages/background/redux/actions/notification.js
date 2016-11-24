@@ -60,11 +60,15 @@ export function showNewNotification(data) {
 
 export function showUnreadNotification() {
     return (dispatch, getState) => {
-        const {messages, settings} = getState();
+        const {messages: {unreadCount}, settings} = getState();
+
+        if (!unreadCount) {
+            return;
+        }
 
         showNotification({
             title: i18n.text('notification.unread.title'),
-            subTitle: i18n.text('notification.unread.message', messages.unreadCount),
+            subTitle: i18n.text('notification.unread.message', unreadCount),
             onClick: openUrl
         });
 
