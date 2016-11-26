@@ -8,4 +8,8 @@ cache:
   yarn: true
   directories:
     - node_modules
-
+deploy:
+  provider: script
+  script: npm run publish
+  on:
+    tags: true
