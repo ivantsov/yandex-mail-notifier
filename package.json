@@ -19,7 +19,11 @@
     "test:watch": "jest --watch",
     "hot-server": "node ./webpack/hot-server.js",
     "build:dev": "npm run clean && webpack",
-    "build:prod": "npm run clean && webpack --env prod"
+    "build:prod": "npm run clean && webpack --env prod",
+    "zip": "zip -r -X dist/yandex-mail-notifier.zip dist",
+    "deploy": "node ./scripts/deploy",
+    "publish": "npm run build:prod && npm run zip && npm run deploy",
+    "release": "node ./scripts/release"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
