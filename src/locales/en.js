@@ -1,7 +1,7 @@
 module.exports = {
     ext: {
         name: 'Yandex.Mail notifier',
-        description: 'Tunable notifier for Yandex.Mail, lots of options, no need to enter your credentials.'
+        description: 'Tunable notifier for Yandex.Mail'
     },
     notification: {
         unread: {
