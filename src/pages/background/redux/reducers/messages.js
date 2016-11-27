@@ -25,6 +25,7 @@ export default function (state = initialState, action) {
                 unreadCount: action.data
             };
         case LOAD_MESSAGES:
+        case INVALIDATE_MESSAGES:
             return {
                 ...state,
                 loading: true,
@@ -51,11 +52,6 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 items: state.items.filter(({id}) => id !== action.id)
-            };
-        case INVALIDATE_MESSAGES:
-            return {
-                ...state,
-                loading: true
             };
         default:
             return state;
