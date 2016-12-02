@@ -1,6 +1,6 @@
+import {subscribe} from 'redux-subscriber';
 import store from '../redux/store';
 import {showUnreadNotification, showNotAuthNotification} from '../redux/actions/notification';
-import {subscribe} from '../redux/subscriber';
 
 const ALARMS = {
     UNREAD: 'UNREAD',

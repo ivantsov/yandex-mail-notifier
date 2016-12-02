@@ -46,7 +46,7 @@ export default function (state = initialState, action) {
                 error: true
             };
         case UPDATE_MESSAGE:
-            // don't update unreadCount manually because it'll be race condition
+            // don't update unreadCount manually because it'll lead to race condition
             // e.g. we removed 5 messages at once but server handled only 3, we'll show user 10 - 5
             // but when we receive server response it'll be 10 - 3
             return {

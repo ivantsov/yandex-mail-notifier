@@ -1,5 +1,5 @@
+import {subscribe} from 'redux-subscriber';
 import openTab from 'shared/utils/tab';
-import {subscribe} from '../redux/subscriber';
 
 const popup = chrome.browserAction;
 

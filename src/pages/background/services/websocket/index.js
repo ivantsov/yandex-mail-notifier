@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
+import {subscribe} from 'redux-subscriber';
 import {getSocketCredentials} from '../../utils/api';
-import {subscribe} from '../../redux/subscriber';
 import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
