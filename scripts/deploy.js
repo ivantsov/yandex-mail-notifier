@@ -59,8 +59,8 @@ function publish(accessToken) {
         .set({
             Authorization: `Bearer ${accessToken}`,
             'x-goog-api-version': 2,
-            'Content-Length': 0,
-            publishTarget: 'trustedTesters' // TODO: publish to public
+            'Content-Length': 0
+            // publishTarget: 'trustedTesters'
         })
         .then(res => {
             if (res.body.status[0] !== 'OK') {
