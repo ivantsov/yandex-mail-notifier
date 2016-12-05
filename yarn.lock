@@ -1130,9 +1130,9 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-loader@^0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.26.0.tgz#160d378f5b8e0fd4ff6daf4f3580e2219b33025f"
+css-loader@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.26.1.tgz#2ba7f20131b93597496b3e9bb500785a49cd29ea"
   dependencies:
     babel-code-frame "^6.11.0"
     css-selector-tokenizer "^0.7.0"
@@ -1615,16 +1615,16 @@ eslint-plugin-jsx-a11y@2.2.3:
     jsx-ast-utils "^1.0.0"
     object-assign "^4.0.1"
 
-eslint-plugin-react@^6.5.0:
-  version "6.7.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.7.1.tgz#1af96aea545856825157d97c1b50d5a8fb64a5a7"
+eslint-plugin-react@^6.8.0:
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.8.0.tgz#741ab5438a094532e5ce1bbb935d6832356f492d"
   dependencies:
     doctrine "^1.2.2"
-    jsx-ast-utils "^1.3.3"
+    jsx-ast-utils "^1.3.4"
 
-eslint@^3.10.2:
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.10.2.tgz#c9a10e8bf6e9d65651204778c503341f1eac3ce7"
+eslint@^3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.11.1.tgz#408be581041385cba947cd8d1cd2227782b55dbf"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1958,16 +1958,6 @@ fresh@0.3.0:
 fs-extra@^0.26.4:
   version "0.26.7"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-0.26.7.tgz#9ae1fdd94897798edab76d0918cf42d0c3184fa9"
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^2.1.0"
-    klaw "^1.0.0"
-    path-is-absolute "^1.0.0"
-    rimraf "^2.2.8"
-
-fs-extra@^0.30.0:
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-0.30.0.tgz#f233ffcc08d4da7d432daa449776989db1df93f0"
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^2.1.0"
@@ -3000,7 +2990,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-jsx-ast-utils@^1.0.0, jsx-ast-utils@^1.3.3:
+jsx-ast-utils@^1.0.0, jsx-ast-utils@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-1.3.4.tgz#0257ed1cc4b1e65b39d7d9940f9fb4f20f7ba0a9"
   dependencies:
@@ -4298,9 +4288,9 @@ redux-thunk@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.1.0.tgz#c724bfee75dbe352da2e3ba9bc14302badd89a98"
 
-redux-webext@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/redux-webext/-/redux-webext-1.0.0.tgz#f2b8ed07e417cfaada923dcfa507f626261b8957"
+redux-webext@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/redux-webext/-/redux-webext-1.1.1.tgz#46d803ea971edf847abe15615c90b90d582b16bc"
 
 redux@^3.6.0:
   version "3.6.0"
@@ -4761,9 +4751,9 @@ style-loader@^0.13.1:
   dependencies:
     loader-utils "^0.2.7"
 
-superagent@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.0.0.tgz#37ac924756f587819965bf27507390b018e1072a"
+superagent@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.1.0.tgz#e05a03b630cd7b0a0e17c26543977fd4a35c3296"
   dependencies:
     component-emitter "^1.2.0"
     cookiejar "^2.0.6"
@@ -5110,11 +5100,11 @@ wbuf@^1.1.0, wbuf@^1.4.0:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webext-i18n@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/webext-i18n/-/webext-i18n-1.0.0.tgz#494318fa49351f089c5ce7c16542db28b2e02710"
+webext-i18n@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/webext-i18n/-/webext-i18n-1.1.0.tgz#cfb3cdd821c4e752972222c3a1e3dacbac8902a7"
   dependencies:
-    fs-extra "^0.30.0"
+    fs-extra "^1.0.0"
 
 webidl-conversions@^3.0.0, webidl-conversions@^3.0.1:
   version "3.0.1"
@@ -5149,9 +5139,9 @@ webpack-dev-server@^2.1.0-beta.9:
     webpack-dev-middleware "^1.4.0"
     yargs "^6.0.0"
 
-webpack-shell-plugin@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/webpack-shell-plugin/-/webpack-shell-plugin-0.4.3.tgz#a633e98c16b3bed5b6963e98059ca783841f3043"
+webpack-shell-plugin@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/webpack-shell-plugin/-/webpack-shell-plugin-0.4.6.tgz#9584c0dec9f77c6e173ef7514c85861e7c5d2e5e"
 
 webpack-sources@^0.1.0:
   version "0.1.3"
