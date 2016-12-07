@@ -29,18 +29,19 @@ async function sendRequest(data) {
     else if (type === 'xml') {
         const {responseXML} = res.xhr;
 
-        const err = responseXML.querySelector('error');
-        if (err) {
-            throw new Error(err.textContent);
-        }
-
         // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
+        // check on "redirect_to" should be before "error", because "redirect_to" response contains "error" as well
         const redirect = responseXML.querySelector('redirect_to');
         if (redirect) {
             return sendRequest({
                 url: redirect.textContent,
                 type: 'xml'
             });
+        }
+
+        const err = responseXML.querySelector('error');
+        if (err) {
+            throw new Error(err.textContent);
         }
     }
 
