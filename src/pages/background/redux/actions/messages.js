@@ -49,7 +49,7 @@ export function loadMessages() {
     };
 }
 
-export function updateMessage(data) {
+export function updateMessage({data}) {
     updateMessageStatus(data);
 
     // kind of optimistic update :)

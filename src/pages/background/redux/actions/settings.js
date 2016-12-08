@@ -24,7 +24,7 @@ export function loadSettings() {
     };
 }
 
-export function updateSettings(data) {
+export function updateSettings({data}) {
     chromeStore.set(data);
 
     return {
