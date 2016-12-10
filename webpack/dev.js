@@ -1,22 +1,13 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
 const ShellPlugin = require('webpack-shell-plugin');
-
-const PAGES_PATH = './src/pages';
-
-function generateHtmlPlugins(items) {
-    return items.map(name => new HtmlPlugin({
-        filename: `./${name}.html`,
-        chunks: [name]
-    }));
-}
+const {pagesPath, generateHtmlPlugins} = require('./utils');
 
 module.exports = {
     entry: {
-        background: `${PAGES_PATH}/background`,
-        popup: `${PAGES_PATH}/popup`,
-        settings: `${PAGES_PATH}/settings`
+        background: `${pagesPath}/background`,
+        popup: `${pagesPath}/popup`,
+        settings: `${pagesPath}/settings`
     },
     output: {
         path: path.resolve('dist/pages'),
@@ -31,6 +22,9 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             use: ['babel-loader']
+        }, {
+            test: /\.json$/,
+            use: ['json-loader']
         }, {
             test: /\.less/,
             use: [
@@ -49,14 +43,15 @@ module.exports = {
                 'locales/*'
             ]
         }]),
+        new ShellPlugin({
+            onBuildEnd: ['node ./scripts'],
+            dev: false
+        }),
         ...generateHtmlPlugins([
             'background',
             'popup',
             'settings'
-        ]),
-        new ShellPlugin({
-            onBuildEnd: ['node ./scripts'],
-            dev: false
-        })
-    ]
+        ])
+    ],
+    devtool: 'eval'
 };

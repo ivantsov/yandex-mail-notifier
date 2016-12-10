@@ -2,9 +2,7 @@ const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const baseConfig = require('./dev');
 
-const config = Object.assign({}, baseConfig, {
-    devtool: 'eval'
-});
+const config = Object.assign({}, baseConfig);
 
 config.output.publicPath = 'http://localhost:3000/';
 
