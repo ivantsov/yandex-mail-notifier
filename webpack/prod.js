@@ -3,7 +3,7 @@ const {pagesPath, generateHtmlPlugins} = require('./utils');
 const baseConfig = require('./dev');
 
 const config = Object.assign({}, baseConfig, {
-    devtool: 'cheap-module-source-map'
+    devtool: 'source-map'
 });
 
 config.entry.raven = `${pagesPath}/raven`;
@@ -19,9 +19,8 @@ config.plugins = [
         'settings'
     ], 'raven'),
     new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: JSON.stringify('production')
-        }
+        __DEV__: false,
+        'process.env.NODE_ENV': JSON.stringify('production')
     })
     /* TODO: enable it
        can't be used because UglifyJS doesn't support ES6 features, they should be transpiled

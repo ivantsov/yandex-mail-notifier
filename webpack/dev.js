@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ShellPlugin = require('webpack-shell-plugin');
 const {pagesPath, generateHtmlPlugins} = require('./utils');
@@ -22,9 +23,6 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             use: ['babel-loader']
-        }, {
-            test: /\.json$/,
-            use: ['json-loader']
         }, {
             test: /\.less/,
             use: [
@@ -51,7 +49,10 @@ module.exports = {
             'background',
             'popup',
             'settings'
-        ])
+        ]),
+        new webpack.DefinePlugin({
+            __DEV__: true
+        })
     ],
     devtool: 'eval'
 };
