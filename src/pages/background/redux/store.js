@@ -1,6 +1,5 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
 import {createBackgroundStore} from 'redux-webext';
 import initSubscriber from 'redux-subscriber';
 import {LOAD_MESSAGES, UPDATE_MESSAGE} from 'shared/redux-consts/messages';
@@ -13,10 +12,14 @@ import {
     invalidateMessages
 } from './actions/messages';
 
-const middlewares = [
-    thunkMiddleware,
-    createLogger({collapsed: true})
-];
+const middlewares = [thunkMiddleware];
+if (__DEV__) {
+    const createLogger = require('redux-logger');
+    middlewares.push(createLogger({collapsed: true}));
+} else {
+    const ravenMiddleware = require('./middlewares/raven').default;
+    middlewares.push(ravenMiddleware);
+}
 
 const store = createStore(
     reducer,
