@@ -34,8 +34,8 @@ async function sendRequest(data) {
         const redirect = responseXML.querySelector('redirect_to');
         if (redirect) {
             return sendRequest({
-                url: redirect.textContent,
-                type: 'xml'
+                ...data,
+                url: redirect.textContent
             });
         }
 
