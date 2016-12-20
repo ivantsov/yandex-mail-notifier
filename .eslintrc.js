@@ -1,13 +1,16 @@
 const INDENT = 4;
 
 module.exports = {
+    parser: 'babel-eslint',
     extends: 'airbnb',
     env: {
         webextensions: true,
         browser: true,
         jest: true
     },
-    parser: 'babel-eslint',
+    globals: {
+        __DEV__: false
+    },
     settings: {
         'import/resolver': {
             webpack: {

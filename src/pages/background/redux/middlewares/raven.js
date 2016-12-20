@@ -1,6 +1,7 @@
 // comes from raven.js
 const {Raven} = window;
 
+// eslint-disable-next-line consistent-return
 export default store => next => action => {
     try {
         Raven.captureBreadcrumb({
@@ -9,7 +10,8 @@ export default store => next => action => {
         });
 
         return next(action);
-    } catch (err) {
+    }
+    catch (err) {
         Raven.captureException(err, {
             extra: {
                 action,
@@ -17,4 +19,4 @@ export default store => next => action => {
             }
         });
     }
-}
+};

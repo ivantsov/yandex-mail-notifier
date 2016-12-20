@@ -5,10 +5,6 @@ const WS_URL = 'wss://xiva-daria.mail.yandex.net/events/websocket';
 
 let ws, emitEvent;
 
-function onOpen(...args) {
-    console.log('Socket is opened', args); // eslint-disable-line no-console
-}
-
 function onClose(...args) {
     console.error('Socket is closed', args); // eslint-disable-line no-console
     emitEvent(RECONNECT);
@@ -44,7 +40,6 @@ function connect(data) {
 
     ws = new WebSocket(`${WS_URL}?${queryParams}`);
 
-    ws.addEventListener('open', onOpen, false);
     ws.addEventListener('close', onClose, false);
     ws.addEventListener('message', onMessage, false);
     ws.addEventListener('error', onError, false);
@@ -54,7 +49,6 @@ function disconnect() {
     if (ws) {
         ws.close();
 
-        ws.removeEventListener('open', onOpen, false);
         ws.removeEventListener('close', onClose, false);
         ws.removeEventListener('message', onMessage, false);
         ws.removeEventListener('error', onError, false);

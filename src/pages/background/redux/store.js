@@ -13,13 +13,16 @@ import {
 } from './actions/messages';
 
 const middlewares = [thunkMiddleware];
+/* eslint-disable global-require */
 if (__DEV__) {
     const createLogger = require('redux-logger');
     middlewares.push(createLogger({collapsed: true}));
-} else {
+}
+else {
     const ravenMiddleware = require('./middlewares/raven').default;
     middlewares.push(ravenMiddleware);
 }
+/* eslint-enable global-require */
 
 const store = createStore(
     reducer,
