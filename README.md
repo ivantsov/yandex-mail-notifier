@@ -15,6 +15,6 @@ One day this repo will be merged to https://github.com/ivantsov/yandex-mail-noti
 Thanks to the sponsors for supporting this project!
 <p>
   <a href="https://sentry.io">
-    <img src="https://a0wx592cvgzripj.global.ssl.fastly.net/_static/14ab3343681bf1770187005cafb97738/getsentry/images/branding/svg/sentry-horizontal-black.svg" alt="Sentry Logo" width="130"/>
+    <img src="https://a0wx592cvgzripj.global.ssl.fastly.net/_static/7973ff08ea346f79c425e4738ebd7663/getsentry/images/branding/svg/sentry-horizontal-black.svg" alt="Sentry Logo" width="130"/>
   </a>
 </p>
