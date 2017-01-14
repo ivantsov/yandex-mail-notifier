@@ -1,9 +1,10 @@
+import dateFns from 'date-fns';
 import i18n from '../i18n';
 
 const months = Array
     .from(Array(12).keys())
     .reduce((obj, item) => {
-        obj[`popup_months_${item}`] = `month#${item}`;
+        obj[`popup_months_${item}`] = `month#${item}`; // eslint-disable-line no-param-reassign
         return obj;
     }, {});
 const keys = {
@@ -47,7 +48,7 @@ describe('shared/utils/i18n', () => {
         });
     });
 
-    // Yandex uses "2016-11-17T22:33:22" ISO format for date
+    // Yandex uses ISO format ("2016-11-17T22:33:22") for date
     describe('date', () => {
         describe('this day', () => {
             const timezoneHoursOffset = (new Date()).getTimezoneOffset() / 60;
@@ -76,20 +77,21 @@ describe('shared/utils/i18n', () => {
         });
 
         it('prev month', () => {
-            const date = new Date();
-            const prevMonth = date.getMonth() - 1;
-            date.setMonth(prevMonth);
+            const today = new Date();
+            const date = dateFns.subMonths(today, 1);
+            const month = date.getMonth();
 
-            const expected = `${date.getDate()} ${months[`popup_months_${prevMonth}`]}`;
+            const expected = dateFns.isSameYear(today, date) ?
+                `${date.getDate()} ${months[`popup_months_${month}`]}` :
+                `${date.getDate()} ${months[`popup_months_${month}`]} ${date.getFullYear()}`;
 
             expect(i18n.date(date.toISOString())).toBe(expected);
-            expect(getMessage).lastCalledWith(`popup_months_${prevMonth}`, []);
+            expect(getMessage).lastCalledWith(`popup_months_${month}`, []);
         });
 
         it('another year', () => {
-            const date = new Date();
+            const date = dateFns.subYears(new Date(), 1);
             const month = date.getMonth();
-            date.setFullYear(date.getFullYear() - 1);
 
             const expected = `${date.getDate()} ${months[`popup_months_${month}`]} ${date.getFullYear()}`;
 
