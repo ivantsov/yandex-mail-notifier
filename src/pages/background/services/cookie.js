@@ -16,7 +16,11 @@ function getCookieByName(name) {
             domain: config.domain,
             path: config.path,
             name
-        }, res => resolve(res[0] && res[0].value));
+        }, res => resolve(
+            Array.isArray(res) &&
+            res[0] &&
+            res[0].value
+        ));
     });
 }
 
