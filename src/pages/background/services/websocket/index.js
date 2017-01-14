@@ -35,8 +35,10 @@ async function connect() {
     }
     catch (err) {
         setTimeout(connect, config.connectTryInterval);
-
         dispatch(logout());
+
+        // throw unhandled exception for raven
+        throw err;
     }
 }
 

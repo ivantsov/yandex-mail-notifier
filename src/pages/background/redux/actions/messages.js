@@ -45,6 +45,9 @@ export function loadMessages() {
         }
         catch (err) {
             dispatch({type: LOAD_MESSAGES_ERROR});
+
+            // throw unhandled exception for raven
+            throw err;
         }
     };
 }

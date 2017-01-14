@@ -1,22 +1,27 @@
 // comes from raven.js
 const {Raven} = window;
 
+let state, lastAction;
+
+window.onunhandledrejection = (err) => {
+    Raven.captureException(err.reason, {
+        extra: {
+            lastAction,
+            state
+        }
+    });
+};
+
 // eslint-disable-next-line consistent-return
 export default store => next => action => {
-    try {
-        Raven.captureBreadcrumb({
-            category: 'redux',
-            message: action.type
-        });
+    // save this data for unhandled exceptions
+    state = store.getState();
+    lastAction = action;
 
-        return next(action);
-    }
-    catch (err) {
-        Raven.captureException(err, {
-            extra: {
-                action,
-                state: store.getState()
-            }
-        });
-    }
+    Raven.captureBreadcrumb({
+        category: 'redux',
+        message: JSON.stringify(action)
+    });
+
+    return next(action);
 };
