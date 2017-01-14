@@ -9,7 +9,7 @@ export function loadSettings() {
             // get all items in the storage with fallback using default values
             chromeStore.get(defaultValues, optionValues => {
                 const data = Object.keys(defaultValues).reduce((obj, key) => {
-                    obj[key] = optionValues[key];
+                    obj[key] = optionValues[key]; // eslint-disable-line no-param-reassign
                     return obj;
                 }, {});
 

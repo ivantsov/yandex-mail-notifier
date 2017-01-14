@@ -11,12 +11,10 @@ const appReducer = combineReducers({
 });
 
 export default function (state, action) {
-    if (action.type === LOGOUT) {
-        // clear the whole state except settings
-        state = {
-            settings: state.settings
-        };
-    }
+    // clear the whole state except settings on logout action
+    const nextState = action.type === LOGOUT ?
+        {settings: state.settings} :
+        state;
 
-    return appReducer(state, action);
+    return appReducer(nextState, action);
 }
