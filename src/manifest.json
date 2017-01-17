@@ -36,5 +36,5 @@
     "alarms",
     "notifications"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost:3000; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost:8080; object-src 'self'"
 }

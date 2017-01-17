@@ -2,24 +2,19 @@ const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const baseConfig = require('./dev');
 
-const config = Object.assign({}, baseConfig);
+const config = Object.assign({}, baseConfig, {
+    devServer: {
+        stats: 'errors-only'
+    }
+});
 
-config.output.publicPath = 'http://localhost:3000/';
+config.output.publicPath = 'http://localhost:8080';
 
 config.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
     new WriteFilePlugin({
         log: false,
         test: /^((?!hot-update).)*$/
     })
 );
-
-Object.keys(config.entry).forEach(key => {
-    config.entry[key] = [
-        config.entry[key],
-        'webpack-dev-server/client',
-        'webpack/hot/dev-server'
-    ];
-});
 
 module.exports = config;

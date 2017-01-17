@@ -17,7 +17,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "test:watch": "jest --watch",
-    "hot-server": "node ./webpack/hot-server.js",
+    "hot-server": "webpack-dev-server --config webpack/hot.js",
     "build:dev": "npm run clean && webpack",
     "build:prod": "npm run clean && webpack --env prod",
     "zip": "zip -r -X dist/yandex-mail-notifier.zip dist",
