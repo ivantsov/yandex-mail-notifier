@@ -26,5 +26,7 @@ export default createBackgroundStore({
         [UPDATE_MESSAGE]: updateMessage,
         [UPDATE_SETTINGS]: updateSettings
     },
-    onDisconnect: invalidateMessages
+    onDisconnect() {
+        store.dispatch(invalidateMessages());
+    }
 });
