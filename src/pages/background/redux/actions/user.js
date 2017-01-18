@@ -17,4 +17,3 @@ export function login() {
 export function logout() {
     return {type: LOGOUT};
 }
-

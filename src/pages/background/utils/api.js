@@ -1,13 +1,28 @@
 import request from 'superagent';
+import {getCurrentDomain} from '../services/cookie';
 import parseXML from './parser';
-
-const DOMAIN = 'https://mail.yandex.ru';
-const API_URL = `${DOMAIN}/api`;
 
 // prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
     requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin')
-}), {urls: [`${API_URL}/*`]}, ['blocking', 'requestHeaders']);
+}), {urls: [
+    'https://mail.ya.ru/*',
+    'https://mail.yandex.ru/*',
+    'https://mail.yandex.ua/*',
+    'https://mail.yandex.com/*',
+    'https://mail.yandex.com.tr/*'
+]}, ['blocking', 'requestHeaders']);
+
+function getUrl(url, isApi = true) {
+    const domain = getCurrentDomain();
+
+    let finalUrl = `https://mail${domain}`;
+    if (isApi) {
+        finalUrl += '/api';
+    }
+
+    return `${finalUrl}/${url}`;
+}
 
 async function sendRequest(data) {
     const {
@@ -41,7 +56,7 @@ async function sendRequest(data) {
 
         const err = responseXML.querySelector('error');
         if (err) {
-            throw new Error(err.textContent);
+            throw new Error(err.textContent || err.getAttribute('code'));
         }
     }
 
@@ -50,7 +65,7 @@ async function sendRequest(data) {
 
 export async function getUser() {
     const res = await sendRequest({
-        url: `${API_URL}/settings_setup`,
+        url: getUrl('settings_setup'),
         type: 'xml'
     });
 
@@ -59,7 +74,7 @@ export async function getUser() {
 
 export async function getMessagesCount() {
     const res = await sendRequest({
-        url: `${API_URL}/v2/bar/counters`,
+        url: getUrl('v2/bar/counters'),
         query: {silent: true}
     });
 
@@ -72,14 +87,14 @@ export function getSocketCredentials(uid) {
     }
 
     return sendRequest({
-        url: `${DOMAIN}/neo2/handlers/xiva_sub.jsx`,
+        url: getUrl('neo2/handlers/xiva_sub.jsx', false),
         query: {req: uid}
     });
 }
 
 export async function getMessages() {
     const res = await sendRequest({
-        url: `${API_URL}/mailbox_list`,
+        url: getUrl('mailbox_list'),
         type: 'xml',
         query: {
             first: 0,
@@ -95,7 +110,7 @@ export async function getMessages() {
 export function updateMessageStatus({oper, id}) {
     return sendRequest({
         method: 'post',
-        url: `${API_URL}/mailbox_oper`,
+        url: getUrl('mailbox_oper'),
         type: 'xml',
         form: {
             ids: [id],

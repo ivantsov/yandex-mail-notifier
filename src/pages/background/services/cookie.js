@@ -2,7 +2,7 @@ import store from '../redux/store';
 import {login, logout} from '../redux/actions/user';
 
 const config = {
-    domain: '.yandex.ru',
+    domain: 'yandex',
     path: '/',
     items: {
         sessionId: 'Session_id',
@@ -10,17 +10,30 @@ const config = {
     }
 };
 
+let currentDomain;
+
 function getCookieByName(name) {
     return new Promise(resolve => {
         chrome.cookies.getAll({
-            domain: config.domain,
             path: config.path,
             name
-        }, res => resolve(
-            Array.isArray(res) &&
-            res[0] &&
-            res[0].value
-        ));
+        }, cookies => {
+            let value;
+
+            if (cookies.length) {
+                const cookie = cookies.find(({domain, value}) =>
+                    domain.includes(currentDomain || config.domain) &&
+                    !value.includes('noauth')
+                );
+
+                if (cookie) {
+                    currentDomain = cookie.domain;
+                    value = cookie.value;
+                }
+            }
+
+            resolve(value);
+        });
     });
 }
 
@@ -32,20 +45,32 @@ export function getSessionId() {
     return getCookieByName(config.items.sessionId);
 }
 
-// TODO: check that the listener works on ya.ru/yandex.tr etc
+export function getCurrentDomain() {
+    return currentDomain;
+}
+
 export function initCookieListener() {
     chrome.cookies.onChanged.addListener(({cookie, removed}) => {
         const {
             domain,
             name,
-            path
+            path,
+            value
         } = cookie;
 
-        if (domain === config.domain &&
+        if (domain.includes(currentDomain || config.domain) &&
             name === config.items.sessionId &&
             path === config.path
         ) {
-            store.dispatch(removed ? logout() : login());
+            if (removed || value.includes('noauth')) {
+                currentDomain = null;
+                store.dispatch(logout());
+            }
+            else {
+                // if user logged in via another domain we should update it
+                currentDomain = domain;
+                store.dispatch(login());
+            }
         }
     });
 }
