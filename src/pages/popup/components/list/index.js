@@ -5,6 +5,7 @@ import Spinner from '../spinner';
 import Item from './item';
 
 import styles from './list.less';
+import itemStyles from './item/item.less';
 
 function renderCurrentState(component) {
     return <div className={styles.centerContainer}>{component}</div>;
@@ -26,7 +27,6 @@ const List = ({
     const messages = items.map((item, index) => (
         <Item
             key={item.id}
-            index={index}
             onActionClick={onActionClick}
             {...item}
         />
@@ -37,10 +37,10 @@ const List = ({
             component="div"
             className={styles.content}
             transitionName={{
-                leave: styles.disappearLeave,
-                leaveActive: styles.disappearLeaveActive
+                leave: itemStyles.leave,
+                leaveActive: itemStyles.leaveActive
             }}
-            transitionLeaveTimeout={500}
+            transitionLeaveTimeout={800}
             transitionEnter={false}
         >
             {messages}

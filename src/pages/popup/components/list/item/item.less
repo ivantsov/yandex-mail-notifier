@@ -1,10 +1,10 @@
 @import "../../../styles/colors";
 
 .component {
-    position: absolute;
-    min-height: 40px;
+    position: relative;
+    height: 70px;
+    max-height: 70px;
     padding: 10px;
-    transition: all 0.3s ease-out 0.5s;
 
     &:hover {
         background-color: @grey2;
@@ -17,6 +17,21 @@
         > div:last-child {
             display: flex;
         }
+    }
+}
+
+// leave animation
+.leave {
+    opacity: 1;
+    transition: all 0.5s ease-out,
+                max-height 0.3s ease-out 0.5s,
+                padding 0.3s ease-out 0.5s;
+
+    &Active {
+        max-height: 0;
+        padding: 0 10px;
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
     }
 }
 

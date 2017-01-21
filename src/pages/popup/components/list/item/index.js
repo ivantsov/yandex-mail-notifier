@@ -5,7 +5,6 @@ import HoverMenu from '../hover-menu';
 import styles from './item.less';
 
 const Item = ({
-    index,
     id,
     from,
     subject,
@@ -13,7 +12,7 @@ const Item = ({
     date,
     onActionClick
 }) => (
-    <div className={styles.component} style={{transform: `translate3d(0, ${index * 100}%, 0)`}}>
+    <div className={styles.component}>
         <div className={styles.contentContainer}>
             <p>
                 <span className={styles.from}>{from}</span>
@@ -28,7 +27,6 @@ const Item = ({
 );
 
 Item.propTypes = {
-    index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     from: PropTypes.string.isRequired,
     subject: PropTypes.string.isRequired,
