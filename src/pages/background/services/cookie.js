@@ -18,7 +18,7 @@ function getCookieByName(name) {
             path: config.path,
             name
         }, cookies => {
-            let value;
+            let cookieValue;
 
             if (cookies.length) {
                 const cookie = cookies.find(({domain, value}) =>
@@ -28,11 +28,11 @@ function getCookieByName(name) {
 
                 if (cookie) {
                     currentDomain = cookie.domain;
-                    value = cookie.value;
+                    cookieValue = cookie.value;
                 }
             }
 
-            resolve(value);
+            resolve(cookieValue);
         });
     });
 }

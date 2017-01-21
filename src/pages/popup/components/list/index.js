@@ -24,7 +24,7 @@ const List = ({
         return renderCurrentState(i18n.text(`popup.${error ? 'loadingError' : 'emptyList'}`));
     }
 
-    const messages = items.map((item, index) => (
+    const messages = items.map(item => (
         <Item
             key={item.id}
             onActionClick={onActionClick}
