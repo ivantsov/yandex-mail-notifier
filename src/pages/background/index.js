@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import store from './redux/store';
 import {login, logout} from './redux/actions/user';
 import {loadSettings} from './redux/actions/settings';

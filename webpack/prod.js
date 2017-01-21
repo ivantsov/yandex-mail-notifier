@@ -21,15 +21,22 @@ config.plugins = [
     new webpack.DefinePlugin({
         __DEV__: false,
         'process.env.NODE_ENV': JSON.stringify('production')
-    })
-    /* TODO: enable it
-       can't be used because UglifyJS doesn't support ES6 features, they should be transpiled
+    }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+    }),
     new webpack.optimize.UglifyJsPlugin({
-        compress:{
-            warnings: true
-        }
+        beautify: false,
+        mangle: {
+            screw_ie8: true,
+            keep_fnames: true
+        },
+        compress: {
+            screw_ie8: true
+        },
+        comments: false
     })
-    */
 ];
 
 module.exports = config;

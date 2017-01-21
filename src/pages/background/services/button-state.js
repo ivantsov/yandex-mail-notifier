@@ -9,7 +9,7 @@ function setState({user, messages}) {
 
     // enable or disable popup button (onClick works only if no popup set)
     if (enabled) {
-        popup.setPopup({popup: 'pages/popup.html'});
+        popup.setPopup({popup: '/pages/popup.html'});
         popup.setIcon({path: '/assets/icon.png'});
     }
     else {
