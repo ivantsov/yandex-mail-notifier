@@ -19,9 +19,10 @@ jest.mock('shared/utils/i18n', () => {
 });
 
 const defaultProps = {
-    items: [],
     loading: false,
     error: false,
+    unreadMessagesCount: 0,
+    items: [],
     onActionClick: jest.fn()
 };
 
@@ -39,7 +40,10 @@ function render(props) {
 
 describe('popup/List', () => {
     it('loading', () => {
-        render({loading: true});
+        render({
+            loading: true,
+            unreadMessagesCount: 3
+        });
     });
 
     it('error', () => {

@@ -7,19 +7,54 @@ exports[`popup/List error 1`] = `
 
 exports[`popup/List loading 1`] = `
 <div
-  className="centerContainer">
+  className="content">
   <div
     className="component">
     <div
-      className="rect1" />
+      className="background">
+      <div
+        className="headerLeft" />
+      <div
+        className="headerRight" />
+      <div
+        className="headerBottom" />
+      <div
+        className="subHeader" />
+      <div
+        className="subHeaderBottom" />
+    </div>
+  </div>
+  <div
+    className="component">
     <div
-      className="rect2" />
+      className="background">
+      <div
+        className="headerLeft" />
+      <div
+        className="headerRight" />
+      <div
+        className="headerBottom" />
+      <div
+        className="subHeader" />
+      <div
+        className="subHeaderBottom" />
+    </div>
+  </div>
+  <div
+    className="component">
     <div
-      className="rect3" />
-    <div
-      className="rect4" />
-    <div
-      className="rect5" />
+      className="background">
+      <div
+        className="headerLeft" />
+      <div
+        className="headerRight" />
+      <div
+        className="headerBottom" />
+      <div
+        className="subHeader" />
+      <div
+        className="subHeaderBottom" />
+    </div>
   </div>
 </div>
 `;
