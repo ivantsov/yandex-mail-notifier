@@ -45,9 +45,10 @@ class App extends Component {
                     onReloadClick={loadMessages}
                 />
                 <List
-                    items={items}
                     loading={loading}
                     error={error}
+                    unreadMessagesCount={unreadCount}
+                    items={items}
                     onActionClick={updateMessage}
                 />
             </div>
