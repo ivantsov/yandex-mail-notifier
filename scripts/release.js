@@ -23,7 +23,7 @@ function updateVersion(newVersion) {
 }
 
 function makeCommit(newVersion) {
-    paths.forEach(path => execSync(`git add ${path}`));
+    execSync(`git add ${paths.join(' ')}`);
     execSync(`git commit -m "bump v${newVersion}"`);
     execSync(`git tag v${newVersion}`);
 }
