@@ -1,8 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ShellPlugin = require('webpack-shell-plugin');
-const {pagesPath, generateHtmlPlugins} = require('./utils');
+const {pagesPath} = require('./utils');
 
 module.exports = {
     entry: {
@@ -19,21 +18,22 @@ module.exports = {
             shared: path.resolve('./src/pages/shared')
         }
     },
-    module: {
-        rules: [{
+    moduleRules: {
+        js: {
             test: /\.js$/,
             use: ['babel-loader']
-        }, {
+        },
+        css: {
             test: /\.less/,
             use: [
                 'style-loader',
                 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                 'less-loader'
             ]
-        }]
+        }
     },
-    plugins: [
-        new CopyPlugin([{
+    plugins: {
+        copy: new CopyPlugin([{
             from: 'src',
             to: path.resolve('dist'),
             ignore: [
@@ -41,18 +41,9 @@ module.exports = {
                 'locales/*'
             ]
         }]),
-        new ShellPlugin({
+        shell: new ShellPlugin({
             onBuildEnd: ['node ./scripts'],
             dev: false
-        }),
-        ...generateHtmlPlugins([
-            'background',
-            'popup',
-            'settings'
-        ]),
-        new webpack.DefinePlugin({
-            __DEV__: true
         })
-    ],
-    devtool: 'eval'
+    }
 };
