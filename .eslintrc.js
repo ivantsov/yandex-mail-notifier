@@ -1,3 +1,5 @@
+const {resolve} = require('./webpack/base');
+
 const INDENT = 4;
 
 const base = {
@@ -68,7 +70,9 @@ module.exports = {
     settings: {
         'import/resolver': {
             webpack: {
-                config: './webpack/dev.js'
+                config: {
+                    resolve
+                }
             }
         }
     },
