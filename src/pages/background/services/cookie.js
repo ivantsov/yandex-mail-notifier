@@ -20,7 +20,7 @@ function getCookieByName(name) {
         }, cookies => {
             let cookieValue;
 
-            if (cookies.length) {
+            if (cookies && cookies.length) {
                 const cookie = cookies.find(({domain, value}) =>
                     domain.includes(currentDomain || config.domain) &&
                     !value.includes('noauth')
