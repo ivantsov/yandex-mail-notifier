@@ -15,7 +15,7 @@ const config = {
     reconnectInterval: 2 * 60 * 1000 // 2 min, just reconnect
 };
 
-let wsClient, reconnectTimer;
+let wsClient, reconnectTimer, connectTryInterval;
 
 async function connect() {
     const {dispatch} = store;
@@ -34,7 +34,7 @@ async function connect() {
         dispatch(login());
     }
     catch (err) {
-        setTimeout(connect, config.connectTryInterval);
+        connectTryInterval = setTimeout(connect, config.connectTryInterval);
         dispatch(logout());
 
         // throw unhandled exception for raven
@@ -49,6 +49,8 @@ const reconnect = debounce(() => {
 
 function disconnect() {
     clearTimeout(reconnectTimer);
+    clearTimeout(connectTryInterval);
+
     wsClient.disconnect();
 }
 

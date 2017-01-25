@@ -56,7 +56,8 @@ async function sendRequest(data) {
 
         const err = responseXML.querySelector('error');
         if (err) {
-            throw new Error(err.textContent || err.getAttribute('code'));
+            const errText = err.textContent || err.getAttribute('code');
+            throw new Error(`Error in the response: ${errText}`);
         }
     }
 
