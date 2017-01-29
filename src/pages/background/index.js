@@ -2,10 +2,10 @@ import 'babel-polyfill';
 import store from './redux/store';
 import {login, logout} from './redux/actions/user';
 import {loadSettings} from './redux/actions/settings';
-import {initCookieListener, getSessionId} from './services/cookie';
-import initWS from './services/websocket';
-import initButtonState from './services/button-state';
-import initNotification from './services/notification';
+import {initCookieListener, getSessionId} from './modules/cookie';
+import initWS from './modules/websocket';
+import initButtonState from './modules/button-state';
+import initNotification from './modules/notification';
 
 async function initApp() {
     const {dispatch} = store;
