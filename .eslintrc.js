@@ -18,7 +18,8 @@ const base = {
     'one-var-declaration-per-line': ['error', 'initializations'],
     'arrow-parens': 'off',
     'arrow-body-style': 'off',
-    'no-prototype-builtins': 'off'
+    'no-prototype-builtins': 'off',
+    'no-plusplus': 'off'
 };
 
 const react = {

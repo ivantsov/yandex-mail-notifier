@@ -1,5 +1,5 @@
 import request from 'superagent';
-import {getCurrentDomain} from '../services/cookie';
+import {getCurrentDomain, getUid} from '../modules/cookie';
 import parseXML from './parser';
 
 // prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
@@ -82,10 +82,8 @@ export async function getMessagesCount() {
     return res.counters.unread;
 }
 
-export function getSocketCredentials(uid) {
-    if (!uid) {
-        throw new Error('UID is not provided');
-    }
+export async function getSocketCredentials() {
+    const uid = await getUid();
 
     return sendRequest({
         url: getUrl('neo2/handlers/xiva_sub.jsx', false),

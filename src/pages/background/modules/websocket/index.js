@@ -5,17 +5,18 @@ import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
 import {showNewNotification} from '../../redux/actions/notification';
-import {getUid} from '../cookie';
 import {RECONNECT, NEW_MESSAGE} from './constants';
 import initWSClient from './client';
 
 const config = {
     cookieTimeout: 1000,
-    connectTryInterval: 30 * 1000, // 30 sec, try to connect if failed before
+    connectTryInterval: 10 * 1000, // 10 sec, try to connect if failed before
+    maxConnectTryCount: 3, // try 3 times to connect before giving up
     reconnectInterval: 2 * 60 * 1000 // 2 min, just reconnect
 };
 
-let wsClient, reconnectTimer, connectTryInterval;
+let curConnectTryNumber = 0;
+let wsClient, reconnectTimer;
 
 async function connect() {
     const {dispatch} = store;
@@ -23,8 +24,7 @@ async function connect() {
     clearTimeout(reconnectTimer);
 
     try {
-        const uid = await getUid();
-        const credentials = await getSocketCredentials(uid);
+        const credentials = await getSocketCredentials();
 
         // eslint-disable-next-line no-use-before-define
         reconnectTimer = setTimeout(reconnect, config.reconnectInterval);
@@ -32,13 +32,20 @@ async function connect() {
 
         dispatch(loadMessagesCount());
         dispatch(login());
+
+        curConnectTryNumber = 0;
     }
     catch (err) {
-        connectTryInterval = setTimeout(connect, config.connectTryInterval);
         dispatch(logout());
 
-        // throw unhandled exception for raven
-        throw err;
+        if (++curConnectTryNumber < config.maxConnectTryCount) {
+            setTimeout(connect, config.connectTryInterval);
+        }
+        else {
+            curConnectTryNumber = 0;
+            // throw unhandled exception for raven
+            throw err;
+        }
     }
 }
 
@@ -49,8 +56,6 @@ const reconnect = debounce(() => {
 
 function disconnect() {
     clearTimeout(reconnectTimer);
-    clearTimeout(connectTryInterval);
-
     wsClient.disconnect();
 }
 
