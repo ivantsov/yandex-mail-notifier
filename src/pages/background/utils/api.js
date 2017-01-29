@@ -6,12 +6,15 @@ import parseXML from './parser';
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
     requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin')
 }), {urls: [
-    'https://mail.ya.ru/*',
-    'https://mail.yandex.ru/*',
-    'https://mail.yandex.ua/*',
-    'https://mail.yandex.com/*',
-    'https://mail.yandex.com.tr/*'
-]}, ['blocking', 'requestHeaders']);
+    'ya.ru',
+    'yandex.ru',
+    'yandex.ua',
+    'yandex.by',
+    'yandex.kz',
+    'yandex.com',
+    'yandex.com.tr'
+].map(domain => `https://mail.${domain}/*`)
+}, ['blocking', 'requestHeaders']);
 
 function getUrl(url, isApi = true) {
     const domain = getCurrentDomain();
