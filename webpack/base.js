@@ -42,7 +42,7 @@ module.exports = {
             ]
         }]),
         shell: new ShellPlugin({
-            onBuildEnd: ['node ./scripts'],
+            onBuildEnd: ['node ./scripts/locales'],
             dev: false
         })
     }
