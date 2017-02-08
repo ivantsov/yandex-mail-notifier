@@ -27,6 +27,15 @@ function getUrl(url, isApi = true) {
     return `${finalUrl}/${url}`;
 }
 
+// TODO: to be removed
+function getCookies() {
+    return new Promise(resolve => {
+        chrome.cookies.getAll({
+            name: 'Session_id'
+        }, resolve);
+    });
+}
+
 async function sendRequest(data) {
     const {
         method = 'get',
@@ -60,6 +69,19 @@ async function sendRequest(data) {
         const err = responseXML.querySelector('error');
         if (err) {
             const errText = err.textContent || err.getAttribute('code');
+
+            // TODO: to be removed
+            const cookies = await getCookies();
+            window.Raven.captureMessage('Error in the xml response', {
+                level: 'info',
+                extra: {
+                    data,
+                    errText,
+                    cookies
+                }
+            });
+            // end
+
             throw new Error(`Error in the response: ${errText}`);
         }
     }
@@ -81,6 +103,16 @@ export async function getMessagesCount() {
         url: getUrl('v2/bar/counters'),
         query: {silent: true}
     });
+
+    // TODO: to be removed
+    if (!res.counters) {
+        window.Raven.captureMessage('getMessagesCount response', {
+            level: 'info',
+            extra: {
+                res
+            }
+        });
+    }
 
     return res.counters.unread;
 }
