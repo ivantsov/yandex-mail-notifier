@@ -3,6 +3,7 @@ import {login, logout} from '../redux/actions/user';
 
 const config = {
     domain: 'yandex',
+    preferredDomain: 'yandex.ru',
     path: '/',
     items: {
         sessionId: 'Session_id',
@@ -20,13 +21,14 @@ function getCookieByName(name) {
         }, cookies => {
             let cookieValue;
 
-            if (cookies && cookies.length) {
-                const cookie = cookies.find(({domain, value}) =>
+            if (cookies && Array.isArray(cookies)) {
+                const availableCookies = cookies.filter(({domain, value}) =>
                     domain.includes(currentDomain || config.domain) &&
                     !value.includes('noauth')
                 );
 
-                if (cookie) {
+                if (availableCookies.length) {
+                    const cookie = availableCookies.find(({domain}) => domain.includes(config.preferredDomain)) || availableCookies[0];
                     currentDomain = cookie.domain;
                     cookieValue = cookie.value;
                 }

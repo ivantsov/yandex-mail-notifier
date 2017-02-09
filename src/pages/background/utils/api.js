@@ -77,7 +77,8 @@ async function sendRequest(data) {
                 extra: {
                     data,
                     errText,
-                    cookies
+                    cookies,
+                    domain: getCurrentDomain()
                 }
             });
             // end
