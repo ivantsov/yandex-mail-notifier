@@ -104,14 +104,8 @@ export async function getMessagesCount() {
         query: {silent: true}
     });
 
-    // TODO: to be removed
     if (!res.counters) {
-        window.Raven.captureMessage('getMessagesCount response', {
-            level: 'info',
-            extra: {
-                res
-            }
-        });
+        throw new Error(res);
     }
 
     return res.counters.unread;
