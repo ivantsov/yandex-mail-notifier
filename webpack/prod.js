@@ -54,9 +54,7 @@ module.exports = {
             compress: {
                 screw_ie8: true
             },
-            comments: false,
-            sourceMap: true
+            comments: false
         })
-    ],
-    devtool: 'source-map'
+    ]
 };
