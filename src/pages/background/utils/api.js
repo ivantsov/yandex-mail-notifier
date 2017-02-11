@@ -60,8 +60,7 @@ async function sendRequest(data) {
                 extra: {
                     data,
                     errText,
-                    cookies,
-                    domain: getCurrentDomain()
+                    cookies
                 }
             });
             // end
