@@ -11,6 +11,7 @@
     "url": "https://github.com/ivantsov/yandex-mail-notifier-chrome.git"
   },
   "scripts": {
+    "precommit": "npm run lint",
     "clean": "rimraf dist",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
@@ -22,7 +23,7 @@
     "zip": "zip -r -X dist/yandex-mail-notifier.zip dist",
     "deploy": "node ./scripts/deploy",
     "publish": "npm run build:prod && npm run zip && npm run deploy",
-    "release": "node ./scripts/release"
+    "release": "npm run lint && npm run test && node ./scripts/release"
   },
   "dependencies": {
     "babel-polyfill": "^6.22.0",
@@ -64,6 +65,7 @@
     "extract-text-webpack-plugin": "beta",
     "fs-extra": "^2.0.0",
     "html-webpack-plugin": "^2.28.0",
+    "husky": "^0.13.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^18.1.0",
     "less": "^2.7.2",
