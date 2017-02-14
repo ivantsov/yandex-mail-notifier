@@ -1,5 +1,11 @@
-.idea/**
-*.log
+/.idea
 /node_modules
 /coverage
+*.log
+
+# build folder
 /dist
+
+# opera files
+*.nex
+*.pem

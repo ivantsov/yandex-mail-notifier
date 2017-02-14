@@ -4,6 +4,7 @@ const pagesPath = './src/pages';
 
 function generateHtmlPlugins(items, extra) {
     return items.map(name => new HtmlPlugin({
+        title: '',
         filename: `./${name}.html`,
         chunksSortMode(a, b) {
             // raven has a bigger id
