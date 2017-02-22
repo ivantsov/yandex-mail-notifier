@@ -10,15 +10,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
     requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin')
 }), {urls: [`${API_URL}/*`]}, ['blocking', 'requestHeaders']);
 
-// TODO: to be removed
-function getCookies() {
-    return new Promise(resolve => {
-        chrome.cookies.getAll({
-            name: 'Session_id'
-        }, resolve);
-    });
-}
-
 async function sendRequest(data) {
     const {
         method = 'get',
@@ -52,19 +43,6 @@ async function sendRequest(data) {
         const err = responseXML.querySelector('error');
         if (err) {
             const errText = err.textContent || err.getAttribute('code');
-
-            // TODO: to be removed
-            const cookies = await getCookies();
-            window.Raven.captureMessage('Error in the xml response', {
-                level: 'info',
-                extra: {
-                    data,
-                    errText,
-                    cookies
-                }
-            });
-            // end
-
             throw new Error(`Error in the response: ${errText}`);
         }
     }
