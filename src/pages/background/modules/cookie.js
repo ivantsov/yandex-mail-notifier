@@ -18,11 +18,17 @@ function getCookieByName(name) {
             domain: config.domain,
             path: config.path,
             name
-        }, res => resolve(
-            Array.isArray(res) &&
-            res[0] &&
-            res[0].value
-        ));
+        }, res => {
+            if (chrome.runtime.lastError) {
+                throw new Error(chrome.runtime.lastError.message);
+            }
+
+            resolve(
+                Array.isArray(res) &&
+                res[0] &&
+                res[0].value
+            );
+        });
     });
 }
 
