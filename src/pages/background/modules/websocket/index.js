@@ -10,12 +10,10 @@ import initWSClient from './client';
 
 const config = {
     cookieTimeout: 1000,
-    connectTryInterval: 10 * 1000, // 10 sec, try to connect if failed before
-    maxConnectTryCount: 3, // try 3 times to connect before giving up
+    connectTryInterval: 60 * 1000, // 1 min, try to connect if failed before
     reconnectInterval: 2 * 60 * 1000 // 2 min, just reconnect
 };
 
-let curConnectTryNumber = 0;
 let wsClient, reconnectTimer;
 
 async function connect() {
@@ -32,20 +30,14 @@ async function connect() {
 
         dispatch(loadMessagesCount());
         dispatch(login());
-
-        curConnectTryNumber = 0;
     }
     catch (err) {
         dispatch(logout());
 
-        if (++curConnectTryNumber < config.maxConnectTryCount) {
-            setTimeout(connect, config.connectTryInterval);
-        }
-        else {
-            curConnectTryNumber = 0;
-            // throw unhandled exception for raven
-            throw err;
-        }
+        setTimeout(connect, config.connectTryInterval);
+
+        // throw unhandled exception for raven
+        throw err;
     }
 }
 
