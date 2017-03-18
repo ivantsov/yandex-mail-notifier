@@ -4,18 +4,18 @@ import types from './field/types';
 const fields = [{
     type: types.select,
     name: 'newMessageNotification',
-    optionValues: [0, 1, 2]
+    optionValues: [0, 1, 2],
 }, {
     type: types.select,
     name: 'unreadMessagesNotification',
-    optionValues: [0, 5, 15, 30] // interval in min
+    optionValues: [0, 5, 15, 30], // interval in min
 }, {
     type: types.checkbox,
-    name: 'unreadMessagesSound'
+    name: 'unreadMessagesSound',
 }, {
     type: types.select,
     name: 'notAuthNotification',
-    optionValues: [0, 1, 2]
+    optionValues: [0, 1, 2],
 }];
 
 export default fields.map(field => {
@@ -25,7 +25,7 @@ export default fields.map(field => {
     if (field.hasOwnProperty('optionValues')) {
         options = field.optionValues.map((value, index) => ({
             value,
-            label: i18n.text(`${baseKey}.options.${index}`)
+            label: i18n.text(`${baseKey}.options.${index}`),
         }));
     }
 
@@ -33,6 +33,6 @@ export default fields.map(field => {
         ...field,
         label: i18n.text(`${baseKey}.label`),
         description: i18n.text(`${baseKey}.description`),
-        options
+        options,
     };
 });

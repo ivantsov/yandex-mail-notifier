@@ -6,7 +6,7 @@ const props = {
     name: 'field',
     label: 'field label',
     description: 'field description',
-    onChange: jest.fn()
+    onChange: jest.fn(),
 };
 
 describe('settings/Field', () => {
@@ -16,7 +16,7 @@ describe('settings/Field', () => {
                 {...props}
                 type="checkbox"
                 value
-            />
+            />,
         );
 
         const tree = component.toJSON();
@@ -30,7 +30,7 @@ describe('settings/Field', () => {
                 type="select"
                 value={1}
                 options={[]}
-            />
+            />,
         );
 
         const tree = component.toJSON();

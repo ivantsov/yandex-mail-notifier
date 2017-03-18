@@ -10,7 +10,7 @@ const Item = ({
     subject,
     firstline,
     date,
-    onActionClick
+    onActionClick,
 }) => (
     <div className={styles.component}>
         <div className={styles.contentContainer}>
@@ -32,7 +32,7 @@ Item.propTypes = {
     subject: PropTypes.string.isRequired,
     firstline: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    onActionClick: PropTypes.func.isRequired
+    onActionClick: PropTypes.func.isRequired,
 };
 
 export default Item;

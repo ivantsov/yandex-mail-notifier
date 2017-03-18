@@ -4,14 +4,14 @@ import {
     LOAD_MESSAGES_SUCCESS,
     LOAD_MESSAGES_ERROR,
     UPDATE_MESSAGE,
-    INVALIDATE_MESSAGES
+    INVALIDATE_MESSAGES,
 } from 'shared/redux-consts/messages';
 
 const initialState = {
     unreadCount: 0,
     items: [],
     loading: true,
-    error: false
+    error: false,
 };
 
 // Another one solution for loading is showing cached messages with
@@ -22,14 +22,14 @@ export default function (state = initialState, action) {
         case LOAD_MESSAGES_COUNT:
             return {
                 ...state,
-                unreadCount: action.data
+                unreadCount: action.data,
             };
         case LOAD_MESSAGES:
         case INVALIDATE_MESSAGES:
             return {
                 ...state,
                 loading: true,
-                error: false
+                error: false,
             };
         case LOAD_MESSAGES_SUCCESS:
             return {
@@ -37,13 +37,13 @@ export default function (state = initialState, action) {
                 unreadCount: action.data.length,
                 items: action.data,
                 loading: false,
-                error: false
+                error: false,
             };
         case LOAD_MESSAGES_ERROR:
             return {
                 ...state,
                 loading: false,
-                error: true
+                error: true,
             };
         case UPDATE_MESSAGE:
             // don't update unreadCount manually because it'll lead to race condition
@@ -51,7 +51,7 @@ export default function (state = initialState, action) {
             // but when we receive server response it'll be 10 - 3
             return {
                 ...state,
-                items: state.items.filter(({id}) => id !== action.id)
+                items: state.items.filter(({id}) => id !== action.id),
             };
         default:
             return state;

@@ -5,12 +5,12 @@ import Button from '../index';
 
 jest.mock('shared/utils/tab');
 jest.mock('shared/utils/i18n', () => ({
-    text: jest.fn(() => 'text')
+    text: jest.fn(() => 'text'),
 }));
 
 const props = {
     id: '123',
-    onClick: jest.fn()
+    onClick: jest.fn(),
 };
 
 function render(type) {
@@ -18,7 +18,7 @@ function render(type) {
         <Button
             {...props}
             type={type}
-        />
+        />,
     );
 
     const tree = component.toJSON();
@@ -41,7 +41,7 @@ describe('popup/HoverMenu/Button', () => {
         expect(openUrl).not.toBeCalled();
         expect(props.onClick).lastCalledWith({
             id: props.id,
-            oper: 'mark_read'
+            oper: 'mark_read',
         });
     });
 
@@ -51,7 +51,7 @@ describe('popup/HoverMenu/Button', () => {
         expect(openUrl).not.toBeCalled();
         expect(props.onClick).lastCalledWith({
             id: props.id,
-            oper: 'delete'
+            oper: 'delete',
         });
     });
 
@@ -61,7 +61,7 @@ describe('popup/HoverMenu/Button', () => {
         expect(openUrl).not.toBeCalled();
         expect(props.onClick).lastCalledWith({
             id: props.id,
-            oper: 'tospam'
+            oper: 'tospam',
         });
     });
 });

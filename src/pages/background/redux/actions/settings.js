@@ -15,7 +15,7 @@ export function loadSettings() {
 
                 dispatch({
                     type: LOAD_SETTINGS,
-                    data
+                    data,
                 });
 
                 resolve();
@@ -29,6 +29,6 @@ export function updateSettings({data}) {
 
     return {
         type: UPDATE_SETTINGS,
-        data
+        data,
     };
 }

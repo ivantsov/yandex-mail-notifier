@@ -6,7 +6,6 @@ const base = {
     indent: ['error', INDENT, {
         SwitchCase: 1
     }],
-    'comma-dangle': ['error', 'never'],
     'brace-style': ['error', 'stroustrup', {
         'allowSingleLine': false
     }],

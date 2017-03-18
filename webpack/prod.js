@@ -6,7 +6,7 @@ const {
     output,
     resolve,
     moduleRules,
-    plugins
+    plugins,
 } = require('./base');
 
 const extractTextPlugin = new ExtractTextPlugin('[name].css');
@@ -21,10 +21,10 @@ module.exports = {
                 test: /\.less/,
                 loader: extractTextPlugin.extract([
                     'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:10]',
-                    'less-loader'
-                ])
-            }
-        ]
+                    'less-loader',
+                ]),
+            },
+        ],
     },
     plugins: [
         plugins.copy,
@@ -33,22 +33,22 @@ module.exports = {
         extractTextPlugin,
         new webpack.DefinePlugin({
             __DEV__: false,
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env.NODE_ENV': JSON.stringify('production'),
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
-            debug: false
+            debug: false,
         }),
         new webpack.optimize.UglifyJsPlugin({
             beautify: false,
             mangle: {
                 screw_ie8: true,
-                keep_fnames: true
+                keep_fnames: true,
             },
             compress: {
-                screw_ie8: true
+                screw_ie8: true,
             },
-            comments: false
-        })
-    ]
+            comments: false,
+        }),
+    ],
 };

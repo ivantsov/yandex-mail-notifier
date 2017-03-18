@@ -11,7 +11,7 @@ const App = ({settings, updateSettings}) => {
             {...item}
             value={settings[item.name]}
             onChange={updateSettings}
-        />
+        />,
     );
 
     return (
@@ -23,7 +23,7 @@ const App = ({settings, updateSettings}) => {
 
 App.propTypes = {
     settings: PropTypes.object.isRequired,
-    updateSettings: PropTypes.func.isRequired
+    updateSettings: PropTypes.func.isRequired,
 };
 
 export default connect(state => state, actions)(App);

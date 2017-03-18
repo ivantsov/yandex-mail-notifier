@@ -4,12 +4,12 @@ import {
     LOAD_MESSAGES_SUCCESS,
     LOAD_MESSAGES_ERROR,
     UPDATE_MESSAGE,
-    INVALIDATE_MESSAGES
+    INVALIDATE_MESSAGES,
 } from 'shared/redux-consts/messages';
 import {
     getMessages,
     getMessagesCount,
-    updateMessageStatus
+    updateMessageStatus,
 } from '../../utils/api';
 
 let popupIsOpen = false;
@@ -20,7 +20,7 @@ export function loadMessagesCount(data) {
 
         dispatch({
             type: LOAD_MESSAGES_COUNT,
-            data: unreadMessagesCount
+            data: unreadMessagesCount,
         });
     };
 }
@@ -39,7 +39,7 @@ export function loadMessages() {
             if (popupIsOpen) {
                 dispatch({
                     type: LOAD_MESSAGES_SUCCESS,
-                    data
+                    data,
                 });
             }
         }
@@ -58,7 +58,7 @@ export function updateMessage({data}) {
     // kind of optimistic update :)
     return {
         type: UPDATE_MESSAGE,
-        id: data.id
+        id: data.id,
     };
 }
 

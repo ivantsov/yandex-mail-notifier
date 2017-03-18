@@ -8,7 +8,7 @@ const API_URL = `${DOMAIN}/api`;
 
 // prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
-    requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin')
+    requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin'),
 }), {urls: [`${API_URL}/*`]}, ['blocking', 'requestHeaders']);
 
 async function sendRequest(data) {
@@ -17,7 +17,7 @@ async function sendRequest(data) {
         url,
         type = 'json',
         form,
-        query
+        query,
     } = data;
 
     const res = await request(method, url)
@@ -41,7 +41,7 @@ async function sendRequest(data) {
         if (redirect) {
             return sendRequest({
                 ...data,
-                url: redirect.textContent
+                url: redirect.textContent,
             });
         }
 
@@ -58,7 +58,7 @@ async function sendRequest(data) {
 export async function getUser() {
     const res = await sendRequest({
         url: `${API_URL}/settings_setup`,
-        type: 'xml'
+        type: 'xml',
     });
 
     return res.querySelector('body').querySelector('default_email').textContent;
@@ -67,7 +67,7 @@ export async function getUser() {
 export async function getMessagesCount() {
     const res = await sendRequest({
         url: `${API_URL}/v2/bar/counters`,
-        query: {silent: true}
+        query: {silent: true},
     });
 
     if (!res.counters) {
@@ -82,7 +82,7 @@ export async function getSocketCredentials() {
 
     return sendRequest({
         url: `${DOMAIN}/neo2/handlers/xiva_sub.jsx`,
-        query: {req: uid}
+        query: {req: uid},
     });
 }
 
@@ -94,8 +94,8 @@ export async function getMessages() {
             first: 0,
             last: 100,
             extra_cond: 'only_new',
-            goto: 'all'
-        }
+            goto: 'all',
+        },
     });
 
     return parseXML(res);
@@ -108,7 +108,7 @@ export function updateMessageStatus({oper, id}) {
         type: 'xml',
         form: {
             ids: [id],
-            oper
-        }
+            oper,
+        },
     });
 }

@@ -4,7 +4,7 @@ export const initialState = {
     newMessageNotification: 1, // only desktop notification
     unreadMessagesNotification: 5, // 5 min
     unreadMessagesSound: false,
-    notAuthNotification: 1 // only desktop notification
+    notAuthNotification: 1, // only desktop notification
 };
 
 export default function (state = initialState, action) {
@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
         case UPDATE_SETTINGS:
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             };
         default:
             return state;

@@ -7,8 +7,8 @@ window.onunhandledrejection = (err) => {
     Raven.captureException(err.reason, {
         extra: {
             lastAction,
-            state
-        }
+            state,
+        },
     });
 };
 
@@ -20,7 +20,7 @@ export default store => next => action => {
 
     Raven.captureBreadcrumb({
         category: 'redux',
-        message: JSON.stringify(action)
+        message: JSON.stringify(action),
     });
 
     return next(action);

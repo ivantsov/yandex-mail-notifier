@@ -27,7 +27,7 @@ function connect(data) {
     const {
         sign,
         ts,
-        uid
+        uid,
     } = data;
     const queryParams = qs.stringify({
         client_id: 'bar',
@@ -35,7 +35,7 @@ function connect(data) {
         format: 'json',
         uid,
         sign,
-        ts
+        ts,
     });
 
     ws = new WebSocket(`${WS_URL}?${queryParams}`);
@@ -60,6 +60,6 @@ export default function (ev) {
 
     return {
         connect,
-        disconnect
+        disconnect,
     };
 }

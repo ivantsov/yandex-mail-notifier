@@ -4,7 +4,7 @@ import i18n from 'shared/utils/i18n';
 const CONSTANTS = {
     SHOW_NEW_NOTIFICATION: 'SHOW_NEW_NOTIFICATION',
     SHOW_UNREAD_NOTIFICATION: 'SHOW_UNREAD_NOTIFICATION',
-    SHOW_NOT_AUTH_NOTIFICATION: 'SHOW_NOT_AUTH_NOTIFICATION'
+    SHOW_NOT_AUTH_NOTIFICATION: 'SHOW_NOT_AUTH_NOTIFICATION',
 };
 const sevenSec = 7 * 1000;
 
@@ -23,7 +23,7 @@ function showNotification(data) {
         iconUrl: '../assets/icon.png',
         title: data.title,
         message: data.subTitle,
-        contextMessage: data.message
+        contextMessage: data.message,
     }, (id) => {
         notifications[id] = data.onClick;
 
@@ -50,7 +50,7 @@ export function showNewNotification(data) {
                 message: data.message,
                 onClick() {
                     openUrl(`#message/${data.id}`);
-                }
+                },
             });
 
             if (newMessageNotification === 2) {
@@ -73,7 +73,7 @@ export function showUnreadNotification() {
         showNotification({
             title: i18n.text('notification.unread.title'),
             subTitle: i18n.text('notification.unread.message', unreadCount),
-            onClick: openUrl
+            onClick: openUrl,
         });
 
         if (settings.unreadMessagesSound) {
@@ -92,7 +92,7 @@ export function showNotAuthNotification() {
             showNotification({
                 title: i18n.text('notification.notAuth.title'),
                 subTitle: i18n.text('notification.notAuth.message'),
-                onClick: openUrl
+                onClick: openUrl,
             });
 
             if (notAuthNotification === 2) {

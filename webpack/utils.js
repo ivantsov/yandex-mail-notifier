@@ -19,12 +19,12 @@ function generateHtmlPlugins(entriesObj) {
         },
         chunks: [
             extraScript,
-            name
-        ]
+            name,
+        ],
     }));
 }
 
 module.exports = {
     pagesPath,
-    generateHtmlPlugins
+    generateHtmlPlugins,
 };

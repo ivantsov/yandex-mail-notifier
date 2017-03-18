@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {AppComponent as App} from '../app';
 
 jest.mock('shared/utils/i18n', () => ({
-    text: jest.fn(() => 'text')
+    text: jest.fn(() => 'text'),
 }));
 
 it('settings/App', () => {
@@ -13,10 +13,10 @@ it('settings/App', () => {
                 newMessageNotification: 0,
                 unreadMessagesNotification: 0,
                 unreadMessagesSound: false,
-                notAuthNotification: 0
+                notAuthNotification: 0,
             }}
             updateSettings={jest.fn()}
-        />
+        />,
     );
 
     const tree = component.toJSON();

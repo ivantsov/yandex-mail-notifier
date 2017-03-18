@@ -4,7 +4,7 @@ const IGNORED_FOLDERS = [
     'trash',
     'sent',
     'outbox',
-    'draft'
+    'draft',
 ];
 
 function getText(element, selector) {
@@ -22,7 +22,7 @@ function getFilteredMessage(messages, folders) {
 function parseFolders(folders) {
     return [...folders].map(folder => ({
         id: getText(folder, 'fid'),
-        symbol: getText(folder, 'symbol')
+        symbol: getText(folder, 'symbol'),
     }));
 }
 
@@ -41,7 +41,7 @@ function parseMessages(messages) {
             from: getText(from, 'name') || getText(from, 'email'),
             firstline: getText(message, 'firstline'),
             date: message.getAttribute('recv_date'),
-            fid: message.getAttribute('fid')
+            fid: message.getAttribute('fid'),
         };
     });
 }

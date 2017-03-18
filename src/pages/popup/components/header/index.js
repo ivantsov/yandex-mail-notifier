@@ -11,7 +11,7 @@ const Header = ({
     user,
     unreadMessagesCount,
     disabled,
-    onReloadClick
+    onReloadClick,
 }) => (
     <div className={styles.component}>
         <a className={styles.composeBtn} onClick={() => openUrl('#compose')}>
@@ -40,7 +40,7 @@ Header.propTypes = {
     user: PropTypes.string.isRequired,
     unreadMessagesCount: PropTypes.number.isRequired,
     disabled: PropTypes.bool.isRequired,
-    onReloadClick: PropTypes.func.isRequired
+    onReloadClick: PropTypes.func.isRequired,
 };
 
 export default Header;

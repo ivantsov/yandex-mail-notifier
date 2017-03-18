@@ -5,7 +5,7 @@ import styles from './hover-menu.less';
 
 const HoverMenu = ({
     id,
-    onClick
+    onClick,
 }) => {
     const buttons = Object.keys(types).map((key, index) => (
         <Button
@@ -26,7 +26,7 @@ const HoverMenu = ({
 
 HoverMenu.propTypes = {
     id: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
 };
 
 export default HoverMenu;

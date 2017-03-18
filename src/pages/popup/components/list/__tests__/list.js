@@ -5,7 +5,7 @@ import List from '../index';
 jest.mock('shared/utils/i18n', () => {
     const i18nKeys = {
         'popup.loadingError': 'error',
-        'popup.emptyList': 'no items'
+        'popup.emptyList': 'no items',
     };
 
     return {
@@ -14,7 +14,7 @@ jest.mock('shared/utils/i18n', () => {
         },
         date(str) {
             return str;
-        }
+        },
     };
 });
 
@@ -23,7 +23,7 @@ const defaultProps = {
     error: false,
     unreadMessagesCount: 0,
     items: [],
-    onActionClick: jest.fn()
+    onActionClick: jest.fn(),
 };
 
 function render(props) {
@@ -31,7 +31,7 @@ function render(props) {
         <List
             {...defaultProps}
             {...props}
-        />
+        />,
     );
 
     const tree = component.toJSON();
@@ -42,7 +42,7 @@ describe('popup/List', () => {
     it('loading', () => {
         render({
             loading: true,
-            unreadMessagesCount: 3
+            unreadMessagesCount: 3,
         });
     });
 
@@ -60,13 +60,13 @@ describe('popup/List', () => {
             from: 'sender#1',
             subject: 'subject#1',
             firstline: 'text',
-            date: '21-20-2015'
+            date: '21-20-2015',
         }, {
             id: '2',
             from: 'sender#2',
             subject: 'subject#2',
             firstline: 'text',
-            date: '21-20-2016'
+            date: '21-20-2016',
         }]});
     });
 });

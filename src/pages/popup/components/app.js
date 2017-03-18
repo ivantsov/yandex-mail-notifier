@@ -7,16 +7,16 @@ import List from './list';
 class App extends Component {
     static propTypes = {
         user: PropTypes.shape({
-            email: PropTypes.string.isRequired
+            email: PropTypes.string.isRequired,
         }).isRequired,
         messages: PropTypes.shape({
             unreadCount: PropTypes.number.isRequired,
             items: PropTypes.arrayOf(PropTypes.object).isRequired,
             loading: PropTypes.bool.isRequired,
-            error: PropTypes.bool.isRequired
+            error: PropTypes.bool.isRequired,
         }).isRequired,
         loadMessages: PropTypes.func.isRequired,
-        updateMessage: PropTypes.func.isRequired
+        updateMessage: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
@@ -30,10 +30,10 @@ class App extends Component {
                 unreadCount,
                 items,
                 loading,
-                error
+                error,
             },
             loadMessages,
-            updateMessage
+            updateMessage,
         } = this.props;
 
         return (

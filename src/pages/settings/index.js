@@ -17,7 +17,7 @@ async function initApp() {
         <Provider store={store}>
             <App/>
         </Provider>,
-        mountNode
+        mountNode,
     );
 }
 

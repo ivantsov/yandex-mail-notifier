@@ -1,17 +1,17 @@
 module.exports = {
     ext: {
         name: 'Yandex.Mail notifier',
-        description: 'Tunable notifier for Yandex.Mail'
+        description: 'Tunable notifier for Yandex.Mail',
     },
     notification: {
         unread: {
             title: 'You have unread emails',
-            message: 'Unread emails: $1'
+            message: 'Unread emails: $1',
         },
         notAuth: {
             title: 'You\'re not authorized',
-            message: 'Please, log in into your Yandex account'
-        }
+            message: 'Please, log in into your Yandex account',
+        },
     },
     popup: {
         title: 'Yandex.Mail notifier',
@@ -20,7 +20,7 @@ module.exports = {
             open: 'Open',
             read: 'Mark as read',
             spam: 'Spam',
-            remove: 'Remove'
+            remove: 'Remove',
         },
         emptyList: 'You have no unread emails',
         loadingError: 'Cannot load emails... Please try again later',
@@ -36,8 +36,8 @@ module.exports = {
             'September',
             'October',
             'November',
-            'December'
-        ]
+            'December',
+        ],
     },
     settings: {
         newMessageNotification: {
@@ -45,8 +45,8 @@ module.exports = {
             options: [
                 'off',
                 'desktop notification',
-                'desktop & sound notification'
-            ]
+                'desktop & sound notification',
+            ],
         },
         unreadMessagesNotification: {
             label: 'Remind about unread emails via desktop notification',
@@ -54,12 +54,12 @@ module.exports = {
                 'off',
                 'every 5 min',
                 'every 15 min',
-                'every 30 min'
-            ]
+                'every 30 min',
+            ],
         },
         unreadMessagesSound: {
             label: 'Remind about unread emails via sound notification',
-            description: 'Plays according to the reminder interval'
+            description: 'Plays according to the reminder interval',
         },
         notAuthNotification: {
             label: 'Notify if you\'re not logged in',
@@ -67,8 +67,8 @@ module.exports = {
             options: [
                 'off',
                 'desktop notification',
-                'desktop & sound notification'
-            ]
-        }
-    }
+                'desktop & sound notification',
+            ],
+        },
+    },
 };

@@ -7,7 +7,7 @@ import settings from './settings';
 const appReducer = combineReducers({
     user,
     messages,
-    settings
+    settings,
 });
 
 export default function (state, action) {

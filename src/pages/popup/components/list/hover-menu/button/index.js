@@ -7,7 +7,7 @@ export default class Button extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
-        onClick: PropTypes.func.isRequired
+        onClick: PropTypes.func.isRequired,
     };
 
     render() {
@@ -28,7 +28,7 @@ export default class Button extends Component {
         const {
             id,
             type,
-            onClick
+            onClick,
         } = this.props;
         const typeObj = types[type];
 
@@ -41,7 +41,7 @@ export default class Button extends Component {
         // for the rest actions
         onClick({
             id,
-            oper: typeObj.actionType
+            oper: typeObj.actionType,
         });
     }
 }

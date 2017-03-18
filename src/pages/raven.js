@@ -7,8 +7,8 @@ Raven.config('https://a4bc742caec34db89cb376ce5d9c049d@sentry.io/120928', {
     release: config.version,
     ignoreErrors: [
         errors.OFFLINE,
-        errors.NOT_AUTHORIZED
-    ]
+        errors.NOT_AUTHORIZED,
+    ],
 }).install();
 
 window.onunhandledrejection = (err) => {

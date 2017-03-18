@@ -11,21 +11,21 @@ export default {
         action(id) {
             openUrl(`#message/${id}`);
         },
-        text: i18n.text('popup.actions.open')
+        text: i18n.text('popup.actions.open'),
     },
     read: {
         Icon: ReadIcon,
         actionType: 'mark_read',
-        text: i18n.text('popup.actions.read')
+        text: i18n.text('popup.actions.read'),
     },
     remove: {
         Icon: RemoveIcon,
         actionType: 'delete',
-        text: i18n.text('popup.actions.remove')
+        text: i18n.text('popup.actions.remove'),
     },
     spam: {
         Icon: SpamIcon,
         actionType: 'tospam',
-        text: i18n.text('popup.actions.spam')
-    }
+        text: i18n.text('popup.actions.spam'),
+    },
 };
