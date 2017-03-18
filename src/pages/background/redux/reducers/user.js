@@ -2,7 +2,7 @@ import {LOGIN} from 'shared/redux-consts/user';
 
 const initialState = {
     authorized: false,
-    email: null
+    email: null,
 };
 
 export default function (state = initialState, action) {
@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 authorized: true,
-                email: action.data || state.email // in case when we already have email
+                email: action.data || state.email, // in case when we already have email
             };
         default:
             return state;

@@ -4,7 +4,7 @@ import {showUnreadNotification, showNotAuthNotification} from '../redux/actions/
 
 const ALARMS = {
     UNREAD: 'UNREAD',
-    NOT_AUTH: 'NOT_AUTH'
+    NOT_AUTH: 'NOT_AUTH',
 };
 const {alarms} = chrome;
 

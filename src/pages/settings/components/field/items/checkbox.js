@@ -4,7 +4,7 @@ import FieldPropTypes from './proptypes';
 const Checkbox = ({
     name,
     value,
-    onChange
+    onChange,
 }) => (
     <input
         type="checkbox"
@@ -17,7 +17,7 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
     ...FieldPropTypes,
-    value: PropTypes.bool.isRequired
+    value: PropTypes.bool.isRequired,
 };
 
 export default Checkbox;

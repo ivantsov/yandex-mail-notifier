@@ -11,12 +11,12 @@ function generateHtmlPlugins(items, extra) {
         },
         chunks: [
             extra,
-            name
-        ]
+            name,
+        ],
     }));
 }
 
 module.exports = {
     pagesPath,
-    generateHtmlPlugins
+    generateHtmlPlugins,
 };

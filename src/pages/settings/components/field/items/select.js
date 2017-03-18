@@ -5,12 +5,12 @@ const Select = ({
     name,
     value,
     options,
-    onChange
+    onChange,
 }) => {
     const optionElements = options.map((item, index) =>
         <option key={index} value={item.value}>
             {item.label}
-        </option>
+        </option>,
     );
 
     return (
@@ -28,8 +28,8 @@ Select.propTypes = {
     value: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired
-    })).isRequired
+        label: PropTypes.string.isRequired,
+    })).isRequired,
 };
 
 export default Select;

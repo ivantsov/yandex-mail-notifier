@@ -10,7 +10,7 @@ describe('settings/Select', () => {
                 value={123}
                 options={[]}
                 onChange={jest.fn()}
-            />
+            />,
         );
 
         const tree = component.toJSON();
@@ -28,13 +28,13 @@ describe('settings/Select', () => {
                 value={123}
                 options={[{
                     label: 'option1',
-                    value: 1
+                    value: 1,
                 }, {
                     label: 'option2',
-                    value: 2
+                    value: 2,
                 }]}
                 onChange={onChange}
-            />
+            />,
         );
 
         const tree = component.toJSON();

@@ -10,7 +10,7 @@ const commonProps = {
     user: 'username@ya.ru',
     unreadMessagesCount: 5,
     disabled: false,
-    onReloadClick
+    onReloadClick,
 };
 
 function render(props) {
@@ -18,7 +18,7 @@ function render(props) {
         <Header
             {...commonProps}
             {...props}
-        />
+        />,
     );
 
     return component.toJSON();
@@ -28,8 +28,8 @@ describe('popup/Header', () => {
     beforeEach(() => {
         window.chrome = {
             i18n: {
-                getMessage: jest.fn(() => 'text')
-            }
+                getMessage: jest.fn(() => 'text'),
+            },
         };
     });
 
@@ -58,7 +58,7 @@ describe('popup/Header', () => {
         const [
             composeLink,
             centerBlock,
-            settingsLink
+            settingsLink,
         ] = tree.children;
 
         composeLink.props.onClick();

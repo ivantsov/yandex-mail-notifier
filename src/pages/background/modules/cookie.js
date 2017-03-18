@@ -6,8 +6,8 @@ const config = {
     path: '/',
     items: {
         sessionId: 'Session_id',
-        uid: 'yandexuid'
-    }
+        uid: 'yandexuid',
+    },
 };
 
 let currentDomain;
@@ -17,7 +17,7 @@ function getCookieByName(name) {
         chrome.cookies.getAll({
             domain: config.domain,
             path: config.path,
-            name
+            name,
         }, res => {
             if (chrome.runtime.lastError) {
                 throw new Error(`Last error in cookie ${chrome.runtime.lastError.message}`);
@@ -26,7 +26,7 @@ function getCookieByName(name) {
             resolve(
                 Array.isArray(res) &&
                 res[0] &&
-                res[0].value
+                res[0].value,
             );
         });
     });
@@ -45,7 +45,7 @@ export function initCookieListener() {
         const {
             domain,
             name,
-            path
+            path,
         } = cookie;
 
         if (domain.includes(currentDomain || config.domain) &&

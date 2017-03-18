@@ -17,7 +17,7 @@ function getToken() {
             client_id: clientId,
             refresh_token: refreshToken,
             grant_type: 'refresh_token',
-            redirect_uri: 'urn:ietf:wg:oauth:2.0:oob'
+            redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
         })
         .then(res => {
             const accessToken = res.body.access_token;
@@ -38,7 +38,7 @@ function upload(accessToken) {
         .put(`https://www.googleapis.com/upload/chromewebstore/v1.1/items/${appId}`)
         .set({
             Authorization: `Bearer ${accessToken}`,
-            'x-goog-api-version': 2
+            'x-goog-api-version': 2,
         })
         .attach('file', filename)
         .then(res => {
@@ -59,7 +59,7 @@ function publish(accessToken) {
         .set({
             Authorization: `Bearer ${accessToken}`,
             'x-goog-api-version': 2,
-            'Content-Length': 0
+            'Content-Length': 0,
             // publishTarget: 'trustedTesters'
         })
         .then(res => {

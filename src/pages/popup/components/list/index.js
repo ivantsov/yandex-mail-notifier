@@ -12,7 +12,7 @@ const List = ({
     loading,
     error,
     items,
-    onActionClick
+    onActionClick,
 }) => {
     if (loading) {
         const elements = Array.from(Array(unreadMessagesCount).keys())
@@ -41,7 +41,7 @@ const List = ({
             className={styles.content}
             transitionName={{
                 leave: itemStyles.leave,
-                leaveActive: itemStyles.leaveActive
+                leaveActive: itemStyles.leaveActive,
             }}
             transitionLeaveTimeout={800}
             transitionEnter={false}
@@ -56,9 +56,9 @@ List.propTypes = {
     error: PropTypes.bool.isRequired,
     unreadMessagesCount: PropTypes.number.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired
+        id: PropTypes.string.isRequired,
     })).isRequired,
-    onActionClick: PropTypes.func.isRequired
+    onActionClick: PropTypes.func.isRequired,
 };
 
 export default List;

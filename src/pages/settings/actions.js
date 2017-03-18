@@ -5,7 +5,7 @@ export function updateSettings(name, value) {
     return {
         type: UPDATE_SETTINGS,
         data: {
-            [name]: value
-        }
+            [name]: value,
+        },
     };
 }

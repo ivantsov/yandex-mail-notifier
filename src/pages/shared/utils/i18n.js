@@ -35,5 +35,5 @@ function date(value) {
 
 export default {
     text,
-    date
+    date,
 };

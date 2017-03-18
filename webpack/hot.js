@@ -6,20 +6,20 @@ const {
     output,
     resolve,
     moduleRules,
-    plugins
+    plugins,
 } = require('./base');
 
 module.exports = {
     entry,
     output: Object.assign({}, output, {
-        publicPath: 'http://localhost:8080'
+        publicPath: 'http://localhost:8080',
     }),
     resolve,
     module: {
         rules: [
             moduleRules.js,
-            moduleRules.css
-        ]
+            moduleRules.css,
+        ],
     },
     plugins: [
         plugins.copy,
@@ -27,18 +27,18 @@ module.exports = {
         ...generateHtmlPlugins([
             'background',
             'popup',
-            'settings'
+            'settings',
         ]),
         new webpack.DefinePlugin({
-            __DEV__: true
+            __DEV__: true,
         }),
         new WriteFilePlugin({
             log: false,
-            test: /^((?!hot-update).)*$/
-        })
+            test: /^((?!hot-update).)*$/,
+        }),
     ],
     devtool: 'eval',
     devServer: {
-        stats: 'errors-only'
-    }
+        stats: 'errors-only',
+    },
 };

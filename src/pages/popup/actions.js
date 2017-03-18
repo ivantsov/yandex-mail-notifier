@@ -7,6 +7,6 @@ export function loadMessages() {
 export function updateMessage(data) {
     return {
         type: UPDATE_MESSAGE,
-        data
+        data,
     };
 }

@@ -9,12 +9,12 @@ import {updateSettings} from './actions/settings';
 import {
     loadMessages,
     updateMessage,
-    invalidateMessages
+    invalidateMessages,
 } from './actions/messages';
 
 const store = createStore(
     reducer,
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middlewares),
 );
 
 initSubscriber(store);
@@ -24,9 +24,9 @@ export default createBackgroundStore({
     actions: {
         [LOAD_MESSAGES]: loadMessages,
         [UPDATE_MESSAGE]: updateMessage,
-        [UPDATE_SETTINGS]: updateSettings
+        [UPDATE_SETTINGS]: updateSettings,
     },
     onDisconnect() {
         store.dispatch(invalidateMessages());
-    }
+    },
 });

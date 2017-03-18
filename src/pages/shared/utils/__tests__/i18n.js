@@ -9,7 +9,7 @@ const months = Array
     }, {});
 const keys = {
     key_number_one: 'key number one',
-    ...months
+    ...months,
 };
 
 let getMessage;
@@ -20,8 +20,8 @@ describe('shared/utils/i18n', () => {
 
         window.chrome = {
             i18n: {
-                getMessage
-            }
+                getMessage,
+            },
         };
     });
 

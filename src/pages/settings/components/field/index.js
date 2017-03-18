@@ -10,7 +10,7 @@ const Field = (props) => {
         type,
         name,
         label,
-        description
+        description,
     } = props;
 
     const Component = type === types.checkbox ? Checkbox : Select;
@@ -32,7 +32,7 @@ Field.propTypes = {
     type: PropTypes.oneOf(Object.keys(types)).isRequired,
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
 };
 
 export default Field;

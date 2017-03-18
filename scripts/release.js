@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 
 const paths = [
     './package.json',
-    './src/manifest.json'
+    './src/manifest.json',
 ];
 
 function validate(newVersion) {

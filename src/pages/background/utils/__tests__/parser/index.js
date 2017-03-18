@@ -4,7 +4,7 @@ import parseXML from '../../parser';
 function createElement(
     name,
     children = [],
-    attrs = {}
+    attrs = {},
 ) {
     const element = document.createElement(name);
     children.forEach(child => element.appendChild(child));
@@ -22,8 +22,8 @@ function createElement(
 const folderElements = folders.map(({id, symbol}) =>
     createElement('folder', [
         createElement('fid', [], id),
-        createElement('symbol', [], symbol)
-    ])
+        createElement('symbol', [], symbol),
+    ]),
 );
 
 const messageElements = messages.map(({
@@ -32,22 +32,22 @@ const messageElements = messages.map(({
     from,
     firstline,
     date,
-    fid
+    fid,
 }) =>
     createElement('message', [
         createElement('from', [
             createElement('name', [], from.name),
-            createElement('email', [], from.email)
+            createElement('email', [], from.email),
         ]),
         createElement('subject', [
-            createElement('text', [], subject)
+            createElement('text', [], subject),
         ]),
-        createElement('firstline', [], firstline)
+        createElement('firstline', [], firstline),
     ], {
         mid: id,
         recv_date: date,
-        fid
-    })
+        fid,
+    }),
 );
 
 describe('background/utils/parser', () => {
@@ -68,9 +68,9 @@ describe('background/utils/parser', () => {
             const errorCode = 500;
             const xml = createElement('doc', [
                 createElement('mailbox_list', [
-                    createElement('error', [], {code: errorCode})
+                    createElement('error', [], {code: errorCode}),
                 ]),
-                createElement('folder_list')
+                createElement('folder_list'),
             ]);
 
             expect(() => parseXML(xml)).toThrowError(`Messages xml has error field with code: ${errorCode}`);
@@ -82,7 +82,7 @@ describe('background/utils/parser', () => {
             const expected = [];
             const xml = createElement('doc', [
                 createElement('mailbox_list', expected),
-                createElement('folder_list')
+                createElement('folder_list'),
             ]);
 
             expect(parseXML(xml)).toEqual(expected);
@@ -92,9 +92,9 @@ describe('background/utils/parser', () => {
             const xml = createElement('doc', [
                 createElement('mailbox_list', [
                     createElement('details'),
-                    ...messageElements
+                    ...messageElements,
                 ]),
-                createElement('folder_list', folderElements)
+                createElement('folder_list', folderElements),
             ]);
 
             const items = parseXML(xml);
@@ -106,7 +106,7 @@ describe('background/utils/parser', () => {
                 ...expected,
                 date: expected.date.toString(),
                 from: expected.from.name,
-                subject: ''
+                subject: '',
             });
         });
     });
