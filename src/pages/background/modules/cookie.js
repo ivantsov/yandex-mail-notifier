@@ -20,7 +20,7 @@ function getCookieByName(name) {
             name
         }, res => {
             if (chrome.runtime.lastError) {
-                throw new Error(chrome.runtime.lastError.message);
+                throw new Error(`Last error in cookie ${chrome.runtime.lastError.message}`);
             }
 
             resolve(

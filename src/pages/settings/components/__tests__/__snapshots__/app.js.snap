@@ -1,15 +1,20 @@
-exports[`test settings/App 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings/App 1`] = `
 <table>
   <tbody>
     <tr>
       <td
-        className="label">
+        className="label"
+      >
         <label
-          htmlFor="newMessageNotification">
+          htmlFor="newMessageNotification"
+        >
           text
         </label>
         <div
-          className="description">
+          className="description"
+        >
           text
         </div>
       </td>
@@ -18,17 +23,21 @@ exports[`test settings/App 1`] = `
           id="newMessageNotification"
           name="newMessageNotification"
           onChange={[Function]}
-          value={0}>
+          value={0}
+        >
           <option
-            value={0}>
+            value={0}
+          >
             text
           </option>
           <option
-            value={1}>
+            value={1}
+          >
             text
           </option>
           <option
-            value={2}>
+            value={2}
+          >
             text
           </option>
         </select>
@@ -36,13 +45,16 @@ exports[`test settings/App 1`] = `
     </tr>
     <tr>
       <td
-        className="label">
+        className="label"
+      >
         <label
-          htmlFor="unreadMessagesNotification">
+          htmlFor="unreadMessagesNotification"
+        >
           text
         </label>
         <div
-          className="description">
+          className="description"
+        >
           text
         </div>
       </td>
@@ -51,21 +63,26 @@ exports[`test settings/App 1`] = `
           id="unreadMessagesNotification"
           name="unreadMessagesNotification"
           onChange={[Function]}
-          value={0}>
+          value={0}
+        >
           <option
-            value={0}>
+            value={0}
+          >
             text
           </option>
           <option
-            value={5}>
+            value={5}
+          >
             text
           </option>
           <option
-            value={15}>
+            value={15}
+          >
             text
           </option>
           <option
-            value={30}>
+            value={30}
+          >
             text
           </option>
         </select>
@@ -73,13 +90,16 @@ exports[`test settings/App 1`] = `
     </tr>
     <tr>
       <td
-        className="label">
+        className="label"
+      >
         <label
-          htmlFor="unreadMessagesSound">
+          htmlFor="unreadMessagesSound"
+        >
           text
         </label>
         <div
-          className="description">
+          className="description"
+        >
           text
         </div>
       </td>
@@ -89,18 +109,22 @@ exports[`test settings/App 1`] = `
           id="unreadMessagesSound"
           name="unreadMessagesSound"
           onChange={[Function]}
-          type="checkbox" />
+          type="checkbox"
+        />
       </td>
     </tr>
     <tr>
       <td
-        className="label">
+        className="label"
+      >
         <label
-          htmlFor="notAuthNotification">
+          htmlFor="notAuthNotification"
+        >
           text
         </label>
         <div
-          className="description">
+          className="description"
+        >
           text
         </div>
       </td>
@@ -109,17 +133,21 @@ exports[`test settings/App 1`] = `
           id="notAuthNotification"
           name="notAuthNotification"
           onChange={[Function]}
-          value={0}>
+          value={0}
+        >
           <option
-            value={0}>
+            value={0}
+          >
             text
           </option>
           <option
-            value={1}>
+            value={1}
+          >
             text
           </option>
           <option
-            value={2}>
+            value={2}
+          >
             text
           </option>
         </select>

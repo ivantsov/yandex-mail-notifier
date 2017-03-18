@@ -27,7 +27,11 @@ function showNotification(data) {
     }, (id) => {
         notifications[id] = data.onClick;
 
-        setTimeout(() => notification.clear(id), sevenSec);
+        setTimeout(() => {
+            if (id) {
+                notification.clear(id);
+            }
+        }, sevenSec);
     });
 }
 

@@ -9,9 +9,9 @@ import {RECONNECT, NEW_MESSAGE} from './constants';
 import initWSClient from './client';
 
 const config = {
-    cookieTimeout: 1000,
+    cookieTimeout: 1 * 1000, // 1 sec
     connectTryInterval: 60 * 1000, // 1 min, try to connect if failed before
-    reconnectInterval: 2 * 60 * 1000 // 2 min, just reconnect
+    reconnectInterval: 2 * 60 * 1000 // 2 min, reconnect to websocket
 };
 
 let wsClient, reconnectTimer;

@@ -1,13 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`settings/Field checkbox 1`] = `
 <tr>
   <td
-    className="label">
+    className="label"
+  >
     <label
-      htmlFor="field">
+      htmlFor="field"
+    >
       field label
     </label>
     <div
-      className="description">
+      className="description"
+    >
       field description
     </div>
   </td>
@@ -17,7 +22,8 @@ exports[`settings/Field checkbox 1`] = `
       id="field"
       name="field"
       onChange={[Function]}
-      type="checkbox" />
+      type="checkbox"
+    />
   </td>
 </tr>
 `;
@@ -25,13 +31,16 @@ exports[`settings/Field checkbox 1`] = `
 exports[`settings/Field select 1`] = `
 <tr>
   <td
-    className="label">
+    className="label"
+  >
     <label
-      htmlFor="field">
+      htmlFor="field"
+    >
       field label
     </label>
     <div
-      className="description">
+      className="description"
+    >
       field description
     </div>
   </td>
@@ -40,7 +49,8 @@ exports[`settings/Field select 1`] = `
       id="field"
       name="field"
       onChange={[Function]}
-      value={1} />
+      value={1}
+    />
   </td>
 </tr>
 `;
