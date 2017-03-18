@@ -24,7 +24,7 @@ function updateVersion(newVersion) {
 
 function makeCommit(newVersion) {
     execSync(`git add ${paths.join(' ')}`);
-    execSync(`git commit -m "bump v${newVersion}"`);
+    execSync(`git commit -m "bump v${newVersion}" --no-verify`);
     execSync(`git tag v${newVersion}`);
 }
 
