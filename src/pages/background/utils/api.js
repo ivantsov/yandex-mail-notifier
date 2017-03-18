@@ -1,4 +1,5 @@
 import request from 'superagent';
+import errors from 'shared/errors';
 import {getUid} from '../modules/cookie';
 import parseXML from './parser';
 
@@ -24,11 +25,15 @@ async function sendRequest(data) {
         .send(form)
         .query(query);
 
-    if (type === 'json' && res.body.code === 'AUTH_NO_AUTH') {
-        throw new Error('Unauthorized request');
+    if (type === 'json' && res.body.code === errors.NOT_AUTHORIZED) {
+        throw new Error(errors.NOT_AUTHORIZED);
     }
     else if (type === 'xml') {
         const {responseXML} = res.xhr;
+
+        if (!responseXML) {
+            throw new Error(`No XML in the response: ${res.text}`);
+        }
 
         // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
         // check on "redirect_to" should be before "error", because "redirect_to" response contains "error" as well
