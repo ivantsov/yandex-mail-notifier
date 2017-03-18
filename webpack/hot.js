@@ -24,11 +24,7 @@ module.exports = {
     plugins: [
         plugins.copy,
         plugins.shell,
-        ...generateHtmlPlugins([
-            'background',
-            'popup',
-            'settings',
-        ]),
+        ...generateHtmlPlugins(entry),
         new webpack.DefinePlugin({
             __DEV__: true,
         }),

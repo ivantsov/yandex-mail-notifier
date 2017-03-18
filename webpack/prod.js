@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const {pagesPath, generateHtmlPlugins} = require('./utils');
+const {generateHtmlPlugins} = require('./utils');
 const {
     entry,
     output,
@@ -12,9 +12,7 @@ const {
 const extractTextPlugin = new ExtractTextPlugin('[name].css');
 
 module.exports = {
-    entry: Object.assign({}, entry, {
-        raven: `${pagesPath}/raven`,
-    }),
+    entry,
     output,
     resolve,
     module: {
@@ -31,11 +29,7 @@ module.exports = {
     plugins: [
         plugins.copy,
         plugins.shell,
-        ...generateHtmlPlugins([
-            'background',
-            'popup',
-            'settings',
-        ], 'raven'),
+        ...generateHtmlPlugins(entry),
         extractTextPlugin,
         new webpack.DefinePlugin({
             __DEV__: false,

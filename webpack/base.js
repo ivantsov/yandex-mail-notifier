@@ -5,6 +5,7 @@ const {pagesPath} = require('./utils');
 
 module.exports = {
     entry: {
+        raven: `${pagesPath}/raven`,
         background: `${pagesPath}/background`,
         popup: `${pagesPath}/popup`,
         settings: `${pagesPath}/settings`,
