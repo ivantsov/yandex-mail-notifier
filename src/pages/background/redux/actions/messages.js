@@ -25,7 +25,11 @@ export function loadMessagesCount(data) {
     };
 }
 
-export function loadMessages() {
+export function loadMessages({log} = {}) {
+    if (log) {
+        window.Raven.captureMessage('[Event] reload-messages-click', {level: 'info'});
+    }
+
     return async (dispatch) => {
         popupIsOpen = true;
 

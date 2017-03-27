@@ -4,7 +4,7 @@ const middlewares = [thunkMiddleware];
 
 /* eslint-disable global-require */
 if (__DEV__) {
-    const createLogger = require('redux-logger');
+    const {createLogger} = require('redux-logger');
     middlewares.push(createLogger({collapsed: true}));
 }
 else {

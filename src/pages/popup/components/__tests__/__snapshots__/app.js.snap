@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`popup/App authorized 1`] = `
+<div>
+  <div>
+    Header
+  </div>
+  <div>
+    List
+  </div>
+</div>
+`;
+
+exports[`popup/App not authorized 1`] = `
+<div
+  className="container"
+>
+  <p>
+    popup.notAuthorized.title
+  </p>
+  <p>
+    popup.notAuthorized.subTitle
+  </p>
+  <button
+    className="btn"
+    onClick={[Function]}
+  >
+    popup.notAuthorized.btnText
+  </button>
+</div>
+`;

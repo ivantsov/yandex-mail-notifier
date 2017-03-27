@@ -13,6 +13,7 @@ const List = ({
     error,
     items,
     onActionClick,
+    openMessage,
 }) => {
     if (loading) {
         const elements = Array.from(Array(unreadMessagesCount).keys())
@@ -31,6 +32,7 @@ const List = ({
         <Item
             key={item.id}
             onActionClick={onActionClick}
+            openMessage={openMessage}
             {...item}
         />
     ));
@@ -59,6 +61,7 @@ List.propTypes = {
         id: PropTypes.string.isRequired,
     })).isRequired,
     onActionClick: PropTypes.func.isRequired,
+    openMessage: PropTypes.func.isRequired,
 };
 
 export default List;

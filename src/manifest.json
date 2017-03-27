@@ -4,7 +4,7 @@
   "name": "__MSG_ext_name__",
   "description": "__MSG_ext_description__",
   "default_locale": "ru",
-  "author": "Alexander Ivantsov <alexivantsov@ya.ru>",
+  "author": "Alexander Ivantsov <alex@ivantsov.me>",
   "minimum_chrome_version": "48",
   "icons": {
     "16": "assets/icon.png",
@@ -17,7 +17,8 @@
       "19": "assets/icon-disabled.png",
       "38": "assets/icon-disabled.png"
     },
-    "default_title": "__MSG_popup_title__"
+    "default_title": "__MSG_popup_title__",
+    "default_popup": "pages/popup.html"
   },
   "background": {
     "page": "pages/background.html"

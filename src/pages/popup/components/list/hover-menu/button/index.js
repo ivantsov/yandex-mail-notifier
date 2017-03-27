@@ -8,6 +8,7 @@ export default class Button extends Component {
         id: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         onClick: PropTypes.func.isRequired,
+        openMessage: PropTypes.func.isRequired,
     };
 
     render() {
@@ -21,7 +22,6 @@ export default class Button extends Component {
         );
     }
 
-    // eslint-disable-next-line consistent-return
     onClick = (e) => {
         e.stopPropagation();
 
@@ -29,20 +29,21 @@ export default class Button extends Component {
             id,
             type,
             onClick,
+            openMessage,
         } = this.props;
         const typeObj = types[type];
 
-        // for open message action
-        if (typeObj.action) {
-            typeObj.action(id);
-            return;
+        if (!typeObj.actionType) {
+            // for open message action
+            openMessage();
         }
-
-        // for the rest actions
-        onClick({
-            id,
-            oper: typeObj.actionType,
-        });
+        else {
+            // for the rest actions
+            onClick({
+                id,
+                oper: typeObj.actionType,
+            });
+        }
     }
 }
 

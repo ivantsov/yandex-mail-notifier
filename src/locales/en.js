@@ -24,6 +24,11 @@ module.exports = {
         },
         emptyList: 'You have no unread emails',
         loadingError: 'Cannot load emails... Please try again later',
+        notAuthorized: {
+            title: 'Looks like you\'re not authorized or there is no network connection.',
+            subTitle: 'You can try to reload the extension with the button below.',
+            btnText: 'Reload extension',
+        },
         months: [
             'January',
             'February',
