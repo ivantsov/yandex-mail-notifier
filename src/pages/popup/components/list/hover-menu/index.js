@@ -5,28 +5,31 @@ import styles from './hover-menu.less';
 
 const HoverMenu = ({
     id,
-    onClick,
+    onActionClick,
+    openMessage,
 }) => {
     const buttons = Object.keys(types).map((key, index) => (
         <Button
             key={index}
             id={id}
             type={key}
-            onClick={onClick}
+            onClick={onActionClick}
+            openMessage={openMessage}
         />
     ));
 
     return (
         <div
             className={styles.component}
-            onClick={() => types.open.action(id)}
+            onClick={openMessage}
         >{buttons}</div>
     );
 };
 
 HoverMenu.propTypes = {
     id: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onActionClick: PropTypes.func.isRequired,
+    openMessage: PropTypes.func.isRequired,
 };
 
 export default HoverMenu;

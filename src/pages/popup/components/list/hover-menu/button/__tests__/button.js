@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import openUrl from 'shared/utils/tab';
 import Button from '../index';
 
-jest.mock('shared/utils/tab');
 jest.mock('shared/utils/i18n', () => ({
     text: jest.fn(() => 'text'),
 }));
@@ -11,6 +9,7 @@ jest.mock('shared/utils/i18n', () => ({
 const props = {
     id: '123',
     onClick: jest.fn(),
+    openMessage: jest.fn()
 };
 
 function render(type) {
@@ -32,13 +31,13 @@ describe('popup/HoverMenu/Button', () => {
         render('open');
 
         expect(props.onClick).not.toBeCalled();
-        expect(openUrl).lastCalledWith(`#message/${props.id}`);
+        expect(props.openMessage).toBeCalled();
     });
 
     it('read button', () => {
         render('read');
 
-        expect(openUrl).not.toBeCalled();
+        expect(props.openMessage).not.toBeCalled();
         expect(props.onClick).lastCalledWith({
             id: props.id,
             oper: 'mark_read',
@@ -48,7 +47,7 @@ describe('popup/HoverMenu/Button', () => {
     it('remove button', () => {
         render('remove');
 
-        expect(openUrl).not.toBeCalled();
+        expect(props.openMessage).not.toBeCalled();
         expect(props.onClick).lastCalledWith({
             id: props.id,
             oper: 'delete',
@@ -58,7 +57,7 @@ describe('popup/HoverMenu/Button', () => {
     it('spam button', () => {
         render('spam');
 
-        expect(openUrl).not.toBeCalled();
+        expect(props.openMessage).not.toBeCalled();
         expect(props.onClick).lastCalledWith({
             id: props.id,
             oper: 'tospam',

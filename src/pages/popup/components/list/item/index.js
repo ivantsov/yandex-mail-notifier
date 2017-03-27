@@ -11,6 +11,7 @@ const Item = ({
     firstline,
     date,
     onActionClick,
+    openMessage,
 }) => (
     <div className={styles.component}>
         <div className={styles.contentContainer}>
@@ -22,7 +23,11 @@ const Item = ({
             <p className={styles.content}>{firstline}</p>
         </div>
 
-        <HoverMenu id={id} onClick={onActionClick}/>
+        <HoverMenu
+            id={id}
+            onActionClick={onActionClick}
+            openMessage={() => openMessage(`#message/${id}`)}
+        />
     </div>
 );
 
@@ -33,6 +38,7 @@ Item.propTypes = {
     firstline: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     onActionClick: PropTypes.func.isRequired,
+    openMessage: PropTypes.func.isRequired,
 };
 
 export default Item;

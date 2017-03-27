@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import i18n from 'shared/utils/i18n';
-import openUrl, {openSettings} from 'shared/utils/tab';
 import SettingsIcon from './icons/settings';
 import ReloadIcon from './icons/reload';
 import ComposeIcon from './icons/compose';
@@ -11,21 +10,23 @@ const Header = ({
     user,
     unreadMessagesCount,
     disabled,
-    onReloadClick,
+    reloadMessages,
+    openLink,
+    openSettings,
 }) => (
     <div className={styles.component}>
-        <a className={styles.composeBtn} onClick={() => openUrl('#compose')}>
+        <a className={styles.composeBtn} onClick={() => openLink('#compose')}>
             <ComposeIcon className={styles.composeIcon}/>
             {i18n.text('popup.compose')}
         </a>
         <div className={styles.centerBlock}>
-            <a onClick={openUrl}>
+            <a onClick={() => openLink()}>
                 {user} (<strong>{unreadMessagesCount}</strong>)
             </a>
             <button
                 className={styles.reloadBtn}
                 disabled={disabled}
-                onClick={onReloadClick}
+                onClick={() => reloadMessages(true)}
             >
                 <ReloadIcon className={styles.reloadIcon}/>
             </button>
@@ -40,7 +41,9 @@ Header.propTypes = {
     user: PropTypes.string.isRequired,
     unreadMessagesCount: PropTypes.number.isRequired,
     disabled: PropTypes.bool.isRequired,
-    onReloadClick: PropTypes.func.isRequired,
+    reloadMessages: PropTypes.func.isRequired,
+    openLink: PropTypes.func.isRequired,
+    openSettings: PropTypes.func.isRequired,
 };
 
 export default Header;

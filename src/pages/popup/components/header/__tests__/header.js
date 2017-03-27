@@ -1,16 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import openUrl, {openSettings} from 'shared/utils/tab';
 import Header from '../index';
 
-jest.mock('shared/utils/tab');
+const reloadMessages = jest.fn();
+const openLink = jest.fn();
+const openSettings = jest.fn();
 
-const onReloadClick = jest.fn();
 const commonProps = {
     user: 'username@ya.ru',
     unreadMessagesCount: 5,
     disabled: false,
-    onReloadClick,
+    reloadMessages,
+    openLink,
+    openSettings,
 };
 
 function render(props) {
@@ -47,14 +49,6 @@ describe('popup/Header', () => {
 
     it('callbacks', () => {
         const tree = render();
-
-        const composeLink = tree.children.find(({type}) => type === 'a');
-        composeLink.props.onClick();
-        expect(openUrl).lastCalledWith('#compose');
-    });
-
-    it('callbacks', () => {
-        const tree = render();
         const [
             composeLink,
             centerBlock,
@@ -62,15 +56,15 @@ describe('popup/Header', () => {
         ] = tree.children;
 
         composeLink.props.onClick();
-        expect(openUrl).lastCalledWith('#compose');
+        expect(openLink).lastCalledWith('#compose');
 
         const [mailLink, reloadBtn] = centerBlock.children;
 
         mailLink.props.onClick();
-        expect(openUrl).lastCalledWith();
+        expect(openLink).lastCalledWith();
 
         reloadBtn.props.onClick();
-        expect(onReloadClick).lastCalledWith();
+        expect(reloadMessages).lastCalledWith(true);
 
         settingsLink.props.onClick();
         expect(openSettings).lastCalledWith();
