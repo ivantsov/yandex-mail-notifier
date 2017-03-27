@@ -1,12 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
+import UnavailableMessage from './unavailable-message';
 import Header from './header';
 import List from './list';
 
 class App extends Component {
     static propTypes = {
         user: PropTypes.shape({
+            authorized: PropTypes.bool.isRequired,
             email: PropTypes.string.isRequired,
         }).isRequired,
         messages: PropTypes.shape({
@@ -17,15 +19,25 @@ class App extends Component {
         }).isRequired,
         loadMessages: PropTypes.func.isRequired,
         updateMessage: PropTypes.func.isRequired,
+        openLink: PropTypes.func.isRequired,
+        openSettings: PropTypes.func.isRequired,
+        reloadApp: PropTypes.func.isRequired,
     };
 
-    componentWillMount() {
-        this.props.loadMessages();
+    componentDidMount() {
+        const {
+            user,
+            loadMessages,
+        } = this.props;
+
+        if (user.authorized) {
+            loadMessages();
+        }
     }
 
     render() {
         const {
-            user: {email},
+            user,
             messages: {
                 unreadCount,
                 items,
@@ -34,15 +46,24 @@ class App extends Component {
             },
             loadMessages,
             updateMessage,
+            openLink,
+            openSettings,
+            reloadApp,
         } = this.props;
+
+        if (!user.authorized) {
+            return <UnavailableMessage reloadApp={reloadApp}/>;
+        }
 
         return (
             <div>
                 <Header
-                    user={email}
+                    user={user.email}
                     unreadMessagesCount={unreadCount}
                     disabled={loading}
-                    onReloadClick={loadMessages}
+                    reloadMessages={loadMessages}
+                    openLink={openLink}
+                    openSettings={openSettings}
                 />
                 <List
                     loading={loading}
@@ -50,6 +71,7 @@ class App extends Component {
                     unreadMessagesCount={unreadCount}
                     items={items}
                     onActionClick={updateMessage}
+                    openMessage={openLink}
                 />
             </div>
         );
@@ -57,3 +79,4 @@ class App extends Component {
 }
 
 export default connect(state => state, actions)(App);
+export {App as AppComponent}; // for test purpose

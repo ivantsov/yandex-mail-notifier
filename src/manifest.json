@@ -17,7 +17,8 @@
       "19": "assets/icon-disabled.png",
       "38": "assets/icon-disabled.png"
     },
-    "default_title": "__MSG_popup_title__"
+    "default_title": "__MSG_popup_title__",
+    "default_popup": "pages/popup.html"
   },
   "background": {
     "page": "pages/background.html"

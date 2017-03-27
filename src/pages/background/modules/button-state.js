@@ -1,5 +1,4 @@
 import {subscribe} from 'redux-subscriber';
-import openTab from 'shared/utils/tab';
 
 const popup = chrome.browserAction;
 
@@ -9,11 +8,9 @@ function setState({user, messages}) {
 
     // enable or disable popup button (onClick works only if no popup set)
     if (enabled) {
-        popup.setPopup({popup: '/pages/popup.html'});
         popup.setIcon({path: '/assets/icon.png'});
     }
     else {
-        popup.setPopup({popup: ''});
         popup.setIcon({path: '/assets/icon-disabled.png'});
     }
 
@@ -23,8 +20,6 @@ function setState({user, messages}) {
 }
 
 export default function () {
-    popup.onClicked.addListener(openTab);
-
     subscribe('user.authorized', setState);
     subscribe('messages.unreadCount', setState);
 }
