@@ -9,7 +9,7 @@ jest.mock('shared/utils/i18n', () => ({
 const props = {
     id: '123',
     onClick: jest.fn(),
-    openMessage: jest.fn()
+    openMessage: jest.fn(),
 };
 
 function render(type) {

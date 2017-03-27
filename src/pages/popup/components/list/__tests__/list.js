@@ -24,7 +24,7 @@ const defaultProps = {
     unreadMessagesCount: 0,
     items: [],
     onActionClick: jest.fn(),
-    openMessage: jest.fn()
+    openMessage: jest.fn(),
 };
 
 function render(props) {

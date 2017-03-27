@@ -41,7 +41,7 @@ function render(props) {
         <AppComponent
             {...baseProps}
             {...props}
-        />
+        />,
     );
 
     return component.toJSON();
@@ -59,8 +59,8 @@ describe('popup/App', () => {
         const tree = render({
             user: {
                 ...baseProps.user,
-                authorized: false
-            }
+                authorized: false,
+            },
         });
 
         expect(tree).toMatchSnapshot();
