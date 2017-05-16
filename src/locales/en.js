@@ -29,6 +29,10 @@ module.exports = {
             subTitle: 'You can try to reload the extension with the button below.',
             btnText: 'Reload extension',
         },
+        donation: {
+            text: 'Like the extension? - Help the author!',
+            donateBtn: 'Donate',
+        },
         months: [
             'January',
             'February',
