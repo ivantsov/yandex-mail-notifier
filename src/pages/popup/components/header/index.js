@@ -20,7 +20,7 @@ const Header = ({
             {i18n.text('popup.compose')}
         </a>
         <div className={styles.centerBlock}>
-            <a onClick={() => openLink()}> {/* we need callback here, otherwise event will be passed as a first param*/}
+            <a onClick={() => openLink()}>{/* we need callback here, otherwise event will be passed as a first param*/}
                 {user} (<strong>{unreadMessagesCount}</strong>)
             </a>
             <button
