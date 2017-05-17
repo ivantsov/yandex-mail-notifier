@@ -5,14 +5,14 @@ import config from './config';
 import Field from './field';
 
 const App = ({settings, updateSettings}) => {
-    const fields = config.map((item, index) =>
+    const fields = config.map((item, index) => (
         <Field
             key={index}
             {...item}
             value={settings[item.name]}
             onChange={updateSettings}
-        />,
-    );
+        />
+    ));
 
     return (
         <table>

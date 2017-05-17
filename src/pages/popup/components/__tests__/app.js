@@ -34,6 +34,7 @@ const baseProps = {
     openLink: jest.fn(),
     openSettings: jest.fn(),
     reloadApp: jest.fn(),
+    openDonationLink: jest.fn(),
 };
 
 function render(props) {

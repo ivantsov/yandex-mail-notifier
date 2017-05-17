@@ -7,11 +7,11 @@ const Select = ({
     options,
     onChange,
 }) => {
-    const optionElements = options.map((item, index) =>
+    const optionElements = options.map((item, index) => (
         <option key={index} value={item.value}>
             {item.label}
-        </option>,
-    );
+        </option>
+    ));
 
     return (
         <select

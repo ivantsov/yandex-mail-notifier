@@ -6,6 +6,7 @@ import {
     OPEN_LINK,
     OPEN_SETTINGS,
     RELOAD_APP,
+    OPEN_DONATION_LINK,
 } from 'shared/redux-consts/popup';
 
 export function loadMessages(log) {
@@ -35,4 +36,8 @@ export function openSettings() {
 
 export function reloadApp() {
     return {type: RELOAD_APP};
+}
+
+export function openDonationLink() {
+    return {type: OPEN_DONATION_LINK};
 }

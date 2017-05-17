@@ -3,7 +3,7 @@
   "version": "1.5.0",
   "name": "__MSG_ext_name__",
   "description": "__MSG_ext_description__",
-  "default_locale": "ru",
+  "default_locale": "en",
   "author": "Alexander Ivantsov <alex@ivantsov.me>",
   "minimum_chrome_version": "48",
   "icons": {

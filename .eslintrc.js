@@ -3,6 +3,14 @@ const {resolve} = require('./webpack/base');
 const INDENT = 4;
 
 const base = {
+    // disabled
+    'max-len': 'off',
+    'arrow-parens': 'off',
+    'arrow-body-style': 'off',
+    'no-prototype-builtins': 'off',
+    'no-plusplus': 'off',
+
+    // modified
     indent: ['error', INDENT, {
         SwitchCase: 1
     }],
@@ -10,32 +18,26 @@ const base = {
         'allowSingleLine': false
     }],
     'object-curly-spacing': ['error', 'never'],
-    'max-len': 'off',
     'one-var': ['error', {
         initialized: 'never'
     }],
     'one-var-declaration-per-line': ['error', 'initializations'],
-    'arrow-parens': 'off',
-    'arrow-body-style': 'off',
-    'no-prototype-builtins': 'off',
-    'no-plusplus': 'off'
 };
 
 const react = {
+    // disabled
+    'react/forbid-prop-types': 'off',
+    'react/no-array-index-key': 'off',
+
+    // modified
     'react/jsx-filename-extension': ['error', {extensions: ['.js']}],
     'react/jsx-indent': ['error', INDENT],
     'react/jsx-indent-props': ['error', INDENT],
-    'react/jsx-space-before-closing': ['error', 'never'],
     'react/jsx-tag-spacing': ['error', {
         closingSlash: 'never',
         beforeSelfClosing: 'never',
         afterOpening: 'never'
     }],
-    'react/forbid-prop-types': 'off',
-    'react/no-unused-prop-types': ['error', {
-        skipShapeProps: true
-    }],
-    'react/no-array-index-key': 'off',
     'react/sort-comp': ['error', {
         order: [
             'static-methods',
