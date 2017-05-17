@@ -13,8 +13,8 @@ const TYPES = {
     },
     notButton: {
         name: 'notButton',
-        className: styles.notBtn
-    }
+        className: styles.notBtn,
+    },
 };
 
 const Button = ({
@@ -31,10 +31,10 @@ const Button = ({
 Button.propTypes = {
     children: PropTypes.any.isRequired,
     onClick: PropTypes.func.isRequired,
-    type: PropTypes.oneOf(Object.keys(TYPES))
+    type: PropTypes.oneOf(Object.keys(TYPES)),
 };
 Button.defaultProps = {
-    type: TYPES.primary.name
+    type: TYPES.primary.name,
 };
 
 export default Button;

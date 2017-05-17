@@ -4,13 +4,13 @@ module.exports = {
     resetModules: true,
     moduleDirectories: [
         'node_modules',
-        'src/pages'
+        'src/pages',
     ],
     moduleNameMapper: {
-        '\\.(less)$': 'identity-obj-proxy'
+        '\\.(less)$': 'identity-obj-proxy',
     },
     testPathIgnorePatterns: [
         '/node_modules/',
-        'fixtures.js'
-    ]
+        'fixtures.js',
+    ],
 };

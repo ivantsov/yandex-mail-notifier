@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 
 import styles from './UnavailableMessage.less';
 
-const UnavailableMessage = ({reloadApp,}) => (
+const UnavailableMessage = ({reloadApp}) => (
     <div className={styles.container}>
         <p><Translation id="notAuthorized.title"/></p>
         <p><Translation id="notAuthorized.subTitle"/></p>

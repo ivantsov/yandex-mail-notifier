@@ -23,6 +23,7 @@ class App extends Component {
         openLink: PropTypes.func.isRequired,
         openSettings: PropTypes.func.isRequired,
         reloadApp: PropTypes.func.isRequired,
+        openDonationLink: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
