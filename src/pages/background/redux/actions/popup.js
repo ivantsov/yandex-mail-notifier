@@ -27,3 +27,9 @@ export function reloadApp() {
 
     return {type: RELOAD_APP};
 }
+
+export function openDonationLink() {
+    window.Raven.captureMessage('[Event] donate-click', {level: 'info'});
+
+    return openLink({url: 'https://donorbox.org/alexander-ivantsov'});
+}
