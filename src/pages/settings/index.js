@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createUIStore} from 'redux-webext';
-import App from './components/app';
+import App from './components/App';
 
 import './layout.less';
 
