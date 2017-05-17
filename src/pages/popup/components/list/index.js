@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import TransitionGroup from 'react-addons-css-transition-group';
+import TransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import i18n from 'shared/utils/i18n';
 import Item from './item';
 import ItemPlaceholder from './item-placeholder';
