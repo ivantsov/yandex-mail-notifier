@@ -1,5 +1,5 @@
 import i18n from 'shared/utils/i18n';
-import types from './field/types';
+import types from './Field/types';
 
 const fields = [{
     type: types.select,
