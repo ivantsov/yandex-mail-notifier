@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import types from './types';
 import Checkbox from './Items/Checkbox';
 import Select from './Items/Select';

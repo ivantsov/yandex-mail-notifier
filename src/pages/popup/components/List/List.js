@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import TransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import i18n from 'shared/utils/i18n';
 import Item from './Item/Item';

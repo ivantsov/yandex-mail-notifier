@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import i18n from 'shared/utils/i18n';
 import SettingsIcon from './Icons/SettingsIcon';
 import ReloadIcon from './Icons/ReloadIcon';
