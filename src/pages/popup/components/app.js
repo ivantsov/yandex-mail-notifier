@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-import UnavailableMessage from './unavailable-message';
+import UnavailableMessage from './UnavailableMessage/UnavailableMessage';
+import Donation from './Donation/Donation';
 import Header from './header';
 import List from './list';
 
@@ -49,6 +50,7 @@ class App extends Component {
             openLink,
             openSettings,
             reloadApp,
+            openDonationLink,
         } = this.props;
 
         if (!user.authorized) {
@@ -73,6 +75,7 @@ class App extends Component {
                     onActionClick={updateMessage}
                     openMessage={openLink}
                 />
+                <Donation onClick={openDonationLink}/>
             </div>
         );
     }

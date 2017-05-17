@@ -4,14 +4,14 @@ import Translation from '../Translation';
 
 import styles from './Donation.less';
 
-export default function Donation({openDonationLink}) {
+export default function Donation({onClick}) {
     return (
         <div className={styles.component}>
             <Translation id="donation.text"/>
             <div className={styles.btn}>
                 <Button
                     type="secondary"
-                    onClick={openDonationLink}
+                    onClick={onClick}
                 >
                     <Translation id="donation.donateBtn"/>
                 </Button>
@@ -20,5 +20,5 @@ export default function Donation({openDonationLink}) {
     );
 }
 Donation.propTypes = {
-    openDonationLink: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
