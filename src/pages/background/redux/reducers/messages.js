@@ -34,7 +34,6 @@ export default function (state = initialState, action) {
         case LOAD_MESSAGES_SUCCESS:
             return {
                 ...state,
-                unreadCount: action.data.length,
                 items: action.data,
                 loading: false,
                 error: false,
