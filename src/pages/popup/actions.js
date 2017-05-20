@@ -9,6 +9,11 @@ import {
     OPEN_DONATION_LINK,
 } from 'shared/redux-consts/popup';
 
+// only FF needs it
+function closePopup() {
+    window.close();
+}
+
 export function loadMessages(log) {
     return {
         type: LOAD_MESSAGES,
@@ -24,6 +29,8 @@ export function updateMessage(data) {
 }
 
 export function openLink(url) {
+    closePopup();
+
     return {
         type: OPEN_LINK,
         url,
@@ -31,6 +38,8 @@ export function openLink(url) {
 }
 
 export function openSettings() {
+    closePopup();
+
     return {type: OPEN_SETTINGS};
 }
 
@@ -39,5 +48,7 @@ export function reloadApp() {
 }
 
 export function openDonationLink() {
+    closePopup();
+
     return {type: OPEN_DONATION_LINK};
 }
