@@ -38,13 +38,19 @@ module.exports = {
             from: 'src',
             to: path.resolve('dist'),
             ignore: [
+                'manifest/**/*',
                 'pages/**/*',
-                'locales/*',
+                'locales/**/*',
             ],
         }]),
-        shell: new ShellPlugin({
-            onBuildEnd: ['node ./scripts/locales'],
-            dev: false,
-        }),
+        shell(target) {
+            return new ShellPlugin({
+                onBuildEnd: [
+                    `node ./scripts/generate-manifest ${target}`,
+                    'node ./scripts/locales',
+                ],
+                dev: false,
+            })
+        }
     },
 };
