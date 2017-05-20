@@ -51,10 +51,14 @@
     margin: 2px 0 4px;
 }
 
+@lineHeight: 16px;
+@linesCount: 2;
 .content {
     color: fade(black, 50%);
     overflow: hidden;
+    line-height: @lineHeight;
+    max-height: @linesCount * @lineHeight;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: @linesCount;
     -webkit-box-orient: vertical;
 }
