@@ -23,12 +23,19 @@ module.exports = {
         js: {
             test: /\.js$/,
             use: ['babel-loader'],
+            exclude: /node_modules/,
         },
         css: {
-            test: /\.less/,
+            test: /\.less$/,
             use: [
-                'style-loader',
-                'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1,
+                        modules: true,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
+                    },
+                },
                 'less-loader',
             ],
         },
@@ -50,7 +57,7 @@ module.exports = {
                     'node ./scripts/locales',
                 ],
                 dev: false,
-            })
-        }
+            });
+        },
     },
 };
