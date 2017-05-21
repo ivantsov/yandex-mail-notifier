@@ -37,4 +37,3 @@ console.log(`Package version has been updated to ${newVersion}`);
 
 makeCommit(newVersion);
 console.log(`Tag has been set to v${newVersion}`);
-
