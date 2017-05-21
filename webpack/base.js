@@ -23,12 +23,19 @@ module.exports = {
         js: {
             test: /\.js$/,
             use: ['babel-loader'],
+            exclude: /node_modules/,
         },
         css: {
-            test: /\.less/,
+            test: /\.less$/,
             use: [
-                'style-loader',
-                'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1,
+                        modules: true,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
+                    },
+                },
                 'less-loader',
             ],
         },
@@ -38,13 +45,19 @@ module.exports = {
             from: 'src',
             to: path.resolve('dist'),
             ignore: [
+                'manifest/**/*',
                 'pages/**/*',
-                'locales/*',
+                'locales/**/*',
             ],
         }]),
-        shell: new ShellPlugin({
-            onBuildEnd: ['node ./scripts/locales'],
-            dev: false,
-        }),
+        shell(target) {
+            return new ShellPlugin({
+                onBuildEnd: [
+                    `node ./scripts/generate-manifest ${target}`,
+                    'node ./scripts/locales',
+                ],
+                dev: false,
+            });
+        },
     },
 };

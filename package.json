@@ -18,12 +18,16 @@
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "test:watch": "jest --watch",
-    "start": "webpack-dev-server --config webpack/hot.js",
-    "build:prod": "npm run clean && webpack --env prod",
+    "start:chrome": "npm run clean && webpack-dev-server --env.env=dev --env.target=chrome",
+    "start:firefox": "web-ext run --bc -s dist",
+    "watch:firefox": "npm run clean && webpack  --env.env=dev --env.target=firefox",
+    "build:chrome": "npm run clean && webpack --env.env=prod --env.target=chrome",
+    "build:firefox": "npm run clean && webpack --env.env=prod --env.target=firefox",
     "zip": "zip -r -X dist/yandex-mail-notifier.zip dist",
     "deploy": "node ./scripts/deploy",
-    "publish": "npm run build:prod && npm run zip && npm run deploy",
-    "release": "npm run lint && npm run test && node ./scripts/release"
+    "publish": "npm-run-all build zip deploy",
+    "prerelease": "npm-run-all --parallel lint test",
+    "release": "node ./scripts/release"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -72,6 +76,7 @@
     "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
     "style-loader": "^0.17.0",
+    "web-ext": "^1.9.1",
     "webext-i18n": "^1.1.0",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5",

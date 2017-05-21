@@ -5,7 +5,6 @@
   "description": "__MSG_ext_description__",
   "default_locale": "en",
   "author": "Alexander Ivantsov <alex@ivantsov.me>",
-  "minimum_chrome_version": "48",
   "icons": {
     "16": "assets/icon.png",
     "32": "assets/icon.png",
@@ -23,11 +22,6 @@
   "background": {
     "page": "pages/background.html"
   },
-  "options_ui": {
-    "page": "pages/settings.html",
-    "chrome_style": true
-  },
-  "incognito": "spanning",
   "offline_enabled": false,
   "permissions": [
     "*://*/*",
@@ -37,6 +31,5 @@
     "storage",
     "alarms",
     "notifications"
-  ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost:8080; object-src 'self'"
+  ]
 }

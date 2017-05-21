@@ -1,1 +1,1 @@
-module.exports = (env = 'dev') => require(`./webpack/${env}`);
+module.exports = ({env, target}) => require(`./webpack/${env}`)(target);

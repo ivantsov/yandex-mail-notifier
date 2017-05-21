@@ -11,33 +11,26 @@ const {
 
 const extractTextPlugin = new ExtractTextPlugin('[name].css');
 
-module.exports = {
+module.exports = (target) => ({
     entry,
     output,
     resolve,
     module: {
         rules: [
-            moduleRules.js, {
-                test: /\.less/,
-                loader: extractTextPlugin.extract([
-                    'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:10]',
-                    'less-loader',
-                ]),
-            },
+            moduleRules.js,
+            Object.assign({}, moduleRules.css, {
+                use: extractTextPlugin.extract(moduleRules.css.use),
+            }),
         ],
     },
     plugins: [
-        plugins.copy,
-        plugins.shell,
-        ...generateHtmlPlugins(entry),
-        extractTextPlugin,
-        new webpack.DefinePlugin({
-            __DEV__: false,
-            'process.env.NODE_ENV': JSON.stringify('production'),
-        }),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false,
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            __DEV__: false,
         }),
         new webpack.optimize.UglifyJsPlugin({
             beautify: false,
@@ -50,5 +43,9 @@ module.exports = {
             },
             comments: false,
         }),
+        plugins.copy,
+        plugins.shell(target),
+        ...generateHtmlPlugins(entry),
+        extractTextPlugin,
     ],
-};
+});
