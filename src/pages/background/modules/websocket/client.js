@@ -1,8 +1,6 @@
 import qs from 'query-string';
 import {RECONNECT, NEW_MESSAGE} from './constants';
 
-const WS_URL = 'wss://xiva-daria.mail.yandex.net/events/websocket';
-
 let ws, emitEvent;
 
 function onClose(...args) {
@@ -23,22 +21,34 @@ function onMessage({data}) {
     }
 }
 
-function connect(data) {
-    const {
-        sign,
-        ts,
-        uid,
-    } = data;
+// use lazy-function because we always need to return the same value
+const getSessionId = (() => {
+    const mask = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+    const availableChars = '0123456789ABCDEF';
+
+    const sessionId = mask
+        .split('')
+        .map(char => char !== 'x' ? char : availableChars[Math.floor(16 * Math.random())])
+        .join('');
+
+    return () => sessionId;
+})();
+
+function connect({
+    uid,
+    token,
+}) {
     const queryParams = qs.stringify({
-        client_id: 'bar',
+        client: 'bar',
         service: 'mail',
-        format: 'json',
+        session: getSessionId(),
+        oauth_token: token,
         uid,
-        sign,
-        ts,
     });
 
-    ws = new WebSocket(`${WS_URL}?${queryParams}`);
+    disconnect();
+
+    ws = new WebSocket(`wss://push.yandex.ru/v1/subscribe?${queryParams}`);
 
     ws.addEventListener('close', onClose, false);
     ws.addEventListener('message', onMessage, false);

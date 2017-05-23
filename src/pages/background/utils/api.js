@@ -1,10 +1,16 @@
 import request from 'superagent';
 import errors from 'shared/errors';
-import {getUid} from '../modules/cookie';
+import {getUid as getCookieUid, getSessionId} from '../modules/cookie';
 import parseXML from './parser';
 
 const DOMAIN = 'https://mail.yandex.ru';
 const API_URL = `${DOMAIN}/api`;
+const AUTH_CONFIG = {
+    tokenUrl: 'https://oauth.yandex.ru/token',
+    passportUrl: 'https://pass.yandex.ru/accounts',
+    clientId: '49c545918c574ac28dd7d27e8297065a',
+    clientSecret: '813caaea334a4fb5be54a8b9af3f4c97',
+};
 
 // prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
@@ -25,8 +31,14 @@ async function sendRequest(data) {
         .send(form)
         .query(query);
 
-    if (type === 'json' && res.body.code === errors.NOT_AUTHORIZED) {
-        throw new Error(errors.NOT_AUTHORIZED);
+    if (type === 'json') {
+        const resData = res.body || JSON.parse(res.text);
+
+        if (resData.code === errors.NOT_AUTHORIZED) {
+          throw new Error(errors.NOT_AUTHORIZED);
+        }
+
+        return resData;
     }
     else if (type === 'xml') {
         const {responseXML} = res.xhr;
@@ -50,9 +62,9 @@ async function sendRequest(data) {
             const errText = err.textContent || err.getAttribute('code');
             throw new Error(`Error in the response: ${errText}`);
         }
-    }
 
-    return type === 'json' ? res.body : res.xhr.responseXML;
+        return res.xhr.responseXML;
+    }
 }
 
 export async function getUser() {
@@ -77,13 +89,45 @@ export async function getMessagesCount() {
     return res.counters.unread;
 }
 
+async function getUid() {
+    const uid = await getCookieUid();
+    const res = await sendRequest({
+        url: AUTH_CONFIG.passportUrl,
+        query: {
+            yu: uid,
+        },
+    });
+
+    return res.default_uid;
+}
+
+async function getToken(uid) {
+    const sessionId = await getSessionId();
+
+    const res = await sendRequest({
+        method: 'post',
+        url: AUTH_CONFIG.tokenUrl,
+        form: {
+            grant_type: 'sessionid',
+            host: 'yandex.ru',
+            client_id: AUTH_CONFIG.clientId,
+            client_secret: AUTH_CONFIG.clientSecret,
+            sessionid: sessionId,
+            uid,
+        },
+    });
+
+    return res.access_token;
+}
+
 export async function getSocketCredentials() {
     const uid = await getUid();
+    const token = await getToken(uid);
 
-    return sendRequest({
-        url: `${DOMAIN}/neo2/handlers/xiva_sub.jsx`,
-        query: {req: uid},
-    });
+    return {
+        uid,
+        token,
+    };
 }
 
 export async function getMessages() {
