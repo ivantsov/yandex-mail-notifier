@@ -31,40 +31,41 @@ async function sendRequest(data) {
         .send(form)
         .query(query);
 
+    // json
     if (type === 'json') {
         const resData = res.body || JSON.parse(res.text);
 
         if (resData.code === errors.NOT_AUTHORIZED) {
-          throw new Error(errors.NOT_AUTHORIZED);
+            throw new Error(errors.NOT_AUTHORIZED);
         }
 
         return resData;
     }
-    else if (type === 'xml') {
-        const {responseXML} = res.xhr;
 
-        if (!responseXML) {
-            throw new Error(`No XML in the response: ${res.text}`);
-        }
+    // xml
+    const {responseXML} = res.xhr;
 
-        // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
-        // check on "redirect_to" should be before "error", because "redirect_to" response contains "error" as well
-        const redirect = responseXML.querySelector('redirect_to');
-        if (redirect) {
-            return sendRequest({
-                ...data,
-                url: redirect.textContent,
-            });
-        }
-
-        const err = responseXML.querySelector('error');
-        if (err) {
-            const errText = err.textContent || err.getAttribute('code');
-            throw new Error(`Error in the response: ${errText}`);
-        }
-
-        return res.xhr.responseXML;
+    if (!responseXML) {
+        throw new Error(`No XML in the response: ${res.text}`);
     }
+
+    // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
+    // check on "redirect_to" should be before "error", because "redirect_to" response contains "error" as well
+    const redirect = responseXML.querySelector('redirect_to');
+    if (redirect) {
+        return sendRequest({
+            ...data,
+            url: redirect.textContent,
+        });
+    }
+
+    const err = responseXML.querySelector('error');
+    if (err) {
+        const errText = err.textContent || err.getAttribute('code');
+        throw new Error(`Error in the response: ${errText}`);
+    }
+
+    return res.xhr.responseXML;
 }
 
 export async function getUser() {

@@ -28,7 +28,13 @@ const getSessionId = (() => {
 
     const sessionId = mask
         .split('')
-        .map(char => char !== 'x' ? char : availableChars[Math.floor(16 * Math.random())])
+        .map(char => {
+            if (char === 'x') {
+                return availableChars[Math.floor(16 * Math.random())];
+            }
+
+            return char;
+        })
         .join('');
 
     return () => sessionId;
@@ -46,6 +52,7 @@ function connect({
         uid,
     });
 
+    // eslint-disable-next-line no-use-before-define
     disconnect();
 
     ws = new WebSocket(`wss://push.yandex.ru/v1/subscribe?${queryParams}`);
