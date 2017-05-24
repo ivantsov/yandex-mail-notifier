@@ -25,7 +25,7 @@
     "build:firefox": "npm run clean && webpack --env.env=prod --env.target=firefox",
     "zip": "zip -r -X dist/yandex-mail-notifier.zip dist",
     "deploy": "node ./scripts/deploy",
-    "publish": "npm-run-all build zip deploy",
+    "publish": "npm-run-all build:chrome zip deploy",
     "prerelease": "npm-run-all --parallel lint test",
     "release": "node ./scripts/release"
   },
