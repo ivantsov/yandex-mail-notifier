@@ -24,10 +24,19 @@ module.exports = {
         },
         emptyList: 'You have no unread emails',
         loadingError: 'Cannot load emails... Please try again later',
-        notAuthorized: {
-            title: 'Looks like you\'re not authorized or there is no network connection.',
-            subTitle: 'You can try to reload the extension with the button below.',
-            btnText: 'Reload extension',
+        unavailable: {
+            title: 'Something went wrong...',
+            subTitle: 'There are a few possible reasons why the extension can\'t work properly:',
+            notAuth: {
+                label: 'You are not authorized.',
+                checkAuth: 'Check that you\'re authorized on Yandex <strong>(exactly <i>.ru</i> domain)</strong>.',
+                relogin: 'Try to logout and login again.',
+            },
+            noConnection: {
+                label: 'There is no connection to the Internet.',
+            },
+            nothingHelped: 'If nothing above helped then try to reload the extension with the button bellow.',
+            reloadBtn: 'Reload extension',
         },
         donation: {
             text: 'Like the extension? - Help the author!',

@@ -3,7 +3,8 @@ import React from 'react';
 import i18n from 'shared/utils/i18n';
 
 const Translation = ({id}) => (
-    <span>{i18n.text(`popup.${id}`)}</span>
+    // eslint-disable-next-line react/no-danger
+    <span dangerouslySetInnerHTML={{__html: i18n.text(`popup.${id}`)}}/>
 );
 Translation.propTypes = {
     id: PropTypes.string.isRequired,
