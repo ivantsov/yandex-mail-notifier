@@ -13,7 +13,7 @@ This project uses [Yarn](https://yarnpkg.com), to install dependencies - run `ya
 
 ## Development
 
-### Common
+#### Common
 
 * `npm run lint` - runs eslint
 * `npm run lint:fix` - runs eslint in autofix mode
@@ -21,11 +21,11 @@ This project uses [Yarn](https://yarnpkg.com), to install dependencies - run `ya
 * `npm run test:watch` - runs tests in watch mode
 * `npm run test:coverage` - runs tests with coverage report
 
-### Chrome
+#### Chrome
 
 Just run `npm run start:chrome` to start development server.
 
-### Firefox
+#### Firefox
 
 1. Run `npm run watch:firefox` to build the bundle in watch mode.
 2. Run `npm run start:firefox` to start development server.
@@ -37,11 +37,11 @@ Just run `npm run start:chrome` to start development server.
 3. Check the changes carefully and push.
 4. The following steps depend on the browser.
 
-### Chrome
+#### Chrome
 
 After the push, TravisCI will take care of uploading and publishing new version to Chrome Store.
 
-### Firefox
+#### Firefox
 
 1. Run `build:firefox` to build the bundle for FF.
 2. Run `npm run zip` to get an archive.

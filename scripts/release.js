@@ -18,7 +18,7 @@ function updateVersion(newVersion) {
     paths.forEach(path => {
         const config = fs.readJsonSync(path);
         config.version = newVersion;
-        fs.writeJsonSync(path, config);
+        fs.writeJsonSync(path, config, {spaces: 2});
     });
 }
 
