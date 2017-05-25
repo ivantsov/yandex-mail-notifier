@@ -90,6 +90,7 @@ module.exports = {
         },
         setShortcuts: {
             label: 'Shortcuts',
+            linkText: 'edit',
         },
     },
 };

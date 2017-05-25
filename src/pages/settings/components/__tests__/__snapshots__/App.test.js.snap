@@ -173,7 +173,7 @@ exports[`settings/App 1`] = `
           href=""
           onClick={[Function]}
         >
-          chrome://extensions/configureCommands
+          settings.setShortcuts.linkText
         </a>
       </td>
     </tr>

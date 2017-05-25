@@ -4,14 +4,15 @@ import {openUrl} from 'shared/utils/tab';
 
 export default class Link extends Component {
     static propTypes = {
-        value: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
     }
 
     render() {
-        return <a href="" onClick={this.onClick}>{this.props.value}</a>;
+        return <a href="" onClick={this.onClick}>{this.props.text}</a>;
     }
 
     onClick = () => {
-        openUrl(this.props.value);
+        openUrl(this.props.url);
     }
 }

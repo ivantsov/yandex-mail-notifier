@@ -10,7 +10,7 @@ const App = ({settings, updateSettings}) => {
         <Field
             key={index}
             {...item}
-            value={item.value || settings[item.name]}
+            value={settings[item.name]}
             onChange={updateSettings}
         />
     ));
