@@ -12,6 +12,11 @@ const AUTH_CONFIG = {
     clientSecret: '813caaea334a4fb5be54a8b9af3f4c97',
 };
 
+// prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
+chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
+    requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin'),
+}), {urls: [`${API_URL}/*`]}, ['blocking', 'requestHeaders']);
+
 async function sendRequest(data) {
     const {
         method = 'get',
