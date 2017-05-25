@@ -26,8 +26,6 @@
   "permissions": [
     "*://*/*",
     "cookies",
-    "webRequest",
-    "webRequestBlocking",
     "storage",
     "alarms",
     "notifications"
