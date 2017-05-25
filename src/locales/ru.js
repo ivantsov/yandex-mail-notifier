@@ -90,6 +90,7 @@ module.exports = {
         },
         setShortcuts: {
             label: 'Быстрые клавиши',
+            linkText: 'редактировать',
         },
     },
 };
