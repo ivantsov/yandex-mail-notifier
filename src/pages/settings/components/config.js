@@ -16,6 +16,10 @@ const fields = [{
     type: types.select,
     name: 'notAuthNotification',
     optionValues: [0, 1, 2],
+}, {
+    type: types.link,
+    name: 'setShortcuts',
+    value: 'chrome://extensions/configureCommands',
 }];
 
 export default fields.map(field => {

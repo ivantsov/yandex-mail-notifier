@@ -19,6 +19,13 @@
     "default_title": "__MSG_popup_title__",
     "default_popup": "pages/popup.html"
   },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      }
+    }
+  },
   "background": {
     "page": "pages/background.html"
   },

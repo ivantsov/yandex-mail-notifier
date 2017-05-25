@@ -3,6 +3,7 @@ import React from 'react';
 import types from './types';
 import Checkbox from './Items/Checkbox';
 import Select from './Items/Select';
+import Link from './Items/Link';
 
 import styles from './Field.less';
 
@@ -14,7 +15,17 @@ const Field = (props) => {
         description,
     } = props;
 
-    const Component = type === types.checkbox ? Checkbox : Select;
+    let Component;
+    switch (type) {
+        case types.checkbox:
+            Component = Checkbox;
+            break;
+        case types.link:
+            Component = Link;
+            break;
+        default:
+            Component = Select;
+    }
 
     return (
         <tr>
