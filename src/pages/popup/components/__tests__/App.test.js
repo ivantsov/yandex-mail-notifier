@@ -2,16 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {AppComponent} from '../App';
 
-jest.mock('shared/utils/i18n', () => {
-    return {
-        text(key) {
-            return key;
-        },
-        date(str) {
-            return str;
-        },
-    };
-});
+jest.mock('shared/utils/i18n');
 jest.mock('../Header/Header', () => () => <div>Header</div>);
 jest.mock('../List/List', () => () => <div>List</div>);
 

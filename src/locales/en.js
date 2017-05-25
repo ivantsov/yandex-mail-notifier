@@ -88,5 +88,8 @@ module.exports = {
                 'desktop & sound notification',
             ],
         },
+        setShortcuts: {
+            label: 'Shortcuts',
+        },
     },
 };
