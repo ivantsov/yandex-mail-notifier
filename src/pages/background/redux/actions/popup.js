@@ -3,8 +3,8 @@ import {
     OPEN_SETTINGS,
     RELOAD_APP,
 } from 'shared/redux-consts/popup';
+import * as tabUtils from 'shared/utils/tab';
 import * as runtimeUtils from '../../utils/runtime';
-import * as tabUtils from '../../utils/tab';
 
 export function openLink({url} = {}) {
     tabUtils.openUrl(url);

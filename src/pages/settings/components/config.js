@@ -18,6 +18,16 @@ const fields = [{
     optionValues: [0, 1, 2],
 }];
 
+// TODO: enable it for FF as well https://bugzilla.mozilla.org/show_bug.cgi?id=1303384
+if (typeof browser === 'undefined') {
+    fields.push({
+        type: types.link,
+        name: 'setShortcuts',
+        url: 'chrome://extensions/configureCommands',
+        text: i18n.text('settings.setShortcuts.linkText'),
+    });
+}
+
 export default fields.map(field => {
     const baseKey = `settings.${field.name}`;
     let options;

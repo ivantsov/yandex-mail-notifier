@@ -28,8 +28,8 @@ const baseConfig = {
         plugins.copy,
         ...generateHtmlPlugins(entry),
         new webpack.DefinePlugin({
-            __DEV__: true,
             'process.env.NODE_ENV': JSON.stringify('development'),
+            __DEV__: true,
         }),
     ],
 };

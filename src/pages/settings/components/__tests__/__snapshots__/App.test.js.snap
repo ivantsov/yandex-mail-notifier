@@ -10,12 +10,12 @@ exports[`settings/App 1`] = `
         <label
           htmlFor="newMessageNotification"
         >
-          text
+          settings.newMessageNotification.label
         </label>
         <div
           className="description"
         >
-          text
+          settings.newMessageNotification.description
         </div>
       </td>
       <td>
@@ -28,17 +28,17 @@ exports[`settings/App 1`] = `
           <option
             value={0}
           >
-            text
+            settings.newMessageNotification.options.0
           </option>
           <option
             value={1}
           >
-            text
+            settings.newMessageNotification.options.1
           </option>
           <option
             value={2}
           >
-            text
+            settings.newMessageNotification.options.2
           </option>
         </select>
       </td>
@@ -50,12 +50,12 @@ exports[`settings/App 1`] = `
         <label
           htmlFor="unreadMessagesNotification"
         >
-          text
+          settings.unreadMessagesNotification.label
         </label>
         <div
           className="description"
         >
-          text
+          settings.unreadMessagesNotification.description
         </div>
       </td>
       <td>
@@ -68,22 +68,22 @@ exports[`settings/App 1`] = `
           <option
             value={0}
           >
-            text
+            settings.unreadMessagesNotification.options.0
           </option>
           <option
             value={5}
           >
-            text
+            settings.unreadMessagesNotification.options.1
           </option>
           <option
             value={15}
           >
-            text
+            settings.unreadMessagesNotification.options.2
           </option>
           <option
             value={30}
           >
-            text
+            settings.unreadMessagesNotification.options.3
           </option>
         </select>
       </td>
@@ -95,12 +95,12 @@ exports[`settings/App 1`] = `
         <label
           htmlFor="unreadMessagesSound"
         >
-          text
+          settings.unreadMessagesSound.label
         </label>
         <div
           className="description"
         >
-          text
+          settings.unreadMessagesSound.description
         </div>
       </td>
       <td>
@@ -120,12 +120,12 @@ exports[`settings/App 1`] = `
         <label
           htmlFor="notAuthNotification"
         >
-          text
+          settings.notAuthNotification.label
         </label>
         <div
           className="description"
         >
-          text
+          settings.notAuthNotification.description
         </div>
       </td>
       <td>
@@ -138,19 +138,43 @@ exports[`settings/App 1`] = `
           <option
             value={0}
           >
-            text
+            settings.notAuthNotification.options.0
           </option>
           <option
             value={1}
           >
-            text
+            settings.notAuthNotification.options.1
           </option>
           <option
             value={2}
           >
-            text
+            settings.notAuthNotification.options.2
           </option>
         </select>
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="label"
+      >
+        <label
+          htmlFor="setShortcuts"
+        >
+          settings.setShortcuts.label
+        </label>
+        <div
+          className="description"
+        >
+          settings.setShortcuts.description
+        </div>
+      </td>
+      <td>
+        <a
+          href=""
+          onClick={[Function]}
+        >
+          settings.setShortcuts.linkText
+        </a>
       </td>
     </tr>
   </tbody>
