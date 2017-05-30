@@ -4,7 +4,7 @@ import {login, logout} from './redux/actions/user';
 import {loadSettings} from './redux/actions/settings';
 import {initCookieListener, getSessionId} from './modules/cookie';
 import initWS from './modules/websocket';
-import initButtonState from './modules/button-state';
+import initButtonState from './modules/popup-button';
 import initNotification from './modules/notification';
 
 async function initApp() {
