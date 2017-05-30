@@ -23,7 +23,7 @@
     "watch:firefox": "npm run clean && webpack  --env.env=dev --env.target=firefox",
     "build:chrome": "npm run clean && webpack --env.env=prod --env.target=chrome",
     "build:firefox": "npm run clean && webpack --env.env=prod --env.target=firefox",
-    "zip": "zip -r -X dist/yandex-mail-notifier.zip dist",
+    "zip": "cd dist && zip -r yandex-mail-notifier.zip . -x \"*.DS_Store\"",
     "deploy": "node ./scripts/deploy",
     "publish": "npm-run-all build:chrome zip deploy",
     "prerelease": "npm-run-all --parallel lint test",

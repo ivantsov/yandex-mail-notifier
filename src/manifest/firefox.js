@@ -2,7 +2,7 @@ module.exports = {
     applications: {
         gecko: {
             id: 'jid0-vsitoD18LSTi4VQGGLCVmIoJSsU@jetpack',
-            strict_min_version: '52',
+            strict_min_version: '52.0',
         },
     },
     options_ui: {
