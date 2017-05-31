@@ -1,6 +1,6 @@
 import request from 'superagent';
 import errors from 'shared/errors';
-import {getUid as getCookieUid, getSessionId} from '../modules/cookie';
+import {getUid as getCookieUid, getSessionId} from '../utils/cookie';
 import parseXML from './parser';
 
 const DOMAIN = 'https://mail.yandex.ru';
