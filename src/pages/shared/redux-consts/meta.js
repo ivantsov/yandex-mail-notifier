@@ -1,0 +1,1 @@
+export const LOAD_STORAGE_DATA = 'LOAD_STORAGE_DATA';
