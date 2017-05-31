@@ -43,6 +43,7 @@ module.exports = (target) => ({
             },
             comments: false,
         }),
+        plugins.circularDependency,
         plugins.copy,
         plugins.shell(target),
         ...generateHtmlPlugins(entry),

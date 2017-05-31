@@ -1,6 +1,7 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const ShellPlugin = require('webpack-shell-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 const {pagesPath} = require('./utils');
 
 module.exports = {
@@ -59,5 +60,9 @@ module.exports = {
                 dev: false,
             });
         },
+        circularDependency: new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            failOnError: true,
+        }),
     },
 };
