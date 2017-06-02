@@ -1,6 +1,6 @@
 const {
     runtime,
-    cookies
+    cookies,
 } = chrome;
 
 export const config = {
