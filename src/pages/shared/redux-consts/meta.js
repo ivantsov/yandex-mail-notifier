@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
+export const LOAD_STORAGE_DATA = 'LOAD_STORAGE_DATA';

@@ -43,7 +43,7 @@ After the push, TravisCI will take care of uploading and publishing new version 
 
 #### Firefox
 
-1. Run `build:firefox` to build the bundle for FF.
+1. Run `npm run build:firefox` to build the bundle for FF.
 2. Run `npm run zip` to get an archive.
 3. Upload the archive to [AMO](https://addons.mozilla.org/en-US/developers/addon/yandex-mail-notifier/versions/submit/).
 

@@ -1,6 +1,7 @@
-import {LOAD_SETTINGS, UPDATE_SETTINGS} from 'shared/redux-consts/settings';
+import {LOAD_STORAGE_DATA} from 'shared/redux-consts/meta';
+import {UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 
-export const initialState = {
+const initialState = {
     newMessageNotification: 1, // only desktop notification
     unreadMessagesNotification: 5, // 5 min
     unreadMessagesSound: false,
@@ -9,8 +10,11 @@ export const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case LOAD_SETTINGS:
-            return action.data;
+        case LOAD_STORAGE_DATA:
+            return {
+                ...state,
+                ...action.data.settings,
+            };
         case UPDATE_SETTINGS:
             return {
                 ...state,

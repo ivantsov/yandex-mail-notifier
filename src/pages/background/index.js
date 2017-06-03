@@ -1,25 +1,34 @@
 import 'babel-polyfill';
+import {LOAD_STORAGE_DATA} from 'shared/redux-consts/meta';
 import store from './redux/store';
-import {login, logout} from './redux/actions/user';
-import {loadSettings} from './redux/actions/settings';
-import {initCookieListener, getSessionId} from './modules/cookie';
+import {login} from './redux/actions/user';
+import storage from './modules/storage';
 import initWS from './modules/websocket';
-import initButtonState from './modules/button-state';
+import initCookieListener from './modules/cookie';
 import initNotification from './modules/notification';
+import initButtonState from './modules/popup-button';
 
-async function initApp() {
-    const {dispatch} = store;
-    const isAuth = await getSessionId();
+async function loadStorageData() {
+    const data = await storage.getAll();
 
-    // we should load settings before starting notification service and login/logout actions
-    await dispatch(loadSettings());
-    initNotification();
-
-    dispatch(isAuth ? login() : logout());
+    store.dispatch({
+        type: LOAD_STORAGE_DATA,
+        data,
+    });
 }
 
-initCookieListener();
-initWS();
-initButtonState();
+function initModules() {
+    initWS();
+    initCookieListener();
+    initNotification();
+    initButtonState();
+}
 
-initApp();
+(async () => {
+    // we should prepare the store before starting any service
+    await loadStorageData();
+
+    initModules();
+
+    store.dispatch(login());
+})();

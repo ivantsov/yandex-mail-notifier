@@ -1,4 +1,5 @@
 import qs from 'query-string';
+import sessionId from '../../utils/session-generator';
 import {RECONNECT, NEW_MESSAGE} from './constants';
 
 let ws, emitEvent;
@@ -21,25 +22,6 @@ function onMessage({data}) {
     }
 }
 
-// use lazy-function because we always need to return the same value
-const getSessionId = (() => {
-    const mask = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-    const availableChars = '0123456789ABCDEF';
-
-    const sessionId = mask
-        .split('')
-        .map(char => {
-            if (char === 'x') {
-                return availableChars[Math.floor(16 * Math.random())];
-            }
-
-            return char;
-        })
-        .join('');
-
-    return () => sessionId;
-})();
-
 function connect({
     uid,
     token,
@@ -47,13 +29,13 @@ function connect({
     const queryParams = qs.stringify({
         client: 'bar',
         service: 'mail',
-        session: getSessionId(),
+        session: sessionId,
         oauth_token: token,
         uid,
     });
 
     // eslint-disable-next-line no-use-before-define
-    disconnect();
+    // disconnect();
 
     ws = new WebSocket(`wss://push.yandex.ru/v1/subscribe?${queryParams}`);
 

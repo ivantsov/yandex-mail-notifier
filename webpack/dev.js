@@ -25,6 +25,7 @@ const baseConfig = {
         ],
     },
     plugins: [
+        plugins.circularDependency,
         plugins.copy,
         ...generateHtmlPlugins(entry),
         new webpack.DefinePlugin({
