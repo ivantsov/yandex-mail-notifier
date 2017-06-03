@@ -1,19 +1,25 @@
 import {LOGIN, LOGOUT} from 'shared/redux-consts/user';
-import {getUser} from '../../utils/api';
+import storage from '../../modules/storage';
+import {loadUser} from '../../utils/api';
 
 export function login() {
     return async (dispatch, getState) => {
-        const action = {type: LOGIN};
+        const {token} = getState().user;
+        const data = await loadUser(token);
 
-        // we need to load user data only once, because it can only change after logout
-        if (!getState().user.email) {
-            action.data = await getUser();
+        if (token !== data.token) {
+            storage.set('user', {token: data.token});
         }
 
-        dispatch(action);
+        dispatch({
+            type: LOGIN,
+            data,
+        });
     };
 }
 
 export function logout() {
+    storage.remove('user');
+
     return {type: LOGOUT};
 }
