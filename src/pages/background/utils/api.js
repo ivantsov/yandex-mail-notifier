@@ -68,43 +68,27 @@ async function sendRequest(data) {
     return res.xhr.responseXML;
 }
 
-export async function getUser() {
-    const res = await sendRequest({
-        url: `${API_URL}/settings_setup`,
-        type: 'xml',
-    });
-
-    return res.querySelector('body').querySelector('default_email').textContent;
-}
-
-export async function getMessagesCount() {
-    const res = await sendRequest({
-        url: `${API_URL}/v2/bar/counters`,
-        query: {silent: true},
-    });
-
-    if (!res.counters) {
-        throw new Error(res);
-    }
-
-    return res.counters.unread;
-}
-
-async function getUid() {
-    const uid = await getCookieUid();
-    const res = await sendRequest({
+async function loadUserInfo() {
+    const cookieUid = await getCookieUid();
+    const {
+        default_uid: uid,
+        accounts,
+    } = await sendRequest({
         url: AUTH_CONFIG.passportUrl,
         query: {
-            yu: uid,
+            yu: cookieUid,
         },
     });
+    const user = accounts.find(item => item.uid === uid);
 
-    return res.default_uid;
+    return {
+        uid,
+        email: user.defaultEmail,
+    };
 }
 
-async function getToken(uid) {
+async function loadToken(uid) {
     const sessionId = await getSessionId();
-
     const res = await sendRequest({
         method: 'post',
         url: AUTH_CONFIG.tokenUrl,
@@ -121,14 +105,26 @@ async function getToken(uid) {
     return res.access_token;
 }
 
-export async function getSocketCredentials() {
-    const uid = await getUid();
-    const token = await getToken(uid);
+export async function loadUser(token) {
+    const userInfo = await loadUserInfo();
 
     return {
-        uid,
-        token,
+        ...userInfo,
+        token: token || await loadToken(userInfo.uid),
     };
+}
+
+export async function getMessagesCount() {
+    const res = await sendRequest({
+        url: `${API_URL}/v2/bar/counters`,
+        query: {silent: true},
+    });
+
+    if (!res.counters) {
+        throw new Error(res);
+    }
+
+    return res.counters.unread;
 }
 
 export async function getMessages() {
