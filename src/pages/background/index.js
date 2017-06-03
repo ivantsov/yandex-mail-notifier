@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import {LOAD_STORAGE_DATA} from 'shared/redux-consts/meta';
 import store from './redux/store';
+import {login} from './redux/actions/user';
 import storage from './modules/storage';
 import initWS from './modules/websocket';
 import initCookieListener from './modules/cookie';
@@ -28,4 +29,6 @@ function initModules() {
     await loadStorageData();
 
     initModules();
+
+    store.dispatch(login());
 })();

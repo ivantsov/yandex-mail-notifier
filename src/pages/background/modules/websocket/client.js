@@ -35,7 +35,7 @@ function connect({
     });
 
     // eslint-disable-next-line no-use-before-define
-    disconnect();
+    // disconnect();
 
     ws = new WebSocket(`wss://push.yandex.ru/v1/subscribe?${queryParams}`);
 

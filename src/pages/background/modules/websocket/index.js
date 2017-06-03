@@ -1,6 +1,5 @@
 import debounce from 'lodash.debounce';
 import {subscribe} from 'redux-subscriber';
-import {getSocketCredentials} from '../../utils/api';
 import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
@@ -9,7 +8,6 @@ import {RECONNECT, NEW_MESSAGE} from './constants';
 import initWSClient from './client';
 
 const config = {
-    cookieTimeout: 1 * 1000, // 1 sec
     connectTryInterval: 60 * 1000, // 1 min, try to connect if failed before
     reconnectInterval: 30 * 60 * 1000, // 30 min, reconnect to websocket
 };
@@ -17,19 +15,31 @@ const config = {
 let wsClient, reconnectTimer;
 
 async function connect() {
-    const {dispatch} = store;
+    const {dispatch, getState} = store;
+    const {
+        authorized,
+        token,
+        uid,
+    } = getState().user;
 
     clearTimeout(reconnectTimer);
 
     try {
-        const credentials = await getSocketCredentials();
-
         // eslint-disable-next-line no-use-before-define
         reconnectTimer = setTimeout(reconnect, config.reconnectInterval);
-        wsClient.connect(credentials);
+
+        wsClient.connect({
+            uid,
+            token,
+        });
 
         dispatch(loadMessagesCount());
-        dispatch(login());
+
+        // we don't need to dispatch login action if user is already authorized
+        // e.g. after calling "connect" first time the subscriber below will call "reconnect"
+        if (!authorized) {
+            dispatch(login());
+        }
     }
     catch (err) {
         dispatch(logout());
@@ -94,8 +104,7 @@ export default function () {
 
     subscribe('user.authorized', ({user: {authorized}}) => {
         if (authorized) {
-           // UID might not be set immediately, this's why we delay it with timeout
-            setTimeout(reconnect, config.cookieTimeout);
+            reconnect();
         }
         else {
             disconnect();
