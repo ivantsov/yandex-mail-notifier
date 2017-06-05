@@ -1,36 +1,53 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 import FieldPropTypes from './proptypes';
 
-const Select = ({
-    name,
-    value,
-    options,
-    onChange,
-}) => {
-    const optionElements = options.map((item, index) => (
-        <option key={index} value={item.value}>
-            {item.label}
-        </option>
-    ));
+export default class Select extends Component {
+    static propTypes = {
+        ...FieldPropTypes,
+        value: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
+        options: PropTypes.arrayOf(PropTypes.shape({
+            value: PropTypes.oneOfType([
+                PropTypes.number,
+                PropTypes.string,
+            ]).isRequired,
+            label: PropTypes.string.isRequired,
+        })).isRequired,
+    }
 
-    return (
-        <select
-            id={name}
-            name={name}
-            value={value}
-            onChange={e => onChange(name, parseInt(e.target.value, 10))}
-        >{optionElements}</select>
-    );
-};
+    render() {
+        const {
+            name,
+            value,
+            options,
+        } = this.props;
 
-Select.propTypes = {
-    ...FieldPropTypes,
-    value: PropTypes.number.isRequired,
-    options: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-    })).isRequired,
-};
+        const optionElements = options.map((item, index) => (
+            <option key={index} value={item.value}>
+                {item.label}
+            </option>
+        ));
 
-export default Select;
+        return (
+            <select
+                id={name}
+                name={name}
+                value={value}
+                onChange={this.onChange}
+            >{optionElements}</select>
+        );
+    }
+
+    onChange = (e) => {
+        const {
+            name,
+            onChange,
+        } = this.props;
+        const {value} = e.target;
+
+        onChange(name, parseInt(value, 10) || value);
+    }
+}
