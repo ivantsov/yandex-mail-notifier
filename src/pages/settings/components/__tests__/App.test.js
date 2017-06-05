@@ -12,6 +12,7 @@ it('settings/App', () => {
                 unreadMessagesNotification: 0,
                 unreadMessagesSound: false,
                 notAuthNotification: 0,
+                preferredDomain: 'ru',
             }}
             updateSettings={jest.fn()}
         />,

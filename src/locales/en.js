@@ -29,7 +29,7 @@ module.exports = {
             subTitle: 'There are a few possible reasons why the extension can\'t work properly:',
             notAuth: {
                 label: 'You are not authorized.',
-                checkAuth: 'Check that you\'re authorized on Yandex <strong>(exactly <i>.ru</i> domain)</strong>.',
+                checkAuth: 'Check that you\'re authorized on Yandex.',
                 relogin: 'Try to logout and login again.',
             },
             noConnection: {
@@ -91,6 +91,18 @@ module.exports = {
         setShortcuts: {
             label: 'Shortcuts',
             linkText: 'edit',
+        },
+        preferredDomain: {
+            label: 'Preferred domain',
+            description: 'Will be used for authorization, links etc',
+            options: [
+                'ru',
+                'ua',
+                'by',
+                'kz',
+                'com',
+                'com.tr',
+            ],
         },
     },
 };
