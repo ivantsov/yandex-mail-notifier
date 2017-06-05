@@ -1,5 +1,6 @@
 import {UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 import storage from '../../modules/storage';
+import {reloadApp} from '../../utils/runtime';
 
 // eslint-disable-next-line import/prefer-default-export
 export function updateSettings(data) {
@@ -16,5 +17,9 @@ export function updateSettings(data) {
             type: UPDATE_SETTINGS,
             data: nextSettings,
         });
+
+        if (settings.preferredDomain !== nextSettings.preferredDomain) {
+            reloadApp();
+        }
     };
 }

@@ -1,3 +1,4 @@
+import appConfig from 'shared/config';
 import {LOAD_STORAGE_DATA} from 'shared/redux-consts/meta';
 import {UPDATE_SETTINGS} from 'shared/redux-consts/settings';
 
@@ -6,6 +7,7 @@ const initialState = {
     unreadMessagesNotification: 5, // 5 min
     unreadMessagesSound: false,
     notAuthNotification: 1, // only desktop notification
+    preferredDomain: appConfig.supportedDomains[0],
 };
 
 export default function (state = initialState, action) {
