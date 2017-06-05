@@ -1,10 +1,12 @@
+import resolveUrl from './url-resolver';
+
 const {
     runtime,
     cookies,
 } = chrome;
 
 export const config = {
-    domain: '.yandex.ru',
+    domain: '.yandex.{domain}',
     path: '/',
     items: {
         sessionId: 'Session_id',
@@ -15,7 +17,7 @@ export const config = {
 function getCookieByName(name) {
     return new Promise(resolve => {
         cookies.getAll({
-            domain: config.domain,
+            domain: resolveUrl(config.domain),
             path: config.path,
             name,
         }, res => {

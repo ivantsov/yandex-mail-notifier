@@ -1,6 +1,7 @@
 import store from '../redux/store';
 import {login, logout} from '../redux/actions/user';
 import {config} from '../utils/cookie';
+import resolveUrl from '../utils/url-resolver';
 
 export default function initCookieListener() {
     chrome.cookies.onChanged.addListener(({cookie, removed}) => {
@@ -10,7 +11,7 @@ export default function initCookieListener() {
             path,
         } = cookie;
 
-        if (domain.includes(config.domain) &&
+        if (domain.includes(resolveUrl(config.domain)) &&
             name === config.items.sessionId &&
             path === config.path
         ) {
