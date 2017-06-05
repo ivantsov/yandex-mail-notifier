@@ -19,6 +19,9 @@ class App extends Component {
             loading: PropTypes.bool.isRequired,
             error: PropTypes.bool.isRequired,
         }).isRequired,
+        settings: PropTypes.shape({
+            preferredDomain: PropTypes.string.isRequired,
+        }).isRequired,
         loadMessages: PropTypes.func.isRequired,
         updateMessage: PropTypes.func.isRequired,
         openLink: PropTypes.func.isRequired,
@@ -47,6 +50,9 @@ class App extends Component {
                 loading,
                 error,
             },
+            settings: {
+                preferredDomain,
+            },
             loadMessages,
             updateMessage,
             openLink,
@@ -56,7 +62,12 @@ class App extends Component {
         } = this.props;
 
         if (!user.authorized) {
-            return <UnavailableMessage reloadApp={reloadApp}/>;
+            return (
+                <UnavailableMessage
+                    domain={preferredDomain}
+                    reloadApp={reloadApp}
+                />
+            );
         }
 
         return (

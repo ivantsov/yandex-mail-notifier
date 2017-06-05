@@ -29,7 +29,7 @@ module.exports = {
             subTitle: 'There are a few possible reasons why the extension can\'t work properly:',
             notAuth: {
                 label: 'You are not authorized.',
-                checkAuth: 'Check that you\'re authorized on Yandex.',
+                checkAuth: 'Check that you\'re authorized on Yandex (exactly <strong>.$1</strong> domain). Also you can choose another domain in the extension settings.',
                 relogin: 'Try to logout and login again.',
             },
             noConnection: {
