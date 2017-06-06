@@ -20,6 +20,9 @@ const baseProps = {
         loading: false,
         error: false,
     },
+    settings: {
+        preferredDomain: 'ru',
+    },
     loadMessages: jest.fn(),
     updateMessage: jest.fn(),
     openLink: jest.fn(),
