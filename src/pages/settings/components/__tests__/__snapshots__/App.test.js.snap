@@ -158,6 +158,61 @@ exports[`settings/App 1`] = `
         className="label"
       >
         <label
+          htmlFor="preferredDomain"
+        >
+          settings.preferredDomain.label
+        </label>
+        <div
+          className="description"
+        >
+          settings.preferredDomain.description
+        </div>
+      </td>
+      <td>
+        <select
+          id="preferredDomain"
+          name="preferredDomain"
+          onChange={[Function]}
+          value="ru"
+        >
+          <option
+            value="ru"
+          >
+            settings.preferredDomain.options.0
+          </option>
+          <option
+            value="ua"
+          >
+            settings.preferredDomain.options.1
+          </option>
+          <option
+            value="by"
+          >
+            settings.preferredDomain.options.2
+          </option>
+          <option
+            value="kz"
+          >
+            settings.preferredDomain.options.3
+          </option>
+          <option
+            value="com"
+          >
+            settings.preferredDomain.options.4
+          </option>
+          <option
+            value="com.tr"
+          >
+            settings.preferredDomain.options.5
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="label"
+      >
+        <label
           htmlFor="setShortcuts"
         >
           settings.setShortcuts.label

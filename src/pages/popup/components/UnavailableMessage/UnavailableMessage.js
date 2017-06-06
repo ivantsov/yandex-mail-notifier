@@ -5,7 +5,10 @@ import Button from '../Button/Button';
 
 import styles from './UnavailableMessage.less';
 
-const UnavailableMessage = ({reloadApp}) => (
+const UnavailableMessage = ({
+    domain,
+    reloadApp,
+}) => (
     <div className={styles.container}>
         <div>
             <h1 className={styles.title}><Translation id="unavailable.title"/></h1>
@@ -15,7 +18,12 @@ const UnavailableMessage = ({reloadApp}) => (
                 <li>
                     <strong><Translation id="unavailable.notAuth.label"/></strong>
                     <ul>
-                        <li><Translation id="unavailable.notAuth.checkAuth"/></li>
+                        <li>
+                            <Translation
+                                id="unavailable.notAuth.checkAuth"
+                                data={{domain}}
+                            />
+                        </li>
                         <li><Translation id="unavailable.notAuth.relogin"/></li>
                     </ul>
                 </li>
@@ -24,7 +32,6 @@ const UnavailableMessage = ({reloadApp}) => (
                 </li>
             </ol>
         </div>
-
 
         <p className={styles.btnTitle}><Translation id="unavailable.nothingHelped"/></p>
         <div className={styles.btnContainer}>
@@ -36,6 +43,7 @@ const UnavailableMessage = ({reloadApp}) => (
 );
 
 UnavailableMessage.propTypes = {
+    domain: PropTypes.string.isRequired,
     reloadApp: PropTypes.func.isRequired,
 };
 

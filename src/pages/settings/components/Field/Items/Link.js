@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {openUrl} from 'shared/utils/tab';
 
 export default class Link extends Component {
     static propTypes = {
@@ -13,6 +12,6 @@ export default class Link extends Component {
     }
 
     onClick = () => {
-        openUrl(this.props.url);
+        chrome.tabs.create({url: this.props.url});
     }
 }

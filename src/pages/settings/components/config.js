@@ -1,3 +1,4 @@
+import appConfig from 'shared/config';
 import i18n from 'shared/utils/i18n';
 import types from './Field/types';
 
@@ -16,6 +17,10 @@ const fields = [{
     type: types.select,
     name: 'notAuthNotification',
     optionValues: [0, 1, 2],
+}, {
+    type: types.select,
+    name: 'preferredDomain',
+    optionValues: appConfig.supportedDomains,
 }];
 
 // TODO: enable it for FF as well https://bugzilla.mozilla.org/show_bug.cgi?id=1303384

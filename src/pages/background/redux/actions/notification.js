@@ -1,5 +1,5 @@
 import i18n from 'shared/utils/i18n';
-import {openUrl} from 'shared/utils/tab';
+import {openUrl} from '../../utils/tab';
 
 const CONSTANTS = {
     SHOW_NEW_NOTIFICATION: 'SHOW_NEW_NOTIFICATION',

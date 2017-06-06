@@ -1,16 +1,17 @@
 import qs from 'query-string';
 import sessionId from '../../utils/session-generator';
+import resolveUrl from '../../utils/url-resolver';
 import {RECONNECT, NEW_MESSAGE} from './constants';
 
 let ws, emitEvent;
 
 function onClose(...args) {
-    console.error('Socket is closed', args); // eslint-disable-line no-console
+    console.error('[SOCKET]: Socket is closed', args); // eslint-disable-line no-console
     emitEvent(RECONNECT);
 }
 
 function onError(...args) {
-    console.error('An error has occurred in socket', args); // eslint-disable-line no-console
+    console.error('[SOCKET]: An error has occurred in socket', args); // eslint-disable-line no-console
     emitEvent(RECONNECT);
 }
 
@@ -37,7 +38,7 @@ function connect({
     // eslint-disable-next-line no-use-before-define
     // disconnect();
 
-    ws = new WebSocket(`wss://push.yandex.ru/v1/subscribe?${queryParams}`);
+    ws = new WebSocket(resolveUrl(`wss://push.yandex.{domain}/v1/subscribe?${queryParams}`));
 
     ws.addEventListener('close', onClose, false);
     ws.addEventListener('message', onMessage, false);

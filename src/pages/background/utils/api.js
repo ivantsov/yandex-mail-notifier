@@ -1,13 +1,17 @@
 import request from 'superagent';
 import errors from 'shared/errors';
-import {getUid as getCookieUid, getSessionId} from '../utils/cookie';
+import appConfig from 'shared/config';
+import {
+    getUid as getCookieUid,
+    getSessionId,
+} from './cookie';
+import resolveUrl from './url-resolver';
 import parseXML from './parser';
 
-const DOMAIN = 'https://mail.yandex.ru';
-const API_URL = `${DOMAIN}/api`;
+const API_URL = 'https://mail.yandex.{domain}/api';
 const AUTH_CONFIG = {
-    tokenUrl: 'https://oauth.yandex.ru/token',
-    passportUrl: 'https://pass.yandex.ru/accounts',
+    tokenUrl: 'https://oauth.yandex.{domain}/token',
+    passportUrl: 'https://pass.yandex.{domain}/accounts',
     clientId: '49c545918c574ac28dd7d27e8297065a',
     clientSecret: '813caaea334a4fb5be54a8b9af3f4c97',
 };
@@ -15,7 +19,9 @@ const AUTH_CONFIG = {
 // prevent sending 'Origin' header, otherwise yandex doesn't execute an operation
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
     requestHeaders: requestHeaders.filter(({name}) => name !== 'Origin'),
-}), {urls: [`${API_URL}/*`]}, ['blocking', 'requestHeaders']);
+}), {
+    urls: appConfig.supportedDomains.map(domain => `${API_URL}/*`.replace('{domain}', domain)),
+}, ['blocking', 'requestHeaders']);
 
 async function sendRequest(data) {
     const {
@@ -74,7 +80,7 @@ async function loadUserInfo() {
         default_uid: uid,
         accounts,
     } = await sendRequest({
-        url: AUTH_CONFIG.passportUrl,
+        url: resolveUrl(AUTH_CONFIG.passportUrl),
         query: {
             yu: cookieUid,
         },
@@ -91,10 +97,10 @@ async function loadToken(uid) {
     const sessionId = await getSessionId();
     const res = await sendRequest({
         method: 'post',
-        url: AUTH_CONFIG.tokenUrl,
+        url: resolveUrl(AUTH_CONFIG.tokenUrl),
         form: {
             grant_type: 'sessionid',
-            host: 'yandex.ru',
+            host: resolveUrl('yandex.{domain}'),
             client_id: AUTH_CONFIG.clientId,
             client_secret: AUTH_CONFIG.clientSecret,
             sessionid: sessionId,
@@ -116,7 +122,7 @@ export async function loadUser(token) {
 
 export async function getMessagesCount() {
     const res = await sendRequest({
-        url: `${API_URL}/v2/bar/counters`,
+        url: resolveUrl(`${API_URL}/v2/bar/counters`),
         query: {silent: true},
     });
 
@@ -129,7 +135,7 @@ export async function getMessagesCount() {
 
 export async function getMessages() {
     const res = await sendRequest({
-        url: `${API_URL}/mailbox_list`,
+        url: resolveUrl(`${API_URL}/mailbox_list`),
         type: 'xml',
         query: {
             first: 0,
@@ -145,7 +151,7 @@ export async function getMessages() {
 export function updateMessageStatus({oper, id}) {
     return sendRequest({
         method: 'post',
-        url: `${API_URL}/mailbox_oper`,
+        url: resolveUrl(`${API_URL}/mailbox_oper`),
         type: 'xml',
         form: {
             ids: [id],

@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import {LOAD_STORAGE_DATA} from 'shared/redux-consts/meta';
 import store from './redux/store';
+import './redux/ext-store'; // init redux-webext store
 import {login} from './redux/actions/user';
 import storage from './modules/storage';
 import initWS from './modules/websocket';
