@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
         case LOAD_MESSAGES_SUCCESS:
             return {
                 ...state,
-                items: action.data,
+                ...action.data,
                 loading: false,
                 error: false,
             };
