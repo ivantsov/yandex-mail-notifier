@@ -58,7 +58,7 @@
     "circular-dependency-plugin": "^3.0.0",
     "codecov": "^2.2.0",
     "copy-webpack-plugin": "^4.0.0",
-    "css-loader": "^0.28.2",
+    "css-loader": "^0.28.4",
     "date-fns": "^1.28.5",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.0",
@@ -69,20 +69,20 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "fs-extra": "^3.0.1",
     "html-webpack-plugin": "^2.28.0",
-    "husky": "^0.13.3",
+    "husky": "^0.13.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
     "less": "^2.7.2",
-    "less-loader": "^4.0.3",
+    "less-loader": "^4.0.4",
     "npm-run-all": "^4.0.2",
     "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
-    "style-loader": "^0.18.1",
+    "style-loader": "^0.18.2",
     "web-ext": "^1.9.1",
     "webext-i18n": "^1.1.0",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5",
     "webpack-shell-plugin": "^0.5.0",
-    "write-file-webpack-plugin": "^4.0.2"
+    "write-file-webpack-plugin": "^4.1.0"
   }
 }
