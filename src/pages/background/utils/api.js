@@ -85,6 +85,11 @@ async function loadUserInfo() {
             yu: cookieUid,
         },
     });
+
+    if (!accounts) {
+        throw new Error(errors.NOT_AUTHORIZED);
+    }
+
     const user = accounts.find(item => item.uid === uid);
 
     return {
