@@ -1,7 +1,11 @@
 import qs from 'query-string';
 import sessionId from '../../utils/session-generator';
 import resolveUrl from '../../utils/url-resolver';
-import {RECONNECT, NEW_MESSAGE} from './constants';
+import {
+    RECONNECT,
+    NEW_MESSAGE,
+    PING,
+} from './constants';
 
 let ws, emitEvent;
 
@@ -20,6 +24,9 @@ function onMessage({data}) {
 
     if (operation !== 'ping') {
         emitEvent(NEW_MESSAGE, message);
+    }
+    else {
+        emitEvent(PING);
     }
 }
 

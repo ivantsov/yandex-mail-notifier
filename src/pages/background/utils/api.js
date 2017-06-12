@@ -138,7 +138,6 @@ export async function getMessagesCount() {
 }
 
 export async function getMessages() {
-    const unreadCount = await getMessagesCount();
     const res = await sendRequest({
         url: resolveUrl(`${API_URL}/mailbox_list`),
         type: 'xml',
@@ -150,10 +149,7 @@ export async function getMessages() {
         },
     });
 
-    return {
-        items: parseXML(res),
-        unreadCount,
-    };
+    return parseXML(res);
 }
 
 export function updateMessageStatus({oper, id}) {
