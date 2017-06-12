@@ -1,5 +1,4 @@
 import request from 'superagent';
-import errors from 'shared/errors';
 import appConfig from 'shared/config';
 import {
     getUid as getCookieUid,
@@ -41,8 +40,8 @@ async function sendRequest(data) {
     if (type === 'json') {
         const resData = res.body || JSON.parse(res.text);
 
-        if (resData.code === errors.NOT_AUTHORIZED) {
-            throw new Error(errors.NOT_AUTHORIZED);
+        if (resData.code === appConfig.errors.notAuthorized) {
+            throw new Error(appConfig.errors.notAuthorized);
         }
 
         return resData;
@@ -87,7 +86,7 @@ async function loadUserInfo() {
     });
 
     if (!accounts) {
-        throw new Error(errors.NOT_AUTHORIZED);
+        throw new Error(appConfig.errors.notAuthorized);
     }
 
     const user = accounts.find(item => item.uid === uid);
@@ -139,7 +138,6 @@ export async function getMessagesCount() {
 }
 
 export async function getMessages() {
-    const unreadCount = await getMessagesCount();
     const res = await sendRequest({
         url: resolveUrl(`${API_URL}/mailbox_list`),
         type: 'xml',
@@ -151,10 +149,7 @@ export async function getMessages() {
         },
     });
 
-    return {
-        items: parseXML(res),
-        unreadCount,
-    };
+    return parseXML(res);
 }
 
 export function updateMessageStatus({oper, id}) {

@@ -4,7 +4,11 @@ import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
 import {showNewNotification} from '../../redux/actions/notification';
-import {RECONNECT, NEW_MESSAGE} from './constants';
+import {
+    RECONNECT,
+    NEW_MESSAGE,
+    PING,
+} from './constants';
 import initWSClient from './client';
 
 const config = {
@@ -96,6 +100,9 @@ function emitEvent(eventType, data) {
     }
     if (eventType === NEW_MESSAGE) {
         onNewMessage(data);
+    }
+    if (eventType === PING) {
+        store.dispatch(loadMessagesCount());
     }
 }
 
