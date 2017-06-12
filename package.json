@@ -1,5 +1,5 @@
 {
-  "name": "yandex-mail-notifier-chrome",
+  "name": "yandex-mail-notifier",
   "version": "3.0.2",
   "author": {
     "name": "Alexander Ivantsov",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ivantsov/yandex-mail-notifier-chrome.git"
+    "url": "https://github.com/ivantsov/yandex-mail-notifier.git"
   },
   "scripts": {
     "prepush": "npm run lint",
@@ -47,7 +47,7 @@
     "superagent": "^3.5.2"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
@@ -66,7 +66,7 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "^2.1.2",
     "fs-extra": "^3.0.1",
     "html-webpack-plugin": "^2.28.0",
     "husky": "^0.13.4",
