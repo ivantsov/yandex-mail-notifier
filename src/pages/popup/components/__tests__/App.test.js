@@ -5,6 +5,7 @@ import {AppComponent} from '../App';
 jest.mock('shared/utils/i18n');
 jest.mock('../Header/Header', () => () => <div>Header</div>);
 jest.mock('../List/List', () => () => <div>List</div>);
+jest.mock('../Donation/Donation', () => () => <div>Donation</div>);
 
 const baseProps = {
     user: {

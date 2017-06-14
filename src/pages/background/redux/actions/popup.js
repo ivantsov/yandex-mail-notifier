@@ -13,8 +13,6 @@ export function openLink({url} = {}) {
 }
 
 export function openSettings() {
-    window.Raven.captureMessage('[Event] open-settings-click', {level: 'info'});
-
     tabUtils.openSettings();
 
     return {type: OPEN_SETTINGS};

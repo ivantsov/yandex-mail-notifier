@@ -8,32 +8,8 @@ exports[`popup/App authorized 1`] = `
   <div>
     List
   </div>
-  <div
-    className="component"
-  >
-    <span
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "popup.donation.text",
-        }
-      }
-    />
-    <div
-      className="btn"
-    >
-      <button
-        className="secondary"
-        onClick={[Function]}
-      >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "popup.donation.donateBtn",
-            }
-          }
-        />
-      </button>
-    </div>
+  <div>
+    Donation
   </div>
 </div>
 `;

@@ -1,11 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`settings/Select with options 1`] = `
+exports[`settings/Select no options 1`] = `
 <select
   id="field"
   name="field"
   onChange={[Function]}
   value={123}
+/>
+`;
+
+exports[`settings/Select with options number options 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={1}
 >
   <option
     value={1}
@@ -20,11 +29,22 @@ exports[`settings/Select with options 1`] = `
 </select>
 `;
 
-exports[`settings/Select without options 1`] = `
+exports[`settings/Select with options string options 1`] = `
 <select
   id="field"
   name="field"
   onChange={[Function]}
-  value={123}
-/>
+  value="opt1"
+>
+  <option
+    value="opt1"
+  >
+    option1
+  </option>
+  <option
+    value="opt2"
+  >
+    option2
+  </option>
+</select>
 `;

@@ -27,7 +27,7 @@ const Header = ({
             <button
                 className={styles.reloadBtn}
                 disabled={disabled}
-                onClick={() => reloadMessages(true)}
+                onClick={reloadMessages}
             >
                 <ReloadIcon className={styles.reloadIcon}/>
             </button>

@@ -64,7 +64,7 @@ describe('popup/Header', () => {
         expect(openLink).lastCalledWith();
 
         reloadBtn.props.onClick();
-        expect(reloadMessages).lastCalledWith(true);
+        expect(reloadMessages).lastCalledWith();
 
         settingsLink.props.onClick();
         expect(openSettings).lastCalledWith();
