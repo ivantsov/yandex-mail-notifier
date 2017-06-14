@@ -14,11 +14,8 @@ function closePopup() {
     window.close();
 }
 
-export function loadMessages(log) {
-    return {
-        type: LOAD_MESSAGES,
-        log,
-    };
+export function loadMessages() {
+    return {type: LOAD_MESSAGES};
 }
 
 export function updateMessage(data) {
