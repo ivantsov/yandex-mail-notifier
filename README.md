@@ -1,8 +1,8 @@
 Yandex.Mail notifier for Chrome and Firefox
 ===============================
 
-[![Build Status](https://travis-ci.org/ivantsov/yandex-mail-notifier-chrome.svg?branch=master)](https://travis-ci.org/ivantsov/yandex-mail-notifier-chrome)
-[![codecov](https://codecov.io/gh/ivantsov/yandex-mail-notifier-chrome/branch/master/graph/badge.svg)](https://codecov.io/gh/ivantsov/yandex-mail-notifier-chrome)
+[![Build Status](https://travis-ci.org/ivantsov/yandex-mail-notifier.svg?branch=master)](https://travis-ci.org/ivantsov/yandex-mail-notifier)
+[![codecov](https://codecov.io/gh/ivantsov/yandex-mail-notifier/branch/master/graph/badge.svg)](https://codecov.io/gh/ivantsov/yandex-mail-notifiers)
 
 ## You can find the extension in the following browser stores
 
