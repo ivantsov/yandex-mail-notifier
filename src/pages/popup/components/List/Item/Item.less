@@ -1,37 +1,45 @@
 @import "../../../styles/colors";
 
 .component {
-    position: relative;
     height: 70px;
     max-height: 70px;
     padding: 10px;
+    cursor: pointer;
 
     &:hover {
         background-color: @grey2;
 
-        .contentContainer {
-            -webkit-filter: blur(2px);
-        }
-
         // show hover menu
-        > div:last-child {
+        .hoverMenu {
             display: flex;
         }
     }
 }
 
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fromAndDate {
+    min-width: 0;
+}
+
+.hoverMenu {
+    display: none;
+}
+
 // leave animation
 .leave {
     opacity: 1;
-    transition: all 0.5s ease-out,
-                max-height 0.3s ease-out 0.5s,
-                padding 0.3s ease-out 0.5s;
+    transition: opacity 0.2s ease-in-out,
+                max-height 0.2s ease-in-out,
+                padding 0.2s ease-in-out;
 
     &Active {
         max-height: 0;
         padding: 0 10px;
         opacity: 0;
-        transform: translate3d(-100%, 0, 0);
     }
 }
 

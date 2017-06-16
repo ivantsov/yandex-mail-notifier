@@ -46,7 +46,7 @@ const List = ({
                 leave: itemStyles.leave,
                 leaveActive: itemStyles.leaveActive,
             }}
-            transitionLeaveTimeout={800}
+            transitionLeaveTimeout={200}
             transitionEnter={false}
         >
             {messages}
