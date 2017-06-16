@@ -1,45 +1,64 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 import i18n from 'shared/utils/i18n';
 import HoverMenu from '../HoverMenu/HoverMenu';
 
 import styles from './Item.less';
 
-const Item = ({
-    id,
-    from,
-    subject,
-    firstline,
-    date,
-    onActionClick,
-    openMessage,
-}) => (
-    <div className={styles.component}>
-        <div className={styles.contentContainer}>
-            <p>
-                <span className={styles.from}>{from}</span>
-                <span className={styles.date}>{i18n.date(date)}</span>
-            </p>
-            <p className={styles.subject}>{subject}</p>
-            <p className={styles.content}>{firstline}</p>
-        </div>
+export default class Item extends Component {
+    static propTypes = {
+        id: PropTypes.string.isRequired,
+        from: PropTypes.string.isRequired,
+        subject: PropTypes.string.isRequired,
+        firstline: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        onActionClick: PropTypes.func.isRequired,
+        openMessage: PropTypes.func.isRequired,
+    };
 
-        <HoverMenu
-            id={id}
-            onActionClick={onActionClick}
-            openMessage={() => openMessage(`#message/${id}`)}
-        />
-    </div>
-);
+    render() {
+        const {
+            id,
+            from,
+            subject,
+            firstline,
+            date,
+            onActionClick,
+        } = this.props;
 
-Item.propTypes = {
-    id: PropTypes.string.isRequired,
-    from: PropTypes.string.isRequired,
-    subject: PropTypes.string.isRequired,
-    firstline: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    onActionClick: PropTypes.func.isRequired,
-    openMessage: PropTypes.func.isRequired,
-};
+        return (
+            <div
+                className={styles.component}
+                onClick={this.openMessage}
+            >
+                <div className={styles.topContainer}>
+                    <div className={styles.fromAndDate}>
+                        <p>
+                            <span className={styles.from}>{from}</span>
+                            <span className={styles.date}>{i18n.date(date)}</span>
+                        </p>
+                        <p className={styles.subject}>{subject}</p>
+                    </div>
+                    <div className={styles.hoverMenu}>
+                        <HoverMenu
+                            id={id}
+                            onActionClick={onActionClick}
+                            openMessage={this.openMessage}
+                        />
+                    </div>
+                </div>
 
-export default Item;
+                <p className={styles.content}>{firstline}</p>
+            </div>
+        );
+    }
+
+    openMessage = () => {
+        const {
+            id,
+            openMessage,
+        } = this.props;
+
+        openMessage(`#message/${id}`);
+    }
+}
