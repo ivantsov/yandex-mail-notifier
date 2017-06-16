@@ -19,12 +19,7 @@ const HoverMenu = ({
         />
     ));
 
-    return (
-        <div
-            className={styles.component}
-            onClick={openMessage}
-        >{buttons}</div>
-    );
+    return <div className={styles.component}>{buttons}</div>;
 };
 
 HoverMenu.propTypes = {

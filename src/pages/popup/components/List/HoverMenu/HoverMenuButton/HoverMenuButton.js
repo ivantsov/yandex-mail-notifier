@@ -16,9 +16,12 @@ export default class HoverMenuButton extends Component {
         const {Icon, text} = types[this.props.type];
 
         return (
-            <a className={styles.component} onClick={this.onClick}>
+            <a
+              title={text}
+              className={styles.component}
+              onClick={this.onClick}
+            >
                 <Icon className={styles.icon}/>
-                <div>{text}</div>
             </a>
         );
     }
