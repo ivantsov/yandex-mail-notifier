@@ -16,6 +16,16 @@ export default {
                     return obj;
                 }, {});
 
+                if (typeof parsedData.settings.unreadMessagesNotification === 'string') {
+                    window.Raven.captureMessage('[Event] load-storage-data', {
+                        level: 'warning',
+                        extra: {
+                            json: data,
+                            parsed: parsedData,
+                        },
+                    });
+                }
+
                 resolve(parsedData);
             });
         });
