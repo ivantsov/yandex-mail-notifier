@@ -12,6 +12,34 @@ import initButtonState from './modules/popup-button';
 async function loadStorageData() {
     const data = await storage.getAll();
 
+    // TODO remove when errors are gone
+    if (data && data.settings) {
+        const {
+            newMessageNotification,
+            unreadMessagesNotification,
+            notAuthNotification,
+        } = data.settings;
+
+        const newData = {
+            ...data,
+            settings: {
+                ...data.settings,
+                newMessageNotification: parseInt(newMessageNotification, 10),
+                unreadMessagesNotification: parseInt(unreadMessagesNotification, 10),
+                notAuthNotification: parseInt(notAuthNotification, 10),
+            },
+        };
+
+        storage.set('settings', newData.settings);
+
+        store.dispatch({
+            type: LOAD_STORAGE_DATA,
+            data: newData,
+        });
+
+        return;
+    }
+
     store.dispatch({
         type: LOAD_STORAGE_DATA,
         data,
