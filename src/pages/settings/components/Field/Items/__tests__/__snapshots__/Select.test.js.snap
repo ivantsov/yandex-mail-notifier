@@ -9,7 +9,27 @@ exports[`settings/Select no options 1`] = `
 />
 `;
 
-exports[`settings/Select with options number options 1`] = `
+exports[`settings/Select with options number options with zero value 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={1}
+>
+  <option
+    value={0}
+  >
+    option0
+  </option>
+  <option
+    value={1}
+  >
+    option1
+  </option>
+</select>
+`;
+
+exports[`settings/Select with options number options without zero value 1`] = `
 <select
   id="field"
   name="field"
