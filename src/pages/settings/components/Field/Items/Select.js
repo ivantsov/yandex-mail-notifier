@@ -47,7 +47,8 @@ export default class Select extends Component {
             onChange,
         } = this.props;
         const {value} = e.target;
+        const parsedValue = isNaN(value) ? value : parseInt(value, 10);
 
-        onChange(name, parseInt(value, 10) || value);
+        onChange(name, parsedValue);
     }
 }

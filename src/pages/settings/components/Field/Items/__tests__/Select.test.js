@@ -29,6 +29,7 @@ describe('settings/Select', () => {
         function testCaseWithOptions({
             value,
             newValue,
+            actualNewValue,
             options,
         }) {
             const name = 'field';
@@ -42,20 +43,38 @@ describe('settings/Select', () => {
             });
 
             tree.props.onChange({target: {value: newValue}});
-            expect(onChange).lastCalledWith(name, newValue);
+            expect(onChange).lastCalledWith(name, actualNewValue);
         }
 
-        it('number options', () => {
-            testCaseWithOptions({
-                value: 1,
-                newValue: 10,
-                options: [{
-                    label: 'option1',
+        describe('number options', () => {
+            it('without zero value', () => {
+                testCaseWithOptions({
                     value: 1,
-                }, {
-                    label: 'option2',
-                    value: 2,
-                }],
+                    newValue: '2', // select onChange always called with string
+                    actualNewValue: 2,
+                    options: [{
+                        label: 'option1',
+                        value: 1,
+                    }, {
+                        label: 'option2',
+                        value: 2,
+                    }],
+                });
+            });
+
+            it('with zero value', () => {
+                testCaseWithOptions({
+                    value: 1,
+                    newValue: '0', // select onChange always called with string
+                    actualNewValue: 0,
+                    options: [{
+                        label: 'option0',
+                        value: 0,
+                    }, {
+                        label: 'option1',
+                        value: 1,
+                    }],
+                });
             });
         });
 
@@ -63,6 +82,7 @@ describe('settings/Select', () => {
             testCaseWithOptions({
                 value: 'opt1',
                 newValue: 'opt2',
+                actualNewValue: 'opt2',
                 options: [{
                     label: 'option1',
                     value: 'opt1',
