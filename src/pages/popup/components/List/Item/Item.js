@@ -43,7 +43,6 @@ export default class Item extends Component {
                         <HoverMenu
                             id={id}
                             onActionClick={onActionClick}
-                            openMessage={this.openMessage}
                         />
                     </div>
                 </div>

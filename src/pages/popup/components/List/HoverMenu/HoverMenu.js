@@ -7,7 +7,6 @@ import styles from './HoverMenu.less';
 const HoverMenu = ({
     id,
     onActionClick,
-    openMessage,
 }) => {
     const buttons = Object.keys(types).map((key, index) => (
         <Button
@@ -15,7 +14,6 @@ const HoverMenu = ({
             id={id}
             type={key}
             onClick={onActionClick}
-            openMessage={openMessage}
         />
     ));
 
@@ -25,7 +23,6 @@ const HoverMenu = ({
 HoverMenu.propTypes = {
     id: PropTypes.string.isRequired,
     onActionClick: PropTypes.func.isRequired,
-    openMessage: PropTypes.func.isRequired,
 };
 
 export default HoverMenu;

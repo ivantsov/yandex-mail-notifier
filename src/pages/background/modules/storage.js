@@ -16,7 +16,7 @@ export default {
                     return obj;
                 }, {});
 
-                if (typeof parsedData.settings.unreadMessagesNotification === 'string') {
+                if (parsedData.settings && typeof parsedData.settings.unreadMessagesNotification === 'string') {
                     window.Raven.captureMessage('[Event] load-storage-data', {
                         level: 'warning',
                         extra: {
