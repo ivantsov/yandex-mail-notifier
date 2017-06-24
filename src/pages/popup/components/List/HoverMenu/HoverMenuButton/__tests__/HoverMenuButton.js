@@ -27,13 +27,6 @@ function render(type) {
 }
 
 describe('popup/HoverMenu/HoverMenuButton', () => {
-    it('open button', () => {
-        render('open');
-
-        expect(props.onClick).not.toBeCalled();
-        expect(props.openMessage).toBeCalled();
-    });
-
     it('read button', () => {
         render('read');
 
