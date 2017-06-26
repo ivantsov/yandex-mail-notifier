@@ -94,11 +94,21 @@ function onNewMessage(data) {
     }
 }
 
-function emitEvent(eventType, data) {
+function emitEvent(eventType, data, json) {
     if (eventType === RECONNECT) {
         reconnect();
     }
     if (eventType === NEW_MESSAGE) {
+        if (!data) {
+            window.Raven.captureMessage('[Event] new-message', {
+                level: 'warning',
+                extra: {
+                    data,
+                    json,
+                },
+            });
+        }
+
         onNewMessage(data);
     }
     if (eventType === PING) {
