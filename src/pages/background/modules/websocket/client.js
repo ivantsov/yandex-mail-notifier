@@ -23,7 +23,7 @@ function onMessage({data}) {
     const {operation, message} = JSON.parse(data);
 
     if (operation !== 'ping') {
-        emitEvent(NEW_MESSAGE, message);
+        emitEvent(NEW_MESSAGE, message, data);
     }
     else {
         emitEvent(PING);
