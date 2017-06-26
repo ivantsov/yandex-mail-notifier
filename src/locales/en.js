@@ -39,8 +39,8 @@ module.exports = {
             reloadBtn: 'Reload extension',
         },
         donation: {
-            text: 'Like the extension? - Help the author!',
-            donateBtn: 'Donate',
+            text: 'Want more settings, new features and just stable work of the extension?',
+            donateBtn: 'Support the project!',
         },
         months: [
             'January',
