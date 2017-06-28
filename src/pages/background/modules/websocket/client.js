@@ -3,8 +3,7 @@ import sessionId from '../../utils/session-generator';
 import resolveUrl from '../../utils/url-resolver';
 import {
     RECONNECT,
-    NEW_MESSAGE,
-    PING,
+    MESSAGE,
 } from './constants';
 
 let ws, emitEvent;
@@ -20,14 +19,7 @@ function onError(...args) {
 }
 
 function onMessage({data}) {
-    const {operation, message} = JSON.parse(data);
-
-    if (operation !== 'ping') {
-        emitEvent(NEW_MESSAGE, message, data);
-    }
-    else {
-        emitEvent(PING);
-    }
+    emitEvent(MESSAGE, JSON.parse(data));
 }
 
 function connect({
