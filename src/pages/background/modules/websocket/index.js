@@ -6,8 +6,7 @@ import {loadMessagesCount} from '../../redux/actions/messages';
 import {showNewNotification} from '../../redux/actions/notification';
 import {
     RECONNECT,
-    NEW_MESSAGE,
-    PING,
+    MESSAGE,
 } from './constants';
 import initWSClient from './client';
 
@@ -65,54 +64,44 @@ function disconnect() {
     wsClient.disconnect();
 }
 
-function onNewMessage(data) {
+function onMessage(data) {
     const {dispatch} = store;
     const {
         operation,
-        new_messages: unreadCount,
-        mid: id,
-        hdr_status: status,
-        hdr_from: from,
-        hdr_subject: subject,
-        firstline: message,
+        message,
     } = data;
 
-    if (operation === 'insert' && status === 'New') {
-        const nameMatch = from.match(/^"(.+)"/);
-        const emailMatch = from.match(/<(.+)>$/);
-
-        dispatch(loadMessagesCount(parseInt(unreadCount, 10)));
-        dispatch(showNewNotification({
-            id,
-            from: nameMatch[1] || emailMatch[1],
-            subject: subject !== 'No subject' ? subject : '',
-            message,
-        }));
-    }
-    else {
+    if (operation !== 'insert' || message.hdr_status !== 'New') {
         dispatch(loadMessagesCount());
+        return;
     }
+
+    const {
+        new_messages: unreadCount,
+        mid: id,
+        hdr_from: from,
+        hdr_subject: subject,
+        firstline,
+    } = message;
+
+    const nameMatch = from.match(/^"(.+)"/);
+    const emailMatch = from.match(/<(.+)>$/);
+
+    dispatch(loadMessagesCount(parseInt(unreadCount, 10)));
+    dispatch(showNewNotification({
+        id,
+        from: nameMatch[1] || emailMatch[1],
+        subject: subject !== 'No subject' ? subject : '',
+        message: firstline,
+    }));
 }
 
-function emitEvent(eventType, data, json) {
+function emitEvent(eventType, data) {
     if (eventType === RECONNECT) {
         reconnect();
     }
-    if (eventType === NEW_MESSAGE) {
-        if (!data) {
-            window.Raven.captureMessage('[Event] new-message', {
-                level: 'warning',
-                extra: {
-                    data,
-                    json,
-                },
-            });
-        }
-
-        onNewMessage(data);
-    }
-    if (eventType === PING) {
-        store.dispatch(loadMessagesCount());
+    if (eventType === MESSAGE) {
+        onMessage(data);
     }
 }
 
