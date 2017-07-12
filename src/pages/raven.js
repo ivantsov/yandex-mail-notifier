@@ -2,7 +2,7 @@ import Raven from 'raven-js';
 import appConfig from 'shared/config';
 import config from '../manifest/base.json';
 
-Raven.config('https://a4bc742caec34db89cb376ce5d9c049d@sentry.io/120928', {
+Raven.config('https://de838c75714548c1b68ab1f14fa01e98@sentry.io/120928', {
     environment: __DEV__ ? 'development' : 'production',
     release: config.version,
     maxBreadcrumbs: 50,
