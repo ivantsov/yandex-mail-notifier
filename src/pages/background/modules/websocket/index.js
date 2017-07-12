@@ -10,12 +10,20 @@ import {
 } from './constants';
 import initWSClient from './client';
 
+const {alarms} = chrome;
+
 const config = {
-    connectTryInterval: 60 * 1000, // 1 min, try to connect if failed before
-    reconnectInterval: 30 * 60 * 1000, // 30 min, reconnect to websocket
+    connect: {
+        name: 'connect',
+        time: 1, // try to connect if failed before
+    },
+    reconnect: {
+        name: 'reconnect',
+        time: 30, // reconnect to websocket
+    },
 };
 
-let wsClient, reconnectTimer;
+let wsClient;
 
 async function connect() {
     const {dispatch, getState} = store;
@@ -25,11 +33,10 @@ async function connect() {
         uid,
     } = getState().user;
 
-    clearTimeout(reconnectTimer);
+    alarms.clear(config.reconnect.name);
 
     try {
-        // eslint-disable-next-line no-use-before-define
-        reconnectTimer = setTimeout(reconnect, config.reconnectInterval);
+        alarms.create(config.reconnect.name, {delayInMinutes: config.reconnect.time});
 
         wsClient.connect({
             uid,
@@ -47,7 +54,7 @@ async function connect() {
     catch (err) {
         dispatch(logout());
 
-        setTimeout(connect, config.connectTryInterval);
+        alarms.create(config.connect.name, {delayInMinutes: config.connect.time});
 
         // throw unhandled exception for raven
         throw err;
@@ -60,7 +67,7 @@ const reconnect = debounce(() => {
 }, 500);
 
 function disconnect() {
-    clearTimeout(reconnectTimer);
+    alarms.clear(config.reconnect.name);
     wsClient.disconnect();
 }
 
@@ -105,8 +112,19 @@ function emitEvent(eventType, data) {
     }
 }
 
+function handleAlarm({name}) {
+    if (name === config.connect.name) {
+        connect();
+    }
+    else if (name === config.reconnect.name) {
+        reconnect();
+    }
+}
+
 export default function () {
     wsClient = initWSClient(emitEvent);
+
+    alarms.onAlarm.addListener(handleAlarm);
 
     subscribe('user.authorized', ({user: {authorized}}) => {
         if (authorized) {
