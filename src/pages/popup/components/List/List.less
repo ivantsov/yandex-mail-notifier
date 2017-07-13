@@ -3,6 +3,7 @@
 @height: 360px;
 
 .content {
+    position: relative;
     height: @height;
     overflow-y: auto;
 }
@@ -15,4 +16,22 @@
     align-items: center;
     justify-content: center;
     height: @height;
+}
+
+.placeholders {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+// fade animation
+.placeholdersLeave {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+
+    &Active {
+        opacity: 0;
+    }
 }
