@@ -101,6 +101,9 @@ exports[`popup/List with items 1`] = `
 <div
   className="content"
 >
+  <div
+    className="placeholdersLeave"
+  />
   <div>
     <div
       className="component"

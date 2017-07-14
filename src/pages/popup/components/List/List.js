@@ -17,20 +17,9 @@ function Placeholders({
 }) {
     const elements = Array.from(Array(count).keys())
         .map(index => <ItemPlaceholder key={index}/>);
+    const className = show ? styles.placeholders : styles.placeholdersLeave;
 
-    return (
-        <CSSTransition
-            in={show}
-            timeout={500}
-            unmountOnExit
-            classNames={{
-                exit: styles.placeholdersLeave,
-                exitActive: styles.placeholdersLeaveActive,
-            }}
-        >
-            <div className={styles.placeholders}>{elements}</div>
-        </CSSTransition>
-    );
+    return <div className={className}>{elements}</div>;
 }
 Placeholders.propTypes = {
     show: PropTypes.bool.isRequired,
