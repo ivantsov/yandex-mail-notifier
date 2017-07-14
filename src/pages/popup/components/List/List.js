@@ -85,11 +85,11 @@ const ListContainer = ({
                 show={loading}
                 count={unreadMessagesCount}
             />
-            <List
+            {!loading && <List
                 items={items}
                 onActionClick={onActionClick}
                 openMessage={openMessage}
-            />
+            />}
         </div>
     );
 };
