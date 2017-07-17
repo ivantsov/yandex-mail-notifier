@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import {
+    CSSTransition,
+    TransitionGroup,
+} from 'react-transition-group';
 import i18n from 'shared/utils/i18n';
 import Item from './Item/Item';
 import ItemPlaceholder from './ItemPlaceholder/ItemPlaceholder';
@@ -8,56 +11,50 @@ import ItemPlaceholder from './ItemPlaceholder/ItemPlaceholder';
 import styles from './List.less';
 import itemStyles from './Item/Item.less';
 
-const List = ({
-    unreadMessagesCount,
-    loading,
-    error,
+function Placeholders({
+    show,
+    count,
+}) {
+    const elements = Array.from(Array(count).keys())
+        .map(index => <ItemPlaceholder key={index}/>);
+    const className = show ? styles.placeholders : styles.placeholdersLeave;
+
+    return <div className={className}>{elements}</div>;
+}
+Placeholders.propTypes = {
+    show: PropTypes.bool.isRequired,
+    count: PropTypes.number.isRequired,
+};
+
+function List({
     items,
     onActionClick,
     openMessage,
-}) => {
-    if (loading) {
-        const elements = Array.from(Array(unreadMessagesCount).keys())
-            .map(index => <ItemPlaceholder key={index}/>);
-        return <div className={styles.content}>{elements}</div>;
-    }
-    if (error || !items.length) {
-        return (
-            <div className={styles.centerContainer}>
-                {i18n.text(`popup.${error ? 'loadingError' : 'emptyList'}`)}
-            </div>
-        );
-    }
-
+}) {
     const messages = items.map(item => (
-        <Item
+        <CSSTransition
             key={item.id}
-            onActionClick={onActionClick}
-            openMessage={openMessage}
-            {...item}
-        />
+            timeout={{exit: 200}}
+            classNames={{
+                exit: itemStyles.leave,
+                exitActive: itemStyles.leaveActive,
+            }}
+        >
+            <Item
+                onActionClick={onActionClick}
+                openMessage={openMessage}
+                {...item}
+            />
+        </CSSTransition>
     ));
 
     return (
-        <TransitionGroup
-            component="div"
-            className={styles.content}
-            transitionName={{
-                leave: itemStyles.leave,
-                leaveActive: itemStyles.leaveActive,
-            }}
-            transitionLeaveTimeout={200}
-            transitionEnter={false}
-        >
+        <TransitionGroup>
             {messages}
         </TransitionGroup>
     );
-};
-
+}
 List.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    unreadMessagesCount: PropTypes.number.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
     })).isRequired,
@@ -65,4 +62,45 @@ List.propTypes = {
     openMessage: PropTypes.func.isRequired,
 };
 
-export default List;
+const ListContainer = ({
+    unreadMessagesCount,
+    loading,
+    error,
+    items,
+    onActionClick,
+    openMessage,
+}) => {
+    const errorOrEmpty = error || (!items.length && !loading);
+    if (errorOrEmpty) {
+        return (
+            <div className={styles.centerContainer}>
+                {i18n.text(`popup.${error ? 'loadingError' : 'emptyList'}`)}
+            </div>
+        );
+    }
+
+    return (
+        <div className={styles.content}>
+            <Placeholders
+                show={loading}
+                count={unreadMessagesCount}
+            />
+            {!loading && <List
+                items={items}
+                onActionClick={onActionClick}
+                openMessage={openMessage}
+            />}
+        </div>
+    );
+};
+
+ListContainer.propTypes = {
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+    unreadMessagesCount: PropTypes.number.isRequired,
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onActionClick: PropTypes.func.isRequired,
+    openMessage: PropTypes.func.isRequired,
+};
+
+export default ListContainer;
