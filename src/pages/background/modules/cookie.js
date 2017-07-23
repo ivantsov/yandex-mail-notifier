@@ -15,6 +15,9 @@ export default function initCookieListener() {
             name === config.items.sessionId &&
             path === config.path
         ) {
+            if (removed) {
+                console.log('logout cookie');
+            }
             store.dispatch(removed ? logout() : login());
         }
     });
