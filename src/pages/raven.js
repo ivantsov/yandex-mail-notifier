@@ -10,6 +10,9 @@ Raven.config('https://de838c75714548c1b68ab1f14fa01e98@sentry.io/120928', {
         appConfig.errors.offline,
         appConfig.errors.notAuthorized,
     ],
+    shouldSendCallback() {
+        return !window.navigator.userAgent.includes('Vivaldi');
+    },
 }).install();
 
 window.onunhandledrejection = (err) => {

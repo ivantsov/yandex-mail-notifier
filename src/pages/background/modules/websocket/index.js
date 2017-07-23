@@ -52,6 +52,7 @@ async function connect() {
         }
     }
     catch (err) {
+        console.log('logout websocket', err);
         dispatch(logout());
 
         alarms.create(config.connect.name, {delayInMinutes: config.connect.time});

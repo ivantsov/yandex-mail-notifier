@@ -33,12 +33,12 @@
     "babel-polyfill": "^6.23.0",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.5.10",
-    "query-string": "^4.3.4",
+    "query-string": "^5.0.0",
     "raven-js": "^3.17.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
-    "react-transition-group": "^2.1.0",
+    "react-transition-group": "^2.2.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-subscriber": "^1.1.0",
@@ -81,7 +81,7 @@
     "web-ext": "^1.10.1",
     "webext-i18n": "^1.1.0",
     "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1",
+    "webpack-dev-server": "^2.6.1",
     "webpack-shell-plugin": "^0.5.0",
     "write-file-webpack-plugin": "^4.1.0"
   }
