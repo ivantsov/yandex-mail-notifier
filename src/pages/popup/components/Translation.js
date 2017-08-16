@@ -9,6 +9,10 @@ const Translation = ({
     const formattedData = Object.keys(data).map(key => data[key]);
     const translation = i18n.text(`popup.${id}`, formattedData);
 
+    if (!translation) {
+        throw new Error(`Translation for "${id}" key is missing`);
+    }
+
     // eslint-disable-next-line react/no-danger
     return <span dangerouslySetInnerHTML={{__html: translation}}/>;
 };
