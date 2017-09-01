@@ -83,7 +83,7 @@ const ListContainer = ({
         <div className={styles.content}>
             <Placeholders
                 show={loading}
-                count={unreadMessagesCount}
+                count={Math.min(unreadMessagesCount, 100)}
             />
             {!loading && <List
                 items={items}
