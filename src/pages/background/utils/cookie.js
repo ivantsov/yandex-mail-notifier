@@ -9,6 +9,7 @@ export const config = {
     domain: '.yandex.{domain}',
     path: '/',
     items: {
+        login: 'yandex_login',
         sessionId: 'Session_id',
         uid: 'yandexuid',
     },

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import i18n from 'shared/utils/i18n';
+import Button from '../Button/Button';
+import Translation from '../Translation';
 import SettingsIcon from './Icons/SettingsIcon';
 import ReloadIcon from './Icons/ReloadIcon';
 import ComposeIcon from './Icons/ComposeIcon';
@@ -16,25 +17,33 @@ const Header = ({
     openSettings,
 }) => (
     <div className={styles.component}>
-        <a className={styles.composeBtn} onClick={() => openLink('#compose')}>
-            <ComposeIcon className={styles.composeIcon}/>
-            {i18n.text('popup.compose')}
-        </a>
+        <Button
+            type="primary"
+            onClick={() => openLink('#compose')}
+        >
+            <span className={styles.composeBtn}>
+                <ComposeIcon className={styles.composeIcon}/>
+                <Translation id="compose"/>
+            </span>
+        </Button>
         <div className={styles.centerBlock}>
-            <a onClick={() => openLink()}>{/* we need callback here, otherwise event will be passed as a first param*/}
+            <a onClick={() => openLink()}>{/* we need callback here, otherwise event will be passed as a first param */}
                 {user} (<strong>{unreadMessagesCount}</strong>)
             </a>
-            <button
-                className={styles.reloadBtn}
+            <Button
+                type="icon"
                 disabled={disabled}
                 onClick={reloadMessages}
             >
                 <ReloadIcon className={styles.reloadIcon}/>
-            </button>
+            </Button>
         </div>
-        <a className={styles.item} onClick={openSettings}>
+        <Button
+            type="icon"
+            onClick={openSettings}
+        >
             <SettingsIcon className={styles.settingsIcon}/>
-        </a>
+        </Button>
     </div>
 );
 

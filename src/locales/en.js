@@ -26,7 +26,7 @@ module.exports = {
         loadingError: 'Cannot load emails... Please try again later',
         unavailable: {
             title: 'Something went wrong...',
-            subTitle: 'There are a few possible reasons why the extension can\'t work properly:',
+            subTitle: 'There are a few possible reasons why the extension may not work properly:',
             notAuth: {
                 label: 'You are not authorized.',
                 checkAuth: 'Check that you\'re authorized on Yandex (exactly <strong>.$1</strong> domain). Also you can choose another domain in the extension settings.',
@@ -35,7 +35,7 @@ module.exports = {
             noConnection: {
                 label: 'There is no connection to the Internet.',
             },
-            nothingHelped: 'If nothing above helped then try to reload the extension with the button bellow.',
+            nothingHelped: 'If nothing above helped, you can try to reload the extension.',
             reloadBtn: 'Reload extension',
         },
         donation: {

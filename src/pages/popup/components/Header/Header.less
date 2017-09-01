@@ -4,32 +4,24 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 10px 16px;
+    align-items: center;
+    padding: 8px 10px;
     border-bottom: 4px solid @yellow1;
 }
 
-.item {
-    display: inline-flex;
+.composeBtn {
+    display: flex;
+    align-items: center;
 }
 
 .composeIcon {
-    width: 18px;
-    height: 18px;
-    margin: -1px 8px 0;
-    fill: @blue1;
-    transition: 0.2s transform;
-}
-
-.composeBtn {
-    composes: item;
-
-    &:hover .composeIcon {
-        transform: scale(1.2);
-    }
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
 
 .centerBlock {
-    composes: item;
+    display: inline-flex;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -38,9 +30,9 @@
 .reloadIcon {
     width: 16px;
     height: 16px;
+    margin-left: 8px;
     fill: @green;
-    vertical-align: middle;
-    transition: 0.4s transform;
+    transition: 0.3s transform;
 
     &:hover {
         transform: rotate(180deg);
@@ -48,9 +40,8 @@
 }
 
 .reloadBtn {
-    background: none;
-    padding: 0;
-    border: 0;
+    width: 16px;
+    height: 16px;
     margin-left: 10px;
 }
 

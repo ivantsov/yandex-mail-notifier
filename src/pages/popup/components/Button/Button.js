@@ -12,18 +12,20 @@ const TYPES = {
         name: 'secondary',
         className: styles.secondary,
     },
-    notButton: {
-        name: 'notButton',
-        className: styles.notBtn,
+    icon: {
+        name: 'icon',
+        className: styles.icon,
     },
 };
 
 const Button = ({
     children,
     onClick,
+    disabled,
     type,
 }) => (
     <button
+        disabled={disabled}
         className={TYPES[type].className}
         onClick={onClick}
     >{children}</button>
@@ -32,9 +34,11 @@ const Button = ({
 Button.propTypes = {
     children: PropTypes.any.isRequired,
     onClick: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
     type: PropTypes.oneOf(Object.keys(TYPES)),
 };
 Button.defaultProps = {
+    disabled: false,
     type: TYPES.primary.name,
 };
 
