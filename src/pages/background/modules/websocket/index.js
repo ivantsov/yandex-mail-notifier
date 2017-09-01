@@ -19,7 +19,7 @@ const config = {
     },
     reconnect: {
         name: 'reconnect',
-        time: 30, // reconnect to websocket
+        time: 1.9, // reconnect to websocket; we use double value to prevent receiving the 3rd ping before reconnect
     },
 };
 
@@ -43,8 +43,6 @@ async function connect() {
             token,
         });
 
-        dispatch(loadMessagesCount());
-
         // we don't need to dispatch login action if user is already authorized
         // e.g. after calling "connect" first time the subscriber below will call "reconnect"
         if (!authorized) {
@@ -52,7 +50,6 @@ async function connect() {
         }
     }
     catch (err) {
-        console.log('logout websocket', err);
         dispatch(logout());
 
         alarms.create(config.connect.name, {delayInMinutes: config.connect.time});
