@@ -102,6 +102,7 @@ exports[`popup/App not authorized 1`] = `
   >
     <button
       className="primary"
+      disabled={false}
       onClick={[Function]}
     >
       <span
