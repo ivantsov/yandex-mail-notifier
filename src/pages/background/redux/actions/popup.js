@@ -29,5 +29,5 @@ export function reloadApp() {
 export function openDonationLink() {
     window.Raven.captureMessage('[Event] donate-click', {level: 'info'});
 
-    return openLink({url: 'https://donorbox.org/alexander-ivantsov'});
+    return openLink({url: 'https://www.paypal.me/yandexmailnotifier/5'});
 }

@@ -27,7 +27,7 @@ const Header = ({
             </span>
         </Button>
         <div className={styles.centerBlock}>
-            <a onClick={() => openLink()}>{/* we need callback here, otherwise event will be passed as a first param*/}
+            <a onClick={() => openLink()}>{/* we need callback here, otherwise event will be passed as a first param */}
                 {user} (<strong>{unreadMessagesCount}</strong>)
             </a>
             <Button
