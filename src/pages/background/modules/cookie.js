@@ -12,12 +12,9 @@ export default function initCookieListener() {
         } = cookie;
 
         if (domain.includes(resolveUrl(config.domain)) &&
-            name === config.items.sessionId &&
+            name === config.items.login &&
             path === config.path
         ) {
-            if (removed) {
-                console.log('logout cookie');
-            }
             store.dispatch(removed ? logout() : login());
         }
     });
