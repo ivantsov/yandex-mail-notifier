@@ -1,3 +1,2 @@
-.prettierignore
 package.json
 src/manifest/**/*
