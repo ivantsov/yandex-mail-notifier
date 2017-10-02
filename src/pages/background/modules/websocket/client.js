@@ -8,9 +8,9 @@ import {
 
 let ws, emitEvent;
 
-function onClose(...args) {
-    console.error('[SOCKET]: Socket is closed', args); // eslint-disable-line no-console
-    emitEvent(RECONNECT);
+function onClose(err) {
+    console.error('[SOCKET]: Socket is closed', err); // eslint-disable-line no-console
+    emitEvent(RECONNECT, err);
 }
 
 function onError(...args) {

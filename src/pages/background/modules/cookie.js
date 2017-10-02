@@ -11,21 +11,21 @@ const handleCookieChange = debounce(({
 }) => {
     // user logged out from all accounts
     if (removed) {
-        console.log('LOGOUT');
+        console.log('LOGOUT', prevLogin, nextLogin, removed);
         store.dispatch(logout());
         return;
     }
 
     // user just logged in for the first time
     if (!prevLogin && nextLogin) {
-        console.log('LOGIN');
+        console.log('LOGIN', prevLogin, nextLogin, removed);
         store.dispatch(login());
         return;
     }
 
     // user changed the account
     if (prevLogin !== nextLogin) {
-        console.log('ACCOUNT CHANGED');
+        console.log('ACCOUNT CHANGED', prevLogin, nextLogin, removed);
         store.dispatch(logout());
         store.dispatch(login());
         return;

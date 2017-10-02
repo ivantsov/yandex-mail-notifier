@@ -59,8 +59,24 @@ async function connect() {
     }
 }
 
-const reconnect = debounce(() => {
+const reconnect = debounce((err) => {
     wsClient.disconnect();
+
+    if (err && err.code) {
+        window.Raven.captureException(err, {
+            extra: {
+                code: err.code,
+                reason: err.reason,
+            },
+        });
+        store.dispatch(logout());
+        store.dispatch(login());
+        // TODO: if the error wouldn't disappear enable reloading
+        // reloadApp();
+
+        return;
+    }
+
     connect();
 }, 500);
 
@@ -103,7 +119,7 @@ function onMessage(data) {
 
 function emitEvent(eventType, data) {
     if (eventType === RECONNECT) {
-        reconnect();
+        reconnect(data);
     }
     if (eventType === MESSAGE) {
         onMessage(data);
