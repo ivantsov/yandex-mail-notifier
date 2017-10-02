@@ -1,30 +1,25 @@
 const HtmlPlugin = require('html-webpack-plugin');
 
 const pagesPath = './src/pages';
+const extraScript = 'raven';
 
 function generateHtmlPlugins(entriesObj) {
-    // not supported by nodejs
-    // const {
-    //     raven,
-    //     ...entries,
-    // } = entriesObj;
-    const extraScript = 'raven';
-    const entries = Object.keys(entriesObj).filter(name => name !== extraScript);
+  const {raven, ...entries} = entriesObj;
 
-    return entries.map(name => new HtmlPlugin({
+  return entries.map(
+    name =>
+      new HtmlPlugin({
         filename: `./${name}.html`,
         chunksSortMode(a, b) {
-            // raven has a bigger id
-            return b.id - a.id;
+          // raven has a bigger id
+          return b.id - a.id;
         },
-        chunks: [
-            extraScript,
-            name,
-        ],
-    }));
+        chunks: [extraScript, name],
+      }),
+  );
 }
 
 module.exports = {
-    pagesPath,
-    generateHtmlPlugins,
+  pagesPath,
+  generateHtmlPlugins,
 };

@@ -10,26 +10,26 @@ import initNotification from './modules/notification';
 import initButtonState from './modules/popup-button';
 
 async function loadStorageData() {
-    const data = await storage.getAll();
+  const data = await storage.getAll();
 
-    store.dispatch({
-        type: LOAD_STORAGE_DATA,
-        data,
-    });
+  store.dispatch({
+    type: LOAD_STORAGE_DATA,
+    data,
+  });
 }
 
 function initModules() {
-    initWS();
-    initCookieListener();
-    initNotification();
-    initButtonState();
+  initWS();
+  initCookieListener();
+  initNotification();
+  initButtonState();
 }
 
 (async () => {
-    // we should prepare the store before starting any service
-    await loadStorageData();
+  // we should prepare the store before starting any service
+  await loadStorageData();
 
-    initModules();
+  initModules();
 
-    store.dispatch(login());
+  store.dispatch(login());
 })();

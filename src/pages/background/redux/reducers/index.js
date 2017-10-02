@@ -5,16 +5,14 @@ import messages from './messages';
 import settings from './settings';
 
 const appReducer = combineReducers({
-    user,
-    messages,
-    settings,
+  user,
+  messages,
+  settings,
 });
 
-export default function (state, action) {
-    // clear the whole state except settings on logout action
-    const nextState = action.type === LOGOUT ?
-        {settings: state.settings} :
-        state;
+export default function(state, action) {
+  // clear the whole state except settings on logout action
+  const nextState = action.type === LOGOUT ? {settings: state.settings} : state;
 
-    return appReducer(nextState, action);
+  return appReducer(nextState, action);
 }

@@ -43,7 +43,6 @@ const other = {
 module.exports = {
   parser: 'babel-eslint',
   extends: 'airbnb',
-  plugins: ['prettier'],
   env: {
     webextensions: true,
     browser: true,
