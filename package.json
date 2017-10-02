@@ -18,15 +18,11 @@
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "test:watch": "jest --watch",
-    "start:chrome":
-      "npm run clean && webpack-dev-server --env.env=dev --env.target=chrome",
+    "start:chrome": "npm run clean && webpack-dev-server --env.env=dev --env.target=chrome",
     "start:firefox": "web-ext run --bc -s dist",
-    "watch:firefox":
-      "npm run clean && webpack  --env.env=dev --env.target=firefox",
-    "build:chrome":
-      "npm run clean && webpack --env.env=prod --env.target=chrome",
-    "build:firefox":
-      "npm run clean && webpack --env.env=prod --env.target=firefox",
+    "watch:firefox": "npm run clean && webpack  --env.env=dev --env.target=firefox",
+    "build:chrome": "npm run clean && webpack --env.env=prod --env.target=chrome",
+    "build:firefox": "npm run clean && webpack --env.env=prod --env.target=firefox",
     "zip": "cd dist && zip -r yandex-mail-notifier.zip . -x \"*.DS_Store\"",
     "deploy": "node ./scripts/deploy",
     "publish": "npm-run-all build:chrome zip deploy",
