@@ -1,13 +1,45 @@
+import debounce from 'lodash.debounce';
 import store from '../redux/store';
 import {login, logout} from '../redux/actions/user';
 import {config} from '../utils/cookie';
 import resolveUrl from '../utils/url-resolver';
+
+const handleCookieChange = debounce(({
+    prevLogin,
+    nextLogin,
+    removed,
+}) => {
+    // user logged out from all accounts
+    if (removed) {
+        console.log('LOGOUT', prevLogin, nextLogin, removed);
+        store.dispatch(logout());
+        return;
+    }
+
+    // user just logged in for the first time
+    if (!prevLogin && nextLogin) {
+        console.log('LOGIN', prevLogin, nextLogin, removed);
+        store.dispatch(login());
+        return;
+    }
+
+    // user changed the account
+    if (prevLogin !== nextLogin) {
+        console.log('ACCOUNT CHANGED', prevLogin, nextLogin, removed);
+        store.dispatch(logout());
+        store.dispatch(login());
+        return;
+    }
+
+    console.log('SOMETHING ELSE', prevLogin, nextLogin, removed);
+}, 300);
 
 export default function initCookieListener() {
     chrome.cookies.onChanged.addListener(({cookie, removed}) => {
         const {
             domain,
             name,
+            value,
             path,
         } = cookie;
 
@@ -15,7 +47,11 @@ export default function initCookieListener() {
             name === config.items.login &&
             path === config.path
         ) {
-            store.dispatch(removed ? logout() : login());
+            handleCookieChange({
+                prevLogin: store.getState().user.email,
+                nextLogin: value,
+                removed,
+            });
         }
     });
 }
