@@ -7,17 +7,17 @@ import App from './components/App';
 import './layout.less';
 
 async function initApp() {
-    const store = await createUIStore();
+  const store = await createUIStore();
 
-    const mountNode = document.createElement('div');
-    document.body.appendChild(mountNode);
+  const mountNode = document.createElement('div');
+  document.body.appendChild(mountNode);
 
-    ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
-        mountNode,
-    );
+  ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    mountNode,
+  );
 }
 
 initApp();
