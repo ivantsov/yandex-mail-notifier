@@ -1,7 +1,11 @@
 language: node_js
 node_js:
   - 8
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.1.0
+  - export PATH=$HOME/.yarn/bin:$PATH
 script:
+  - set -e # fail the build if one of the scripts fails - https://github.com/travis-ci/travis-ci/issues/1066
   - npm run lint
   - npm run test:coverage
 cache:

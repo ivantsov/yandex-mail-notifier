@@ -3,7 +3,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const pagesPath = './src/pages';
 
 function generateHtmlPlugins(entriesObj) {
-  // not supported by nodejs
+  // TODO: not supported by nodejs
   // const {
   //     raven,
   //     ...entries,
