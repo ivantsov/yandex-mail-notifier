@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - 8
 script:
+  - set -e # fail the build if one of the scripts fails - https://github.com/travis-ci/travis-ci/issues/1066
   - npm run lint
   - npm run test:coverage
 cache:
