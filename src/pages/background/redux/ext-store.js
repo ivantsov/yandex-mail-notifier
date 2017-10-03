@@ -25,17 +25,17 @@ import {
 import {updateSettings} from './actions/settings';
 
 export default createBackgroundStore({
-    store,
-    actions: {
-        [LOAD_MESSAGES]: loadMessages,
-        [UPDATE_MESSAGE]: updateMessage,
-        [OPEN_LINK]: openLink,
-        [OPEN_SETTINGS]: openSettings,
-        [RELOAD_APP]: reloadApp,
-        [OPEN_DONATION_LINK]: openDonationLink,
-        [UPDATE_SETTINGS]: updateSettings,
-    },
-    onDisconnect() {
-        store.dispatch(invalidateMessages());
-    },
+  store,
+  actions: {
+    [LOAD_MESSAGES]: loadMessages,
+    [UPDATE_MESSAGE]: updateMessage,
+    [OPEN_LINK]: openLink,
+    [OPEN_SETTINGS]: openSettings,
+    [RELOAD_APP]: reloadApp,
+    [OPEN_DONATION_LINK]: openDonationLink,
+    [UPDATE_SETTINGS]: updateSettings,
+  },
+  onDisconnect() {
+    store.dispatch(invalidateMessages());
+  },
 });

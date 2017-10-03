@@ -15,15 +15,15 @@ function Placeholders({
     show,
     count,
 }) {
-    const elements = Array.from(Array(count).keys())
+  const elements = Array.from(Array(count).keys())
         .map(index => <ItemPlaceholder key={index}/>);
-    const className = show ? styles.placeholders : styles.placeholdersLeave;
+  const className = show ? styles.placeholders : styles.placeholdersLeave;
 
-    return <div className={className}>{elements}</div>;
+  return <div className={className}>{elements}</div>;
 }
 Placeholders.propTypes = {
-    show: PropTypes.bool.isRequired,
-    count: PropTypes.number.isRequired,
+  show: PropTypes.bool.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 function List({
@@ -31,35 +31,35 @@ function List({
     onActionClick,
     openMessage,
 }) {
-    const messages = items.map(item => (
-        <CSSTransition
-            key={item.id}
-            timeout={{exit: 200}}
-            classNames={{
-                exit: itemStyles.leave,
-                exitActive: itemStyles.leaveActive,
-            }}
-        >
-            <Item
-                onActionClick={onActionClick}
-                openMessage={openMessage}
-                {...item}
-            />
-        </CSSTransition>
+  const messages = items.map(item => (
+    <CSSTransition
+      key={item.id}
+      timeout={{exit: 200}}
+      classNames={{
+        exit: itemStyles.leave,
+        exitActive: itemStyles.leaveActive,
+      }}
+    >
+      <Item
+        onActionClick={onActionClick}
+        openMessage={openMessage}
+        {...item}
+      />
+    </CSSTransition>
     ));
 
-    return (
-        <TransitionGroup>
-            {messages}
-        </TransitionGroup>
-    );
+  return (
+    <TransitionGroup>
+      {messages}
+    </TransitionGroup>
+  );
 }
 List.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-    })).isRequired,
-    onActionClick: PropTypes.func.isRequired,
-    openMessage: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })).isRequired,
+  onActionClick: PropTypes.func.isRequired,
+  openMessage: PropTypes.func.isRequired,
 };
 
 const ListContainer = ({
@@ -70,37 +70,37 @@ const ListContainer = ({
     onActionClick,
     openMessage,
 }) => {
-    const errorOrEmpty = error || (!items.length && !loading);
-    if (errorOrEmpty) {
-        return (
-            <div className={styles.centerContainer}>
-                {i18n.text(`popup.${error ? 'loadingError' : 'emptyList'}`)}
-            </div>
-        );
-    }
-
+  const errorOrEmpty = error || (!items.length && !loading);
+  if (errorOrEmpty) {
     return (
-        <div className={styles.content}>
-            <Placeholders
-                show={loading}
-                count={Math.min(unreadMessagesCount, 100)}
-            />
-            {!loading && <List
-                items={items}
-                onActionClick={onActionClick}
-                openMessage={openMessage}
-            />}
-        </div>
+      <div className={styles.centerContainer}>
+        {i18n.text(`popup.${error ? 'loadingError' : 'emptyList'}`)}
+      </div>
     );
+  }
+
+  return (
+    <div className={styles.content}>
+      <Placeholders
+        show={loading}
+        count={Math.min(unreadMessagesCount, 100)}
+      />
+      {!loading && <List
+        items={items}
+        onActionClick={onActionClick}
+        openMessage={openMessage}
+      />}
+    </div>
+  );
 };
 
 ListContainer.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    unreadMessagesCount: PropTypes.number.isRequired,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onActionClick: PropTypes.func.isRequired,
-    openMessage: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  unreadMessagesCount: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onActionClick: PropTypes.func.isRequired,
+  openMessage: PropTypes.func.isRequired,
 };
 
 export default ListContainer;

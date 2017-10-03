@@ -8,21 +8,21 @@ const HoverMenu = ({
     id,
     onActionClick,
 }) => {
-    const buttons = Object.keys(types).map((key, index) => (
-        <Button
-            key={index}
-            id={id}
-            type={key}
-            onClick={onActionClick}
-        />
+  const buttons = Object.keys(types).map((key, index) => (
+    <Button
+      key={index}
+      id={id}
+      type={key}
+      onClick={onActionClick}
+    />
     ));
 
-    return <div className={styles.component}>{buttons}</div>;
+  return <div className={styles.component}>{buttons}</div>;
 };
 
 HoverMenu.propTypes = {
-    id: PropTypes.string.isRequired,
-    onActionClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  onActionClick: PropTypes.func.isRequired,
 };
 
 export default HoverMenu;

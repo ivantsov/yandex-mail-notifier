@@ -15,55 +15,54 @@ import {
 let popupIsOpen = false;
 
 export function loadMessagesCount(data) {
-    return async (dispatch) => {
-        const unreadMessagesCount = data || await getMessagesCount();
+  return async (dispatch) => {
+    const unreadMessagesCount = data || await getMessagesCount();
 
-        dispatch({
-            type: LOAD_MESSAGES_COUNT,
-            data: unreadMessagesCount,
-        });
-    };
+    dispatch({
+      type: LOAD_MESSAGES_COUNT,
+      data: unreadMessagesCount,
+    });
+  };
 }
 
 export function loadMessages() {
-    return async (dispatch) => {
-        popupIsOpen = true;
+  return async (dispatch) => {
+    popupIsOpen = true;
 
-        dispatch({type: LOAD_MESSAGES});
+    dispatch({type: LOAD_MESSAGES});
 
-        try {
-            const data = await getMessages();
+    try {
+      const data = await getMessages();
 
             // to prevent rewriting "loading" value, we dispatch the action only if popup is open
             // "popupIsOpen" could be rewritten by "invalidateMessages" action
-            if (popupIsOpen) {
-                dispatch({
-                    type: LOAD_MESSAGES_SUCCESS,
-                    data,
-                });
-            }
-        }
-        catch (err) {
-            dispatch({type: LOAD_MESSAGES_ERROR});
+      if (popupIsOpen) {
+        dispatch({
+          type: LOAD_MESSAGES_SUCCESS,
+          data,
+        });
+      }
+    } catch (err) {
+      dispatch({type: LOAD_MESSAGES_ERROR});
 
             // throw unhandled exception for raven
-            throw err;
-        }
-    };
+      throw err;
+    }
+  };
 }
 
 export function updateMessage({data}) {
-    updateMessageStatus(data);
+  updateMessageStatus(data);
 
     // kind of optimistic update :)
-    return {
-        type: UPDATE_MESSAGE,
-        id: data.id,
-    };
+  return {
+    type: UPDATE_MESSAGE,
+    id: data.id,
+  };
 }
 
 export function invalidateMessages() {
-    popupIsOpen = false;
+  popupIsOpen = false;
 
-    return {type: INVALIDATE_MESSAGES};
+  return {type: INVALIDATE_MESSAGES};
 }

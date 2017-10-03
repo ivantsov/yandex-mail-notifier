@@ -7,18 +7,18 @@ const Checkbox = ({
     value,
     onChange,
 }) => (
-    <input
-        type="checkbox"
-        id={name}
-        name={name}
-        checked={value}
-        onChange={e => onChange(name, e.target.checked)}
-    />
+  <input
+    type="checkbox"
+    id={name}
+    name={name}
+    checked={value}
+    onChange={e => onChange(name, e.target.checked)}
+  />
 );
 
 Checkbox.propTypes = {
-    ...FieldPropTypes,
-    value: PropTypes.bool.isRequired,
+  ...FieldPropTypes,
+  value: PropTypes.bool.isRequired,
 };
 
 export default Checkbox;
