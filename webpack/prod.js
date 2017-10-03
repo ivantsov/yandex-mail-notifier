@@ -3,11 +3,11 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {generateHtmlPlugins} = require('./utils');
 const {
-    entry,
-    output,
-    resolve,
-    moduleRules,
-    plugins,
+  entry,
+  output,
+  resolve,
+  moduleRules,
+  plugins,
 } = require('./base');
 
 const extractTextPlugin = new ExtractTextPlugin('[name].css');

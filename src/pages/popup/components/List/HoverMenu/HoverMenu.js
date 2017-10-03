@@ -5,8 +5,8 @@ import Button, {types} from './HoverMenuButton/HoverMenuButton';
 import styles from './HoverMenu.less';
 
 const HoverMenu = ({
-    id,
-    onActionClick,
+  id,
+  onActionClick,
 }) => {
   const buttons = Object.keys(types).map((key, index) => (
     <Button
@@ -15,7 +15,7 @@ const HoverMenu = ({
       type={key}
       onClick={onActionClick}
     />
-    ));
+  ));
 
   return <div className={styles.component}>{buttons}</div>;
 };

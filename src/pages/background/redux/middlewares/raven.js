@@ -14,7 +14,7 @@ window.onunhandledrejection = (err) => {
 
 // eslint-disable-next-line consistent-return
 export default store => next => action => {
-    // save this data for unhandled exceptions
+  // save this data for unhandled exceptions
   state = store.getState();
   lastAction = action;
 

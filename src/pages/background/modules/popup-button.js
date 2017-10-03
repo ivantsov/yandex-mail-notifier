@@ -6,14 +6,14 @@ function setState({user, messages}) {
   const enabled = user.authorized;
   const badge = (messages.unreadCount || '').toString();
 
-    // enable or disable popup button (onClick works only if no popup set)
+  // enable or disable popup button (onClick works only if no popup set)
   if (enabled) {
     popup.setIcon({path: '/assets/icon.png'});
   } else {
     popup.setIcon({path: '/assets/icon-disabled.png'});
   }
 
-    // set badge
+  // set badge
   popup.setBadgeText({text: badge});
   popup.setBadgeBackgroundColor({color: '#3d5afe'});
 }

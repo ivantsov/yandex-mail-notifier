@@ -20,16 +20,16 @@ export default class Select extends Component {
 
   render() {
     const {
-            name,
-            value,
-            options,
-        } = this.props;
+      name,
+      value,
+      options,
+    } = this.props;
 
     const optionElements = options.map((item, index) => (
       <option key={index} value={item.value}>
         {item.label}
       </option>
-        ));
+    ));
 
     return (
       <select
@@ -43,9 +43,9 @@ export default class Select extends Component {
 
   onChange = (e) => {
     const {
-            name,
-            onChange,
-        } = this.props;
+      name,
+      onChange,
+    } = this.props;
     const {value} = e.target;
     const parsedValue = isNaN(value) ? value : parseInt(value, 10);
 

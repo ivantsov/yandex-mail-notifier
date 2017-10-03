@@ -5,8 +5,8 @@ import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
 import {showNewNotification} from '../../redux/actions/notification';
 import {
-    RECONNECT,
-    MESSAGE,
+  RECONNECT,
+  MESSAGE,
 } from './constants';
 import initWSClient from './client';
 
@@ -28,10 +28,10 @@ let wsClient;
 async function connect() {
   const {dispatch, getState} = store;
   const {
-        authorized,
-        token,
-        uid,
-    } = getState().user;
+    authorized,
+    token,
+    uid,
+  } = getState().user;
 
   alarms.clear(config.reconnect.name);
 
@@ -43,8 +43,8 @@ async function connect() {
       token,
     });
 
-        // we don't need to dispatch login action if user is already authorized
-        // e.g. after calling "connect" first time the subscriber below will call "reconnect"
+    // we don't need to dispatch login action if user is already authorized
+    // e.g. after calling "connect" first time the subscriber below will call "reconnect"
     if (!authorized) {
       dispatch(login());
     }
@@ -53,7 +53,7 @@ async function connect() {
 
     alarms.create(config.connect.name, {delayInMinutes: config.connect.time});
 
-        // throw unhandled exception for raven
+    // throw unhandled exception for raven
     throw err;
   }
 }
@@ -70,8 +70,8 @@ const reconnect = debounce((err) => {
     });
     store.dispatch(logout());
     store.dispatch(login());
-        // TODO: if the error wouldn't disappear enable reloading
-        // reloadApp();
+    // TODO: if the error wouldn't disappear enable reloading
+    // reloadApp();
 
     return;
   }
@@ -87,9 +87,9 @@ function disconnect() {
 function onMessage(data) {
   const {dispatch} = store;
   const {
-        operation,
-        message,
-    } = data;
+    operation,
+    message,
+  } = data;
 
   if (operation !== 'insert' || message.hdr_status !== 'New') {
     dispatch(loadMessagesCount());
@@ -97,12 +97,12 @@ function onMessage(data) {
   }
 
   const {
-        new_messages: unreadCount,
-        mid: id,
-        hdr_from: from,
-        hdr_subject: subject,
-        firstline,
-    } = message;
+    new_messages: unreadCount,
+    mid: id,
+    hdr_from: from,
+    hdr_subject: subject,
+    firstline,
+  } = message;
 
   const nameMatch = from.match(/^"(.+)"/);
   const emailMatch = from.match(/<(.+)>$/);

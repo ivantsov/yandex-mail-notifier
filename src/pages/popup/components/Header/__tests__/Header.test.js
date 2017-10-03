@@ -21,7 +21,7 @@ function render(props) {
       {...commonProps}
       {...props}
     />,
-    );
+  );
 
   return component.toJSON();
 }
@@ -50,10 +50,10 @@ describe('popup/Header', () => {
   it('callbacks', () => {
     const tree = render();
     const [
-            composeLink,
-            centerBlock,
-            settingsLink,
-        ] = tree.children;
+      composeLink,
+      centerBlock,
+      settingsLink,
+    ] = tree.children;
 
     composeLink.props.onClick();
     expect(openLink).lastCalledWith('#compose');

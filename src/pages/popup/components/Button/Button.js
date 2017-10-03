@@ -19,10 +19,10 @@ const TYPES = {
 };
 
 const Button = ({
-    children,
-    onClick,
-    disabled,
-    type,
+  children,
+  onClick,
+  disabled,
+  type,
 }) => (
   <button
     disabled={disabled}

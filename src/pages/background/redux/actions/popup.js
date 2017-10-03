@@ -1,7 +1,7 @@
 import {
-    OPEN_LINK,
-    OPEN_SETTINGS,
-    RELOAD_APP,
+  OPEN_LINK,
+  OPEN_SETTINGS,
+  RELOAD_APP,
 } from 'shared/redux-consts/popup';
 import * as tabUtils from '../../utils/tab';
 import * as runtimeUtils from '../../utils/runtime';

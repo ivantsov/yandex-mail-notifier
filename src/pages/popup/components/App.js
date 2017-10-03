@@ -32,9 +32,9 @@ class App extends Component {
 
   componentDidMount() {
     const {
-            user,
-            loadMessages,
-        } = this.props;
+      user,
+      loadMessages,
+    } = this.props;
 
     if (user.authorized) {
       loadMessages();
@@ -43,23 +43,23 @@ class App extends Component {
 
   render() {
     const {
-            user,
-            messages: {
-                unreadCount,
-                items,
-                loading,
-                error,
-            },
-            settings: {
-                preferredDomain,
-            },
-            loadMessages,
-            updateMessage,
-            openLink,
-            openSettings,
-            reloadApp,
-            openDonationLink,
-        } = this.props;
+      user,
+      messages: {
+        unreadCount,
+        items,
+        loading,
+        error,
+      },
+      settings: {
+        preferredDomain,
+      },
+      loadMessages,
+      updateMessage,
+      openLink,
+      openSettings,
+      reloadApp,
+      openDonationLink,
+    } = this.props;
 
     if (!user.authorized) {
       return (

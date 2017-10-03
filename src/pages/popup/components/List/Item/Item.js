@@ -18,13 +18,13 @@ export default class Item extends Component {
 
   render() {
     const {
-            id,
-            from,
-            subject,
-            firstline,
-            date,
-            onActionClick,
-        } = this.props;
+      id,
+      from,
+      subject,
+      firstline,
+      date,
+      onActionClick,
+    } = this.props;
 
     return (
       <div
@@ -54,9 +54,9 @@ export default class Item extends Component {
 
   openMessage = () => {
     const {
-            id,
-            openMessage,
-        } = this.props;
+      id,
+      openMessage,
+    } = this.props;
 
     openMessage(`#message/${id}`);
   }

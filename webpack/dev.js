@@ -2,11 +2,11 @@ const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const {generateHtmlPlugins} = require('./utils');
 const {
-    entry,
-    output,
-    resolve,
-    moduleRules,
-    plugins,
+  entry,
+  output,
+  resolve,
+  moduleRules,
+  plugins,
 } = require('./base');
 
 const baseConfig = {
@@ -59,7 +59,7 @@ module.exports = (target) => {
     };
   }
 
-    // firefox
+  // firefox
   return {
     ...baseConfig,
     plugins: [

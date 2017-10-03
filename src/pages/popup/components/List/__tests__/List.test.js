@@ -33,7 +33,7 @@ function render(props) {
       {...defaultProps}
       {...props}
     />,
-    );
+  );
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

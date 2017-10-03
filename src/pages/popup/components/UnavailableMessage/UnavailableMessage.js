@@ -6,8 +6,8 @@ import Button from '../Button/Button';
 import styles from './UnavailableMessage.less';
 
 const UnavailableMessage = ({
-    domain,
-    reloadApp,
+  domain,
+  reloadApp,
 }) => (
   <div className={styles.container}>
     <div>

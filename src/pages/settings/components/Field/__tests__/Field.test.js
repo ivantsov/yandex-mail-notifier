@@ -14,7 +14,7 @@ function testCase(props) {
       description="field description"
       {...props}
     />,
-    );
+  );
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

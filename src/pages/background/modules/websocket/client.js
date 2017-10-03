@@ -2,8 +2,8 @@ import qs from 'query-string';
 import sessionId from '../../utils/session-generator';
 import resolveUrl from '../../utils/url-resolver';
 import {
-    RECONNECT,
-    MESSAGE,
+  RECONNECT,
+  MESSAGE,
 } from './constants';
 
 let ws, emitEvent;
@@ -23,8 +23,8 @@ function onMessage({data}) {
 }
 
 function connect({
-    uid,
-    token,
+  uid,
+  token,
 }) {
   const queryParams = qs.stringify({
     client: 'bar',

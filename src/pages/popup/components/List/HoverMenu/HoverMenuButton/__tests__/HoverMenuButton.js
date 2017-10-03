@@ -18,7 +18,7 @@ function render(type) {
       {...props}
       type={type}
     />,
-    );
+  );
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

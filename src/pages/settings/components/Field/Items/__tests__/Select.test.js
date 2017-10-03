@@ -9,7 +9,7 @@ function testCase(props) {
       onChange={jest.fn()}
       {...props}
     />,
-    );
+  );
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -27,11 +27,11 @@ describe('settings/Select', () => {
 
   describe('with options', () => {
     function testCaseWithOptions({
-            value,
-            newValue,
-            actualNewValue,
-            options,
-        }) {
+      value,
+      newValue,
+      actualNewValue,
+      options,
+    }) {
       const name = 'field';
       const onChange = jest.fn();
 

@@ -9,11 +9,11 @@ import styles from './Field.less';
 
 const Field = (props) => {
   const {
-        type,
-        name,
-        label,
-        description,
-    } = props;
+    type,
+    name,
+    label,
+    description,
+  } = props;
 
   let Component;
   switch (type) {

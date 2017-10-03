@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-    CSSTransition,
-    TransitionGroup,
+  CSSTransition,
+  TransitionGroup,
 } from 'react-transition-group';
 import i18n from 'shared/utils/i18n';
 import Item from './Item/Item';
@@ -12,11 +12,11 @@ import styles from './List.less';
 import itemStyles from './Item/Item.less';
 
 function Placeholders({
-    show,
-    count,
+  show,
+  count,
 }) {
   const elements = Array.from(Array(count).keys())
-        .map(index => <ItemPlaceholder key={index}/>);
+    .map(index => <ItemPlaceholder key={index}/>);
   const className = show ? styles.placeholders : styles.placeholdersLeave;
 
   return <div className={className}>{elements}</div>;
@@ -27,9 +27,9 @@ Placeholders.propTypes = {
 };
 
 function List({
-    items,
-    onActionClick,
-    openMessage,
+  items,
+  onActionClick,
+  openMessage,
 }) {
   const messages = items.map(item => (
     <CSSTransition
@@ -46,7 +46,7 @@ function List({
         {...item}
       />
     </CSSTransition>
-    ));
+  ));
 
   return (
     <TransitionGroup>
@@ -63,12 +63,12 @@ List.propTypes = {
 };
 
 const ListContainer = ({
-    unreadMessagesCount,
-    loading,
-    error,
-    items,
-    onActionClick,
-    openMessage,
+  unreadMessagesCount,
+  loading,
+  error,
+  items,
+  onActionClick,
+  openMessage,
 }) => {
   const errorOrEmpty = error || (!items.length && !loading);
   if (errorOrEmpty) {

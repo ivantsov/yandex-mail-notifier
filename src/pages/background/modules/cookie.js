@@ -5,25 +5,25 @@ import {config} from '../utils/cookie';
 import resolveUrl from '../utils/url-resolver';
 
 const handleCookieChange = debounce(({
-    prevLogin,
-    nextLogin,
-    removed,
+  prevLogin,
+  nextLogin,
+  removed,
 }) => {
-    // user logged out from all accounts
+  // user logged out from all accounts
   if (removed) {
     console.log('LOGOUT', prevLogin, nextLogin, removed);
     store.dispatch(logout());
     return;
   }
 
-    // user just logged in for the first time
+  // user just logged in for the first time
   if (!prevLogin && nextLogin) {
     console.log('LOGIN', prevLogin, nextLogin, removed);
     store.dispatch(login());
     return;
   }
 
-    // user changed the account
+  // user changed the account
   if (prevLogin !== nextLogin) {
     console.log('ACCOUNT CHANGED', prevLogin, nextLogin, removed);
     store.dispatch(logout());
@@ -37,16 +37,16 @@ const handleCookieChange = debounce(({
 export default function initCookieListener() {
   chrome.cookies.onChanged.addListener(({cookie, removed}) => {
     const {
-            domain,
-            name,
-            value,
-            path,
-        } = cookie;
+      domain,
+      name,
+      value,
+      path,
+    } = cookie;
 
     if (domain.includes(resolveUrl(config.domain)) &&
             name === config.items.login &&
             path === config.path
-        ) {
+    ) {
       handleCookieChange({
         prevLogin: store.getState().user.email,
         nextLogin: value,

@@ -15,8 +15,8 @@ const baseProps = {
   messages: {
     unreadCount: 5,
     items: [
-            {id: 1},
-            {id: 2},
+      {id: 1},
+      {id: 2},
     ],
     loading: false,
     error: false,
@@ -38,7 +38,7 @@ function render(props) {
       {...baseProps}
       {...props}
     />,
-    );
+  );
 
   return component.toJSON();
 }

@@ -6,10 +6,10 @@ export default {
       chromeStore.get(null, data => {
         const parsedData = Object.keys(data).reduce((obj, key) => {
           try {
-                        // eslint-disable-next-line no-param-reassign
+            // eslint-disable-next-line no-param-reassign
             obj[key] = JSON.parse(data[key]);
           } catch (err) {
-                        // swallow
+            // swallow
           }
 
           return obj;

@@ -13,7 +13,7 @@ const App = ({settings, updateSettings}) => {
       value={settings[item.name]}
       onChange={updateSettings}
     />
-    ));
+  ));
 
   return (
     <table>

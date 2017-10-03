@@ -17,7 +17,7 @@ it('settings/App', () => {
       }}
       updateSettings={jest.fn()}
     />,
-    );
+  );
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

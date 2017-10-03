@@ -29,10 +29,10 @@ export default class HoverMenuButton extends Component {
     e.stopPropagation();
 
     const {
-            id,
-            type,
-            onClick,
-        } = this.props;
+      id,
+      type,
+      onClick,
+    } = this.props;
     const typeObj = types[type];
 
     onClick({

@@ -1,8 +1,8 @@
 import request from 'superagent';
 import appConfig from 'shared/config';
 import {
-    getUid as getCookieUid,
-    getSessionId,
+  getUid as getCookieUid,
+  getSessionId,
 } from './cookie';
 import resolveUrl from './url-resolver';
 import parseXML from './parser';
@@ -24,17 +24,17 @@ chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => ({
 
 async function sendRequest(data) {
   const {
-        method = 'get',
-        url,
-        type = 'json',
-        form,
-        query,
-    } = data;
+    method = 'get',
+    url,
+    type = 'json',
+    form,
+    query,
+  } = data;
 
   const res = await request(method, url)
-        .type(form ? 'form' : 'json')
-        .send(form)
-        .query(query);
+    .type(form ? 'form' : 'json')
+    .send(form)
+    .query(query);
 
     // json
   if (type === 'json') {
@@ -47,15 +47,15 @@ async function sendRequest(data) {
     return resData;
   }
 
-    // xml
+  // xml
   const {responseXML} = res.xhr;
 
   if (!responseXML) {
     throw new Error(`No XML in the response: ${res.text}`);
   }
 
-    // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
-    // check on "redirect_to" should be before "error", because "redirect_to" response contains "error" as well
+  // sometimes Yandex sends "redirect" instead of result, so we need just follow that url in response
+  // check on "redirect_to" should be before "error", because "redirect_to" response contains "error" as well
   const redirect = responseXML.querySelector('redirect_to');
   if (redirect) {
     return sendRequest({
@@ -76,14 +76,14 @@ async function sendRequest(data) {
 async function loadUserInfo() {
   const cookieUid = await getCookieUid();
   const {
-        default_uid: uid,
-        accounts,
-    } = await sendRequest({
-      url: resolveUrl(AUTH_CONFIG.passportUrl),
-      query: {
-        yu: cookieUid,
-      },
-    });
+    default_uid: uid,
+    accounts,
+  } = await sendRequest({
+    url: resolveUrl(AUTH_CONFIG.passportUrl),
+    query: {
+      yu: cookieUid,
+    },
+  });
 
   if (!accounts) {
     throw new Error(appConfig.errors.notAuthorized);

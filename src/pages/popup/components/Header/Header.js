@@ -9,12 +9,12 @@ import ComposeIcon from './Icons/ComposeIcon';
 import styles from './Header.less';
 
 const Header = ({
-    user,
-    unreadMessagesCount,
-    disabled,
-    reloadMessages,
-    openLink,
-    openSettings,
+  user,
+  unreadMessagesCount,
+  disabled,
+  reloadMessages,
+  openLink,
+  openSettings,
 }) => (
   <div className={styles.component}>
     <Button
@@ -29,7 +29,7 @@ const Header = ({
     <div className={styles.centerBlock}>
       <a onClick={() => openLink()}>{/* we need callback here, otherwise event will be passed as a first param */}
         {user} (<strong>{unreadMessagesCount}</strong>)
-            </a>
+      </a>
       <Button
         type="icon"
         disabled={disabled}

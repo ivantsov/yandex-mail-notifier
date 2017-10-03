@@ -25,7 +25,7 @@ function initModules() {
 }
 
 (async () => {
-    // we should prepare the store before starting any service
+  // we should prepare the store before starting any service
   await loadStorageData();
 
   initModules();

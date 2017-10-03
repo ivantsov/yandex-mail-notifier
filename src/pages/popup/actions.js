@@ -1,12 +1,12 @@
 import {
-    LOAD_MESSAGES,
-    UPDATE_MESSAGE,
+  LOAD_MESSAGES,
+  UPDATE_MESSAGE,
 } from 'shared/redux-consts/messages';
 import {
-    OPEN_LINK,
-    OPEN_SETTINGS,
-    RELOAD_APP,
-    OPEN_DONATION_LINK,
+  OPEN_LINK,
+  OPEN_SETTINGS,
+  RELOAD_APP,
+  OPEN_DONATION_LINK,
 } from 'shared/redux-consts/popup';
 
 // only FF needs it

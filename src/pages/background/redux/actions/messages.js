@@ -1,15 +1,15 @@
 import {
-    LOAD_MESSAGES_COUNT,
-    LOAD_MESSAGES,
-    LOAD_MESSAGES_SUCCESS,
-    LOAD_MESSAGES_ERROR,
-    UPDATE_MESSAGE,
-    INVALIDATE_MESSAGES,
+  LOAD_MESSAGES_COUNT,
+  LOAD_MESSAGES,
+  LOAD_MESSAGES_SUCCESS,
+  LOAD_MESSAGES_ERROR,
+  UPDATE_MESSAGE,
+  INVALIDATE_MESSAGES,
 } from 'shared/redux-consts/messages';
 import {
-    getMessages,
-    getMessagesCount,
-    updateMessageStatus,
+  getMessages,
+  getMessagesCount,
+  updateMessageStatus,
 } from '../../utils/api';
 
 let popupIsOpen = false;
@@ -34,8 +34,8 @@ export function loadMessages() {
     try {
       const data = await getMessages();
 
-            // to prevent rewriting "loading" value, we dispatch the action only if popup is open
-            // "popupIsOpen" could be rewritten by "invalidateMessages" action
+      // to prevent rewriting "loading" value, we dispatch the action only if popup is open
+      // "popupIsOpen" could be rewritten by "invalidateMessages" action
       if (popupIsOpen) {
         dispatch({
           type: LOAD_MESSAGES_SUCCESS,
@@ -45,7 +45,7 @@ export function loadMessages() {
     } catch (err) {
       dispatch({type: LOAD_MESSAGES_ERROR});
 
-            // throw unhandled exception for raven
+      // throw unhandled exception for raven
       throw err;
     }
   };
@@ -54,7 +54,7 @@ export function loadMessages() {
 export function updateMessage({data}) {
   updateMessageStatus(data);
 
-    // kind of optimistic update :)
+  // kind of optimistic update :)
   return {
     type: UPDATE_MESSAGE,
     id: data.id,

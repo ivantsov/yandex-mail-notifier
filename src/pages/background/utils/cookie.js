@@ -1,8 +1,8 @@
 import resolveUrl from './url-resolver';
 
 const {
-    runtime,
-    cookies,
+  runtime,
+  cookies,
 } = chrome;
 
 export const config = {
@@ -27,10 +27,10 @@ function getCookieByName(name) {
       }
 
       resolve(
-                Array.isArray(res) &&
+        Array.isArray(res) &&
                 res[0] &&
                 res[0].value,
-            );
+      );
     });
   });
 }

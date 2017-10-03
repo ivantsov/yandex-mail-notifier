@@ -19,34 +19,34 @@ function createElement(
 }
 
 const folderElements = folders.map(({id, symbol}) =>
-    createElement('folder', [
-      createElement('fid', [], id),
-      createElement('symbol', [], symbol),
-    ]),
+  createElement('folder', [
+    createElement('fid', [], id),
+    createElement('symbol', [], symbol),
+  ]),
 );
 
 const messageElements = messages.map(({
-    id,
-    subject,
-    from,
-    firstline,
-    date,
-    fid,
+  id,
+  subject,
+  from,
+  firstline,
+  date,
+  fid,
 }) =>
-    createElement('message', [
-      createElement('from', [
-        createElement('name', [], from.name),
-        createElement('email', [], from.email),
-      ]),
-      createElement('subject', [
-        createElement('text', [], subject),
-      ]),
-      createElement('firstline', [], firstline),
-    ], {
-      mid: id,
-      recv_date: date,
-      fid,
-    }),
+  createElement('message', [
+    createElement('from', [
+      createElement('name', [], from.name),
+      createElement('email', [], from.email),
+    ]),
+    createElement('subject', [
+      createElement('text', [], subject),
+    ]),
+    createElement('firstline', [], firstline),
+  ], {
+    mid: id,
+    recv_date: date,
+    fid,
+  }),
 );
 
 describe('background/utils/parser', () => {

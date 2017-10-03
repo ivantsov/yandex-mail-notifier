@@ -19,7 +19,7 @@ alarms.onAlarm.addListener(({name}) => {
 });
 
 function initUnreadNotification({user, settings: {unreadMessagesNotification}}) {
-    // on "unreadMessagesNotification" change + user is logged out
+  // on "unreadMessagesNotification" change + user is logged out
   if (!user.authorized) {
     return;
   }
@@ -33,7 +33,7 @@ function initUnreadNotification({user, settings: {unreadMessagesNotification}}) 
 }
 
 function initNotAuthNotification({user, settings}) {
-    // on "notAuthNotification" change + user is logged in
+  // on "notAuthNotification" change + user is logged in
   if (user.authorized) {
     return;
   }

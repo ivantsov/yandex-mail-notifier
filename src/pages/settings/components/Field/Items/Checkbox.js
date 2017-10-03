@@ -3,9 +3,9 @@ import React from 'react';
 import FieldPropTypes from './proptypes';
 
 const Checkbox = ({
-    name,
-    value,
-    onChange,
+  name,
+  value,
+  onChange,
 }) => (
   <input
     type="checkbox"
