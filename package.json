@@ -11,7 +11,7 @@
     "url": "https://github.com/ivantsov/yandex-mail-notifier.git"
   },
   "scripts": {
-    "prepush": "npm run lint",
+    "precommit": "lint-staged",
     "clean": "rimraf dist",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -57,15 +57,15 @@
     "babel-preset-react": "^6.24.1",
     "circular-dependency-plugin": "^4.2.0",
     "codecov": "^2.3.0",
-    "copy-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^4.1.0",
     "css-loader": "^0.28.7",
     "date-fns": "^1.28.5",
-    "eslint": "^3.19.0",
+    "eslint": "^4.8.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-jsx-a11y": "^5",
+    "eslint-plugin-react": "^7.4.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "fs-extra": "^4.0.1",
     "html-webpack-plugin": "^2.30.1",
@@ -74,15 +74,17 @@
     "jest": "^20.0.4",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "lint-staged": "^4.2.3",
     "npm-run-all": "^4.1.1",
+    "prettier": "^1.7.3",
     "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "web-ext": "^2.0.0",
     "webext-i18n": "^1.1.0",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^2.9.1",
     "webpack-shell-plugin": "^0.5.0",
-    "write-file-webpack-plugin": "^4.1.0"
+    "write-file-webpack-plugin": "^4.2.0"
   }
 }

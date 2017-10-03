@@ -3,10 +3,7 @@ import initSubscriber from 'redux-subscriber';
 import middlewares from './middlewares';
 import reducer from './reducers';
 
-const store = createStore(
-    reducer,
-    applyMiddleware(...middlewares),
-);
+const store = createStore(reducer, applyMiddleware(...middlewares));
 
 initSubscriber(store);
 
