@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 8
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.1.0
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.1.0 # otherwise Travis uses 0.27.*
   - export PATH=$HOME/.yarn/bin:$PATH
 script:
   - set -e # fail the build if one of the scripts fails - https://github.com/travis-ci/travis-ci/issues/1066
