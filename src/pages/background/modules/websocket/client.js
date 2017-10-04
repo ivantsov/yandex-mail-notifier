@@ -2,7 +2,7 @@ import qs from 'query-string';
 import sessionId from '../../utils/session-generator';
 import resolveUrl from '../../utils/url-resolver';
 import {
-  RECONNECT,
+  ERROR,
   MESSAGE,
 } from './constants';
 
@@ -10,12 +10,12 @@ let ws, emitEvent;
 
 function onClose(err) {
   console.error('[SOCKET]: Socket is closed', err); // eslint-disable-line no-console
-  emitEvent(RECONNECT, err);
+  emitEvent(ERROR, err);
 }
 
-function onError(...args) {
-  console.error('[SOCKET]: An error has occurred in socket', args); // eslint-disable-line no-console
-  emitEvent(RECONNECT);
+function onError(err) {
+  console.error('[SOCKET]: An error has occurred in socket'); // eslint-disable-line no-console
+  emitEvent(ERROR, err);
 }
 
 function onMessage({data}) {

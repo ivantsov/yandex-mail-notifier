@@ -5,7 +5,7 @@ import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
 import {showNewNotification} from '../../redux/actions/notification';
 import {
-  RECONNECT,
+  ERROR,
   MESSAGE,
 } from './constants';
 import initWSClient from './client';
@@ -117,8 +117,8 @@ function onMessage(data) {
 }
 
 function emitEvent(eventType, data) {
-  if (eventType === RECONNECT) {
-    reconnect(data);
+  if (eventType === ERROR) {
+    onError(data);
   }
   if (eventType === MESSAGE) {
     onMessage(data);
