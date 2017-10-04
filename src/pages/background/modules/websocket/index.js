@@ -5,7 +5,7 @@ import {login, logout} from '../../redux/actions/user';
 import {loadMessagesCount} from '../../redux/actions/messages';
 import {showNewNotification} from '../../redux/actions/notification';
 import {
-  RECONNECT,
+  ERROR,
   MESSAGE,
 } from './constants';
 import initWSClient from './client';
@@ -58,24 +58,8 @@ async function connect() {
   }
 }
 
-const reconnect = debounce((err) => {
+const reconnect = debounce(() => {
   wsClient.disconnect();
-
-  if (err && err.code) {
-    window.Raven.captureException(err, {
-      extra: {
-        code: err.code,
-        reason: err.reason,
-      },
-    });
-    store.dispatch(logout());
-    store.dispatch(login());
-    // TODO: if the error wouldn't disappear enable reloading
-    // reloadApp();
-
-    return;
-  }
-
   connect();
 }, 500);
 
@@ -116,9 +100,32 @@ function onMessage(data) {
   }));
 }
 
+const IGNORED_ERRORS = [
+  1006, // abnormal closure
+];
+function onError(err) {
+  if (err && !IGNORED_ERRORS.includes(err.code)) {
+    window.Raven.captureException(err, {
+      extra: {
+        code: err.code,
+        reason: err.reason,
+      },
+    });
+
+    store.dispatch(logout());
+    store.dispatch(login());
+    // TODO: if the error wouldn't disappear enable reloading
+    // reloadApp();
+
+    return;
+  }
+
+  reconnect();
+}
+
 function emitEvent(eventType, data) {
-  if (eventType === RECONNECT) {
-    reconnect(data);
+  if (eventType === ERROR) {
+    onError(data);
   }
   if (eventType === MESSAGE) {
     onMessage(data);
