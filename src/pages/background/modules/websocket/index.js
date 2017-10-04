@@ -58,24 +58,8 @@ async function connect() {
   }
 }
 
-const reconnect = debounce((err) => {
+const reconnect = debounce(() => {
   wsClient.disconnect();
-
-  if (err && err.code) {
-    window.Raven.captureException(err, {
-      extra: {
-        code: err.code,
-        reason: err.reason,
-      },
-    });
-    store.dispatch(logout());
-    store.dispatch(login());
-    // TODO: if the error wouldn't disappear enable reloading
-    // reloadApp();
-
-    return;
-  }
-
   connect();
 }, 500);
 
@@ -114,6 +98,29 @@ function onMessage(data) {
     subject: subject !== 'No subject' ? subject : '',
     message: firstline,
   }));
+}
+
+const IGNORED_ERRORS = [
+  1006, // abnormal closure
+];
+function onError(err) {
+  if (err && !IGNORED_ERRORS.includes(err.code)) {
+    window.Raven.captureException(err, {
+      extra: {
+        code: err.code,
+        reason: err.reason,
+      },
+    });
+
+    store.dispatch(logout());
+    store.dispatch(login());
+    // TODO: if the error wouldn't disappear enable reloading
+    // reloadApp();
+
+    return;
+  }
+
+  reconnect();
 }
 
 function emitEvent(eventType, data) {
