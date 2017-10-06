@@ -26,7 +26,7 @@ const handleCookieChange = debounce(({
   // user changed the account
   // prevLogin is the whole email address e.g. "user@ya.ru"
   // however nextLogin is only login name e.g. "user"
-  if (prevLogin.includes(nextLogin)) {
+  if (!prevLogin.includes(nextLogin)) {
     console.log('ACCOUNT CHANGED', prevLogin, nextLogin, removed);
     store.dispatch(logout());
     store.dispatch(login());
