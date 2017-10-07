@@ -85,6 +85,11 @@ async function loadUserInfo() {
     },
   });
 
+  if (!uid) {
+    // TODO: figure our what's going on
+    throw new Error('No uid', cookieUid, uid, accounts);
+  }
+
   if (!accounts) {
     throw new Error(appConfig.errors.notAuthorized);
   }

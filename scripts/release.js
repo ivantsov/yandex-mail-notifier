@@ -10,7 +10,7 @@ function validate(newVersion) {
   const semverRegex = /^\d+\.\d+\.\d+$/;
 
   if (!newVersion || !semverRegex.test(newVersion)) {
-    throw new Error('The release version is not provided or is incorrect');
+    throw new Error('The release version is not provided or incorrect');
   }
 }
 
