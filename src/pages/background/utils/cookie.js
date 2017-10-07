@@ -22,10 +22,6 @@ function getCookieByName(name) {
       path: config.path,
       name,
     }, res => {
-      if (runtime.lastError) {
-        throw new Error(`Last error in cookie ${runtime.lastError.message}`);
-      }
-
       resolve(
         Array.isArray(res) &&
                 res[0] &&
