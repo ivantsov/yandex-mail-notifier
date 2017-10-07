@@ -9,6 +9,8 @@ import {
 let ws, emitEvent;
 
 function onClose(err) {
+  // TODO: remove it
+  console.log('ON SOCKET CLOSE', arguments); // eslint-disable-line
   console.error('[SOCKET]: Socket is closed', err); // eslint-disable-line no-console
   emitEvent(ERROR, err);
 }
@@ -29,7 +31,6 @@ function connect({
     uid,
   });
 
-  console.log('BEFORE ERROR, uid:', uid);
   // eslint-disable-next-line no-use-before-define
   // disconnect();
 

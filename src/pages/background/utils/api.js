@@ -75,6 +75,10 @@ async function sendRequest(data) {
 
 async function loadUserInfo() {
   const cookieUid = await getCookieUid();
+  if (!cookieUid) {
+    throw new Error(appConfig.errors.notAuthorized);
+  }
+
   const {
     default_uid: uid,
     accounts,
@@ -84,11 +88,6 @@ async function loadUserInfo() {
       yu: cookieUid,
     },
   });
-
-  if (!uid) {
-    // TODO: figure our what's going on
-    throw new Error('No uid', cookieUid, uid, accounts);
-  }
 
   if (!accounts) {
     throw new Error(appConfig.errors.notAuthorized);
