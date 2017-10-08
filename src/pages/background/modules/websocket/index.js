@@ -102,14 +102,12 @@ function onMessage(data) {
 
 const IGNORED_ERRORS = [
   1006, // abnormal closure
+  4400, // missing uid
 ];
 function onError(err) {
   if (err && !IGNORED_ERRORS.includes(err.code)) {
     window.Raven.captureException(err, {
-      extra: {
-        code: err.code,
-        reason: err.reason,
-      },
+      extra: err,
     });
 
     store.dispatch(logout());
