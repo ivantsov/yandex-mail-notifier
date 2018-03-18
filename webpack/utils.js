@@ -1,6 +1,6 @@
 const HtmlPlugin = require('html-webpack-plugin');
 
-const pagesPath = './src/pages';
+const pagesPath = './src-v2/pages';
 
 function generateHtmlPlugins(entriesObj) {
   // TODO: not supported by nodejs

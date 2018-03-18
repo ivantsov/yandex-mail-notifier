@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings/Select no options 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={123}
+/>
+`;
+
+exports[`settings/Select with options number options with zero value 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={1}
+>
+  <option
+    value={0}
+  >
+    option0
+  </option>
+  <option
+    value={1}
+  >
+    option1
+  </option>
+</select>
+`;
+
+exports[`settings/Select with options number options without zero value 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value={1}
+>
+  <option
+    value={1}
+  >
+    option1
+  </option>
+  <option
+    value={2}
+  >
+    option2
+  </option>
+</select>
+`;
+
+exports[`settings/Select with options string options 1`] = `
+<select
+  id="field"
+  name="field"
+  onChange={[Function]}
+  value="opt1"
+>
+  <option
+    value="opt1"
+  >
+    option1
+  </option>
+  <option
+    value="opt2"
+  >
+    option2
+  </option>
+</select>
+`;

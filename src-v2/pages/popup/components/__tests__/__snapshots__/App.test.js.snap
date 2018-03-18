@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`popup/App authorized 1`] = `
+<div>
+  <div>
+    Header
+  </div>
+  <div>
+    List
+  </div>
+  <div>
+    Donation
+  </div>
+</div>
+`;
+
+exports[`popup/App not authorized 1`] = `
+<div
+  className="container"
+>
+  <div>
+    <h1
+      className="title"
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "popup.unavailable.title",
+          }
+        }
+      />
+    </h1>
+    <p
+      className="subTitle"
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "popup.unavailable.subTitle",
+          }
+        }
+      />
+    </p>
+    <ol>
+      <li>
+        <strong>
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "popup.unavailable.notAuth.label",
+              }
+            }
+          />
+        </strong>
+        <ul>
+          <li>
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "popup.unavailable.notAuth.checkAuth",
+                }
+              }
+            />
+          </li>
+          <li>
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "popup.unavailable.notAuth.relogin",
+                }
+              }
+            />
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "popup.unavailable.noConnection.label",
+              }
+            }
+          />
+        </strong>
+      </li>
+    </ol>
+  </div>
+  <p
+    className="btnTitle"
+  >
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "popup.unavailable.nothingHelped",
+        }
+      }
+    />
+  </p>
+  <div
+    className="btnContainer"
+  >
+    <button
+      className="primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "popup.unavailable.reloadBtn",
+          }
+        }
+      />
+    </button>
+  </div>
+</div>
+`;

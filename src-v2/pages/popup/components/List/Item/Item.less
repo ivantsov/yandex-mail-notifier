@@ -1,0 +1,73 @@
+@import "../../../styles/colors";
+
+.component {
+    height: 70px;
+    max-height: 70px;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: @grey2;
+
+        // show hover menu
+        .hoverMenu {
+            display: flex;
+        }
+    }
+}
+
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fromAndDate {
+    min-width: 0;
+}
+
+.hoverMenu {
+    display: none;
+}
+
+// leave animation
+.leave {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out,
+                max-height 0.2s ease-in-out,
+                padding 0.2s ease-in-out;
+
+    &Active {
+        max-height: 0;
+        padding: 0 10px;
+        opacity: 0;
+    }
+}
+
+.from {
+    font-weight: bold;
+}
+
+.date {
+    color: fade(black, 50%);
+    margin-left: 10px;
+}
+
+.subject {
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 2px 0 4px;
+}
+
+@lineHeight: 16px;
+@linesCount: 2;
+.content {
+    color: fade(black, 50%);
+    overflow: hidden;
+    line-height: @lineHeight;
+    max-height: @linesCount * @lineHeight;
+    display: -webkit-box;
+    -webkit-line-clamp: @linesCount;
+    -webkit-box-orient: vertical;
+}

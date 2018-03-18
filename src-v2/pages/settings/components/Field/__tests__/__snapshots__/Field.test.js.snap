@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings/Field checkbox 1`] = `
+<tr>
+  <td
+    className="label"
+  >
+    <label
+      htmlFor="field"
+    >
+      field label
+    </label>
+    <div
+      className="description"
+    >
+      field description
+    </div>
+  </td>
+  <td>
+    <div
+      description="field description"
+      label="field label"
+      name="field"
+      onChange={[Function]}
+      type="checkbox"
+      value={false}
+    >
+      Checkbox
+    </div>
+  </td>
+</tr>
+`;
+
+exports[`settings/Field link 1`] = `
+<tr>
+  <td
+    className="label"
+  >
+    <label
+      htmlFor="field"
+    >
+      field label
+    </label>
+    <div
+      className="description"
+    >
+      field description
+    </div>
+  </td>
+  <td>
+    <div
+      description="field description"
+      label="field label"
+      name="field"
+      text="site url"
+      type="link"
+      url="https://smth.com"
+    >
+      Link
+    </div>
+  </td>
+</tr>
+`;
+
+exports[`settings/Field select 1`] = `
+<tr>
+  <td
+    className="label"
+  >
+    <label
+      htmlFor="field"
+    >
+      field label
+    </label>
+    <div
+      className="description"
+    >
+      field description
+    </div>
+  </td>
+  <td>
+    <div
+      description="field description"
+      label="field label"
+      name="field"
+      onChange={[Function]}
+      type="select"
+      value={1}
+    >
+      Select
+    </div>
+  </td>
+</tr>
+`;

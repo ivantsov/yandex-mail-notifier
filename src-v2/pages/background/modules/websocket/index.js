@@ -1,9 +1,8 @@
 import debounce from 'lodash.debounce';
-import {subscribe} from 'redux-subscriber';
 import store from '../../redux/store';
 import {login, logout} from '../../redux/actions/user';
-import {loadMessagesCount} from '../../redux/actions/messages';
-import {showNewNotification} from '../../redux/actions/notification';
+import {loadMessagesCount} from '../../redux/messages/messages';
+import {showNewNotification} from '../../redux/notification/notification';
 import {
   ERROR,
   MESSAGE,
@@ -15,7 +14,7 @@ const {alarms} = chrome;
 const config = {
   connect: {
     name: 'connect',
-    time: 1, // try to connect if failed before
+    time: 0.5, // try to connect if failed before
   },
   reconnect: {
     name: 'reconnect',
@@ -23,59 +22,44 @@ const config = {
   },
 };
 
-// not gonna workout because:
-// 1) if user isn't authorized, we dispatch login, subscriber calls "reconnect"
-// 2) anyway wsClient will be called without uid, it'll trigger an error and call everything once again
-// I need a way how to handle the following cases:
-// a) can't connect to the socket for auth reason
-// b) socket was closed with some error
-
 let wsClient;
 
 async function connect() {
   const {dispatch, getState} = store;
   const {
-    authorized,
     token,
     uid,
   } = getState().user;
 
-  alarms.clear(config.reconnect.name);
+  if (!token || !uid) {
+    dispatch(login());
+  }
 
-  try {
-    alarms.create(config.reconnect.name, {delayInMinutes: config.reconnect.time});
-
-    wsClient.connect({
-      uid,
-      token,
-    });
-
-    // throw new Error('test');
-    // authorize user if he hadn't been before
-    // needed in case when e.g. there was an error, we caught it, logged out user and now trying to reconnect
-    if (!authorized) {
-      dispatch(login());
-    }
-  } catch (err) {
+  wsClient.connect({
+    uid,
+    token,
+  });
     // once we dispatched "logout", the subscriber below will call "disconnect" and it'll clear the reconnect alarm
-    dispatch(logout());
+    // dispatch(logout());
 
-    alarms.create(config.connect.name, {delayInMinutes: config.connect.time});
+    // alarms.create(config.connect.name, {delayInMinutes: config.connect.time});
 
     // throw unhandled exception for raven
-    throw err;
-  }
+    // throw err;
 }
-
-const reconnect = debounce(() => {
-  wsClient.disconnect();
-  connect();
-}, 500);
 
 function disconnect() {
   alarms.clear(config.reconnect.name);
   wsClient.disconnect();
 }
+
+const reconnect = debounce(() => {
+  disconnect();
+
+  alarms.create(config.reconnect.name, {delayInMinutes: config.reconnect.time});
+
+  connect();
+}, 500);
 
 function onMessage(data) {
   const {dispatch} = store;
@@ -114,7 +98,7 @@ function onMessage(data) {
 //   4400, // missing uid
 // ];
 function onError(err) {
-  store.dispatch(logout());
+  // store.dispatch(logout());
   // if (err && !IGNORED_ERRORS.includes(err.code)) {
   //   window.Raven.captureException(err, {
   //     extra: err,
@@ -128,7 +112,7 @@ function onError(err) {
   //   return;
   // }
   //
-  // reconnect();
+  reconnect();
 }
 
 function emitEvent(eventType, data) {
@@ -153,11 +137,5 @@ export default function () {
 
   alarms.onAlarm.addListener(handleAlarm);
 
-  subscribe('user.authorized', ({user: {authorized}}) => {
-    if (authorized) {
-      reconnect();
-    } else {
-      disconnect();
-    }
-  });
+  connect();
 }

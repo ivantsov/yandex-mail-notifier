@@ -1,0 +1,57 @@
+@import "../../styles/colors";
+
+.component {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 4px solid @yellow1;
+}
+
+.composeBtn {
+    display: flex;
+    align-items: center;
+}
+
+.composeIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.centerBlock {
+    display: inline-flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.reloadIcon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    fill: @green;
+    transition: 0.3s transform;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
+}
+
+.reloadBtn {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+.settingsIcon {
+    width: 18px;
+    height: 18px;
+    fill: @blue1;
+    transition: 0.4s transform;
+
+    &:hover {
+        transform: rotate(300deg);
+    }
+}

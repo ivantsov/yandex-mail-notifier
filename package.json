@@ -43,6 +43,7 @@
     "redux-subscriber": "^1.1.0",
     "redux-thunk": "^2.1.0",
     "redux-webext": "^1.1.2",
+    "sockette": "^2.0.0",
     "superagent": "^3.6.3"
   },
   "devDependencies": {

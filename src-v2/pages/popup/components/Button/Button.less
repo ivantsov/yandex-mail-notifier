@@ -1,0 +1,45 @@
+@import "../../styles/colors";
+
+.btn {
+    color: black;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 3px;
+    transition: all 0.1s ease-out;
+}
+
+.primary {
+    composes: btn;
+    background-color: @yellow1;
+
+    &:hover {
+        background-color: darken(@yellow1, 10%);
+    }
+
+    &:active {
+        background-color: darken(@yellow1, 15%);
+    }
+}
+
+.secondary {
+    composes: btn;
+    background-color: white;
+
+    &:hover {
+        background-color: darken(white, 5%);
+    }
+
+    &:active {
+        background-color: darken(white, 15%);
+    }
+}
+
+.icon {
+    background-color: transparent;
+    display: inline-flex;
+    padding: 0;
+    border: none;
+}

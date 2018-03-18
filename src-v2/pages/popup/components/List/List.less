@@ -1,0 +1,39 @@
+@import "../../styles/colors";
+
+@height: 360px;
+
+.content {
+    position: relative;
+    height: @height;
+    overflow-y: auto;
+}
+
+.centerContainer {
+    composes: content;
+    font-size: 28px;
+    color: @grey1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: @height;
+}
+
+.placeholders {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+// fade animation
+.placeholdersLeave {
+    composes: placeholders;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        visibility 0s linear 0.3s;
+}

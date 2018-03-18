@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "version": "4.5.6",
+  "name": "__MSG_ext_name__",
+  "description": "__MSG_ext_description__",
+  "default_locale": "en",
+  "author": "Alexander Ivantsov <alex@ivantsov.me>",
+  "icons": {
+    "16": "assets/icon.png",
+    "32": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "assets/icon-disabled.png",
+      "38": "assets/icon-disabled.png"
+    },
+    "default_title": "__MSG_popup_title__",
+    "default_popup": "pages/popup.html"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      }
+    }
+  },
+  "background": {
+    "page": "pages/background.html"
+  },
+  "offline_enabled": false,
+  "permissions": [
+    "*://*/*",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "alarms",
+    "notifications"
+  ]
+}

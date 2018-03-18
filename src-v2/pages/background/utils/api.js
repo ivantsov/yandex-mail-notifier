@@ -119,16 +119,13 @@ async function loadToken(uid) {
   return res.access_token;
 }
 
-let call = 0;
-export async function loadUser(token) {
-  if (++call > 1) {
-    throw new Error('ERROR!!!')
-  }
-  const userInfo = await loadUserInfo();
+export async function loadUser(data) {
+  const userInfo = data.uid ? data : await loadUserInfo();
+  const token = data.token || await loadToken(userInfo.uid);
 
   return {
+    token,
     ...userInfo,
-    token: token || await loadToken(userInfo.uid),
   };
 }
 

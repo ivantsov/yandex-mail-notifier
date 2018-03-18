@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings/App 1`] = `
+<table>
+  <tbody>
+    <div
+      description="settings.newMessageNotification.description"
+      label="settings.newMessageNotification.label"
+      name="newMessageNotification"
+      onChange={[Function]}
+      optionValues={
+        Array [
+          0,
+          1,
+          2,
+        ]
+      }
+      options={
+        Array [
+          Object {
+            "label": "settings.newMessageNotification.options.0",
+            "value": 0,
+          },
+          Object {
+            "label": "settings.newMessageNotification.options.1",
+            "value": 1,
+          },
+          Object {
+            "label": "settings.newMessageNotification.options.2",
+            "value": 2,
+          },
+        ]
+      }
+      type="select"
+      value={0}
+    >
+      Field
+    </div>
+    <div
+      description="settings.unreadMessagesNotification.description"
+      label="settings.unreadMessagesNotification.label"
+      name="unreadMessagesNotification"
+      onChange={[Function]}
+      optionValues={
+        Array [
+          0,
+          5,
+          15,
+          30,
+        ]
+      }
+      options={
+        Array [
+          Object {
+            "label": "settings.unreadMessagesNotification.options.0",
+            "value": 0,
+          },
+          Object {
+            "label": "settings.unreadMessagesNotification.options.1",
+            "value": 5,
+          },
+          Object {
+            "label": "settings.unreadMessagesNotification.options.2",
+            "value": 15,
+          },
+          Object {
+            "label": "settings.unreadMessagesNotification.options.3",
+            "value": 30,
+          },
+        ]
+      }
+      type="select"
+      value={0}
+    >
+      Field
+    </div>
+    <div
+      description="settings.unreadMessagesSound.description"
+      label="settings.unreadMessagesSound.label"
+      name="unreadMessagesSound"
+      onChange={[Function]}
+      options={undefined}
+      type="checkbox"
+      value={false}
+    >
+      Field
+    </div>
+    <div
+      description="settings.notAuthNotification.description"
+      label="settings.notAuthNotification.label"
+      name="notAuthNotification"
+      onChange={[Function]}
+      optionValues={
+        Array [
+          0,
+          1,
+          2,
+        ]
+      }
+      options={
+        Array [
+          Object {
+            "label": "settings.notAuthNotification.options.0",
+            "value": 0,
+          },
+          Object {
+            "label": "settings.notAuthNotification.options.1",
+            "value": 1,
+          },
+          Object {
+            "label": "settings.notAuthNotification.options.2",
+            "value": 2,
+          },
+        ]
+      }
+      type="select"
+      value={0}
+    >
+      Field
+    </div>
+    <div
+      description="settings.preferredDomain.description"
+      label="settings.preferredDomain.label"
+      name="preferredDomain"
+      onChange={[Function]}
+      optionValues={
+        Array [
+          "ru",
+          "ua",
+          "by",
+          "kz",
+          "com",
+          "com.tr",
+        ]
+      }
+      options={
+        Array [
+          Object {
+            "label": "settings.preferredDomain.options.0",
+            "value": "ru",
+          },
+          Object {
+            "label": "settings.preferredDomain.options.1",
+            "value": "ua",
+          },
+          Object {
+            "label": "settings.preferredDomain.options.2",
+            "value": "by",
+          },
+          Object {
+            "label": "settings.preferredDomain.options.3",
+            "value": "kz",
+          },
+          Object {
+            "label": "settings.preferredDomain.options.4",
+            "value": "com",
+          },
+          Object {
+            "label": "settings.preferredDomain.options.5",
+            "value": "com.tr",
+          },
+        ]
+      }
+      type="select"
+      value="ru"
+    >
+      Field
+    </div>
+    <div
+      description="settings.setShortcuts.description"
+      label="settings.setShortcuts.label"
+      name="setShortcuts"
+      onChange={[Function]}
+      options={undefined}
+      text="settings.setShortcuts.linkText"
+      type="link"
+      url="chrome://extensions/configureCommands"
+      value={undefined}
+    >
+      Field
+    </div>
+  </tbody>
+</table>
+`;

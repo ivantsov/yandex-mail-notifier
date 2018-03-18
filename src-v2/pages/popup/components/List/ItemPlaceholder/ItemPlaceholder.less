@@ -1,0 +1,79 @@
+@import "../../../styles/colors";
+
+@height: 16px;
+@headerLeft: 124px;
+@headerLeftWidth: 10px;
+@subHeaderTop: @height + 2px;
+
+@keyframes placeholder {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 680px 0;
+    }
+}
+
+.component {
+    background-color: white;
+    height: 70px;
+    padding: 10px;
+}
+
+.background {
+    background: @grey3;
+    background: linear-gradient(to right, @grey4 8%, @grey5 18%, @grey4 33%);
+    background-size: 680px 70px;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    animation-name: placeholder;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.placeholder {
+    background: white;
+    position: absolute;
+    height: @height;
+}
+
+.headerLeft {
+    composes: placeholder;
+    top: 0;
+    left: @headerLeft;
+    width: @headerLeftWidth;
+}
+
+.headerRight {
+    composes: placeholder;
+    top: 0;
+    left: @headerLeft + @headerLeftWidth + 10px + 64px;
+    width: 100%;
+}
+
+.headerBottom {
+    composes: placeholder;
+    top: @height;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.subHeader {
+    composes: placeholder;
+    top: @subHeaderTop;
+    left: 250px;
+    width: 100%;
+}
+
+.subHeaderBottom {
+    composes: placeholder;
+    top: @subHeaderTop + @height;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}

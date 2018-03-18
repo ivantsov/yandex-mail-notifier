@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`popup/List error 1`] = `
+<div
+  className="centerContainer"
+>
+  error
+</div>
+`;
+
+exports[`popup/List loading 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="placeholders"
+  >
+    <div
+      className="component"
+    >
+      <div
+        className="background"
+      >
+        <div
+          className="headerLeft"
+        />
+        <div
+          className="headerRight"
+        />
+        <div
+          className="headerBottom"
+        />
+        <div
+          className="subHeader"
+        />
+        <div
+          className="subHeaderBottom"
+        />
+      </div>
+    </div>
+    <div
+      className="component"
+    >
+      <div
+        className="background"
+      >
+        <div
+          className="headerLeft"
+        />
+        <div
+          className="headerRight"
+        />
+        <div
+          className="headerBottom"
+        />
+        <div
+          className="subHeader"
+        />
+        <div
+          className="subHeaderBottom"
+        />
+      </div>
+    </div>
+    <div
+      className="component"
+    >
+      <div
+        className="background"
+      >
+        <div
+          className="headerLeft"
+        />
+        <div
+          className="headerRight"
+        />
+        <div
+          className="headerBottom"
+        />
+        <div
+          className="subHeader"
+        />
+        <div
+          className="subHeaderBottom"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`popup/List no items 1`] = `
+<div
+  className="centerContainer"
+>
+  no items
+</div>
+`;
+
+exports[`popup/List with items 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="placeholdersLeave"
+  />
+  <div>
+    <div
+      className="component"
+      onClick={[Function]}
+    >
+      <div
+        className="topContainer"
+      >
+        <div
+          className="fromAndDate"
+        >
+          <p>
+            <span
+              className="from"
+            >
+              sender#1
+            </span>
+            <span
+              className="date"
+            >
+              21-20-2015
+            </span>
+          </p>
+          <p
+            className="subject"
+          >
+            subject#1
+          </p>
+        </div>
+        <div
+          className="hoverMenu"
+        >
+          <div
+            className="component"
+          >
+            <span
+              className="component"
+              onClick={[Function]}
+              title={undefined}
+            >
+              <svg
+                className="icon"
+                fill="#80b67b"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M17.5 4.7l-7.8-4.5-.6-.2-.5.2-7.9 4.6c-.4.2-.7.8-.7 1.2v11c0 .6.4 1 1 1h16c.5 0 1-.5 1-1v-11c0-.5-.1-1.1-.5-1.3zm-8.4-2.5l6.8 3.8-6.8 4-6.8-3.8 6.8-4zm6.9 14h-14v-7.6l6 3.2c.3.1.8.2 1 .2s.7 0 1-.2l6-3.2v7.6z"
+                />
+              </svg>
+            </span>
+            <span
+              className="component"
+              onClick={[Function]}
+              title={undefined}
+            >
+              <svg
+                className="icon"
+                fill="#e76a50"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M12 7h-2v7h2v-7zm1.8-4l-.8-3h-8l-.8 3h-4.2v2h2v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-12h2v-2h-4.2zm-7.3-1h4.9l.3 1h-5.4l.2-1zm7.5 14h-10v-11h10v11zm-6-9h-2v7h2v-7z"
+                />
+              </svg>
+            </span>
+            <span
+              className="component"
+              onClick={[Function]}
+              title={undefined}
+            >
+              <svg
+                className="icon"
+                fill="#fcc93a"
+                viewBox="0 841.9 18 18"
+              >
+                <path
+                  d="M15.4,845.7c-0.8,1.6-1.9,2.6-2.9,2.6c-1.4,0-2.7-1.9-2.9-6.4c-4.7,1.7-4.5,6.3-4.9,8.3c0,0.4-0.2,0.6-0.4,0.6c-0.8,0-2.5-2-3.1-3.7c-2.4,2.5-1.8,12.5,7.7,12.8c0.1,0,0.3,0,0.4,0C18.5,859.9,20.2,849.5,15.4,845.7z M15.6,853.8c-0.9,2.6-3.2,4.1-6.3,4.1c-0.1,0-0.2,0-0.3,0c-4-0.1-5.7-2.2-6.4-4c-0.3-0.7-0.5-1.4-0.6-2.1c0.7,0.6,1.4,1,2.2,1c1,0,2.2-0.7,2.4-2.2c0-0.3,0.1-0.6,0.1-1c0.3-1.6,0.6-3.1,1.4-4.2c1,4.3,3.4,4.9,4.5,4.9c1,0,2-0.4,2.9-1.3C16.1,850.4,16.2,852.2,15.6,853.8z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <p
+        className="content"
+      >
+        text
+      </p>
+    </div>
+    <div
+      className="component"
+      onClick={[Function]}
+    >
+      <div
+        className="topContainer"
+      >
+        <div
+          className="fromAndDate"
+        >
+          <p>
+            <span
+              className="from"
+            >
+              sender#2
+            </span>
+            <span
+              className="date"
+            >
+              21-20-2016
+            </span>
+          </p>
+          <p
+            className="subject"
+          >
+            subject#2
+          </p>
+        </div>
+        <div
+          className="hoverMenu"
+        >
+          <div
+            className="component"
+          >
+            <span
+              className="component"
+              onClick={[Function]}
+              title={undefined}
+            >
+              <svg
+                className="icon"
+                fill="#80b67b"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M17.5 4.7l-7.8-4.5-.6-.2-.5.2-7.9 4.6c-.4.2-.7.8-.7 1.2v11c0 .6.4 1 1 1h16c.5 0 1-.5 1-1v-11c0-.5-.1-1.1-.5-1.3zm-8.4-2.5l6.8 3.8-6.8 4-6.8-3.8 6.8-4zm6.9 14h-14v-7.6l6 3.2c.3.1.8.2 1 .2s.7 0 1-.2l6-3.2v7.6z"
+                />
+              </svg>
+            </span>
+            <span
+              className="component"
+              onClick={[Function]}
+              title={undefined}
+            >
+              <svg
+                className="icon"
+                fill="#e76a50"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M12 7h-2v7h2v-7zm1.8-4l-.8-3h-8l-.8 3h-4.2v2h2v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-12h2v-2h-4.2zm-7.3-1h4.9l.3 1h-5.4l.2-1zm7.5 14h-10v-11h10v11zm-6-9h-2v7h2v-7z"
+                />
+              </svg>
+            </span>
+            <span
+              className="component"
+              onClick={[Function]}
+              title={undefined}
+            >
+              <svg
+                className="icon"
+                fill="#fcc93a"
+                viewBox="0 841.9 18 18"
+              >
+                <path
+                  d="M15.4,845.7c-0.8,1.6-1.9,2.6-2.9,2.6c-1.4,0-2.7-1.9-2.9-6.4c-4.7,1.7-4.5,6.3-4.9,8.3c0,0.4-0.2,0.6-0.4,0.6c-0.8,0-2.5-2-3.1-3.7c-2.4,2.5-1.8,12.5,7.7,12.8c0.1,0,0.3,0,0.4,0C18.5,859.9,20.2,849.5,15.4,845.7z M15.6,853.8c-0.9,2.6-3.2,4.1-6.3,4.1c-0.1,0-0.2,0-0.3,0c-4-0.1-5.7-2.2-6.4-4c-0.3-0.7-0.5-1.4-0.6-2.1c0.7,0.6,1.4,1,2.2,1c1,0,2.2-0.7,2.4-2.2c0-0.3,0.1-0.6,0.1-1c0.3-1.6,0.6-3.1,1.4-4.2c1,4.3,3.4,4.9,4.5,4.9c1,0,2-0.4,2.9-1.3C16.1,850.4,16.2,852.2,15.6,853.8z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <p
+        className="content"
+      >
+        text
+      </p>
+    </div>
+  </div>
+</div>
+`;
